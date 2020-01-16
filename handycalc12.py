@@ -1,4 +1,5 @@
 # ver12 대망의 이미지인식 추가
+# ver12.1 통계기능을 추가
 import pyautogui as pag
 import random
 import time
@@ -34,8 +35,16 @@ def regameFinder():
         return True
 
 
-play_time = 0  # 매크로 실행횟수
+plays = 0  # 매크로 실행횟수
+isStart = False
+loadtimelist = []
+playtimelist = []
 while True:
+
+    if not isStart:
+        loadtmstart = time.time()
+    
+    isStart = True
 
     i = 0
     while i < 5:  # 게임찾기버튼
@@ -59,6 +68,8 @@ while True:
     while startFinder():
         x = 1
 
+    loadtime = time.time()-loadtmstart
+
     print("load complete")
     start2 = time.time()
 
@@ -69,8 +80,7 @@ while True:
         pag.mouseDown()
         time.sleep(random.uniform(0.3, 0.7))
         pag.mouseUp()
-        pag.moveTo(random.uniform(485+200, 667+200),
-                   random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
+        pag.moveTo(random.uniform(485+200, 667+200), random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.3, 0.7))
         pag.mouseUp()
@@ -165,6 +175,13 @@ while True:
     # time.sleep(random.uniform(0.1,0.3))
     # pag.mouseUp()
 
+    playtime = time.time()-start2
+
+    loadtimelist.append(loadtime)
+    playtimelist.append(playtime)
+
+    loadtmstart = time.time()
+
     while regameFinder():  # 퀘스트깼을때 퀘스트확인버튼
         pag.moveTo(random.uniform(950, 1018-2),
                    random.uniform(827, 849), random.uniform(0.8, 0.12))
@@ -180,5 +197,8 @@ while True:
     time.sleep(random.uniform(0.08, 0.3))
     pag.mouseUp()
 
-    play_time = play_time+1
-    print("play times : ", play_time)
+    plays = plays+1
+    print("play times : ", plays)
+    print("Queue + Loading Time : ", int(loadtime/60),"min",loadtime%60,"sec, Play Time : ",int(playtime/60),"min",playtime%60,"sec")
+    print("Avg.Queue + Loading Time : ", int(sum(loadtimelist)/len(loadtimelist)/60), "min", (sum(loadtimelist)/len(loadtimelist))%60, "sec, Avg.Play Time : ", int(sum(playtimelist)/len(playtimelist)/60), "min", (sum(playtimelist)/len(playtimelist))%60, "sec")
+    print("Est.Token get per hour : ", plays*4/(sum(loadtimelist)+sum(playtimelist))*3600)
