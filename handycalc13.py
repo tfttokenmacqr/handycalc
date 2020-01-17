@@ -79,7 +79,7 @@ while True:
     print("load complete")
     start2 = time.time()
 
-    while time.time()-start2 < 600 and (not isSix()):  # 챔피언픽
+    while time.time()-start2 < 600 or (not isSix()):  # 챔피언픽
 
         pag.moveTo(random.uniform(485, 667), random.uniform(
             932, 1032-50), random.uniform(0.25, 0.75))
