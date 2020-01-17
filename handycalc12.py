@@ -1,5 +1,6 @@
 # ver12 대망의 이미지인식 추가
 # ver12.1 통계기능을 추가
+# ver12.2 통계표시 개선
 import pyautogui as pag
 import random
 import time
@@ -198,7 +199,9 @@ while True:
     pag.mouseUp()
 
     plays = plays+1
-    print("play times : ", plays)
-    print("Queue + Loading Time : ", int(loadtime/60),"min",loadtime%60,"sec, Play Time : ",int(playtime/60),"min",playtime%60,"sec")
-    print("Avg.Queue + Loading Time : ", int(sum(loadtimelist)/len(loadtimelist)/60), "min", (sum(loadtimelist)/len(loadtimelist))%60, "sec, Avg.Play Time : ", int(sum(playtimelist)/len(playtimelist)/60), "min", (sum(playtimelist)/len(playtimelist))%60, "sec")
-    print("Est.Token get per hour : ", plays*4/(sum(loadtimelist)+sum(playtimelist))*3600)
+    print("플레이 횟수 :", plays)
+    print("이번 판 큐+로딩시간 : %imin%isec, 인게임시간 : %imin%isec"  %(loadtime/60, loadtime%60, playtime/60, playtime%60,))
+    print("평균 큐+로딩시간 : %imin%isec, 평균 인게임시간 : %imin%isec" %(sum(loadtimelist)/len(loadtimelist)/60, (sum(loadtimelist)/len(loadtimelist))%60, sum(playtimelist)/len(playtimelist)/60, (sum(playtimelist)/len(playtimelist))%60))
+    print("총 토큰획득(추정치) :", plays*4)
+    print("시간당 토큰획득(추정치) : %.2f" %(plays*4/(sum(loadtimelist)+sum(playtimelist))*3600))
+
