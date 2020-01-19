@@ -121,10 +121,11 @@ while True:
         pag.mouseUp()
         if time.time()-start2 > 600 and isSix():
             break
-        pag.moveTo(random.uniform(278, 462), random.uniform(931, 992), random.uniform(0.25, 0.75))
-        pag.mouseDown()
-        time.sleep(random.uniform(0.05, 0.1))
-        pag.mouseUp()
+        if time.time()-start2 > 900:
+            pag.moveTo(random.uniform(278, 462), random.uniform(931, 992), random.uniform(0.25, 0.75))
+            pag.mouseDown()
+            time.sleep(random.uniform(0.05, 0.1))
+            pag.mouseUp()
 
 
 
