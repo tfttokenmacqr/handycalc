@@ -1,6 +1,7 @@
 # ver12 대망의 이미지인식 추가
-# ver12.1 통계기능을 추가
-# ver12.2 통계표시 개선
+# ver12.01 통계기능을 추가
+# ver12.02 통계표시 개선
+# ver13.03 종료반응성 향상
 import pyautogui as pag
 import random
 import time
@@ -74,31 +75,41 @@ while True:
     print("load complete")
     start2 = time.time()
 
-    while time.time()-start2 < 600:  # 챔피언픽
+    while True:  # 챔피언픽
 
+        if time.time()-start2 > 600:
+            break
         pag.moveTo(random.uniform(485, 667), random.uniform(
             932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
-        time.sleep(random.uniform(0.3, 0.7))
+        time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
+        if time.time()-start2 > 600:
+            break
         pag.moveTo(random.uniform(485+200, 667+200), random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
-        time.sleep(random.uniform(0.3, 0.7))
+        time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
+        if time.time()-start2 > 600:
+            break
         pag.moveTo(random.uniform(485+400, 667+400),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
-        time.sleep(random.uniform(0.3, 0.7))
+        time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
+        if time.time()-start2 > 600:
+            break
         pag.moveTo(random.uniform(485+600, 667+600),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
-        time.sleep(random.uniform(0.3, 0.7))
+        time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
+        if time.time()-start2 > 600:
+            break
         pag.moveTo(random.uniform(485+800, 667+800),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
-        time.sleep(random.uniform(0.3, 0.7))
+        time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
 
     print("surrender")
