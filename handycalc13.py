@@ -1,5 +1,6 @@
 # ver13 6등서렌 
 # ver13.1 체력이 1남는 경우 죽은 걸로 판단하는 문제 수정
+# ver13.2 안나가는 사람을 빨리 죽이기 위한 레벨업 추가
 import pyautogui as pag
 import random
 import time
@@ -106,6 +107,9 @@ while True:
         pag.mouseDown()
         time.sleep(random.uniform(0.3, 0.7))
         pag.mouseUp()
+        pag.keyDown('f')
+        pag.PAUSE = random.uniform(0.05, 0.1)
+        pag.keyUp('f')
 
 
     
