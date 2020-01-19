@@ -1,4 +1,5 @@
 # ver13 6등서렌 
+# ver13.1 체력이 1남는 경우 죽은 걸로 판단하는 문제 수정
 import pyautogui as pag
 import random
 import time
@@ -35,7 +36,7 @@ def regameFinder():
 
 
 def isSix():
-    if pag.pixelMatchesColor(1853, 679, (22, 24, 33)) and pag.pixelMatchesColor(1853, 752, (22, 24, 33)):
+    if pag.pixelMatchesColor(1853, 679, (22, 24, 33)) and pag.pixelMatchesColor(1853, 752, (22, 24, 33)) and pag.pixelMatchesColor(1836, 747, (22, 24, 33)) and pag.pixelMatchesColor(1836, 673, (22, 24, 33)):
         return True
     else:
         return False
