@@ -1,6 +1,7 @@
 # ver13 6등서렌 
-# ver13.1 체력이 1남는 경우 죽은 걸로 판단하는 문제 수정
-# ver13.2 안나가는 사람을 빨리 죽이기 위한 레벨업 추가
+# ver13.01 체력이 1남는 경우 죽은 걸로 판단하는 문제 수정
+# ver13.02 안나가는 사람을 빨리 죽이기 위한 레벨업 추가
+# ver13.03 종료반응성 향상
 import pyautogui as pag
 import random
 import time
@@ -13,6 +14,7 @@ import time
 # again lt791 834 rb934 853 width 144 hight 25
 # pick lt485 932  rb667 1068  relative 200
 # token_get lt902 827 rb1018 849
+# level up lt278 931  rb462 992
 
 
 def loadingFinder():
@@ -81,35 +83,50 @@ while True:
     print("load complete")
     start2 = time.time()
 
-    while time.time()-start2 < 600 or (not isSix()):  # 챔피언픽
+    while True:  # 챔피언픽
 
+        if time.time()-start2 > 600 and isSix():
+            break
         pag.moveTo(random.uniform(485, 667), random.uniform(
             932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
-        time.sleep(random.uniform(0.3, 0.7))
+        time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
+        if time.time()-start2 > 600 and isSix():
+            break
         pag.moveTo(random.uniform(485+200, 667+200), random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
-        time.sleep(random.uniform(0.3, 0.7))
+        time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
+        if time.time()-start2 > 600 and isSix():
+            break
         pag.moveTo(random.uniform(485+400, 667+400),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
-        time.sleep(random.uniform(0.3, 0.7))
+        time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
+        if time.time()-start2 > 600 and isSix():
+            break
         pag.moveTo(random.uniform(485+600, 667+600),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
-        time.sleep(random.uniform(0.3, 0.7))
+        time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
+        if time.time()-start2 > 600 and isSix():
+            break
         pag.moveTo(random.uniform(485+800, 667+800),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
-        time.sleep(random.uniform(0.3, 0.7))
+        time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        pag.keyDown('f')
-        pag.PAUSE = random.uniform(0.05, 0.1)
-        pag.keyUp('f')
+        if time.time()-start2 > 600 and isSix():
+            break
+        pag.moveTo(random.uniform(278, 462), random.uniform(931, 992), random.uniform(0.25, 0.75))
+        pag.mouseDown()
+        time.sleep(random.uniform(0.05, 0.1))
+        pag.mouseUp()
+
+
 
 
     
