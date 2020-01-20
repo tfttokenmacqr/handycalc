@@ -2,6 +2,7 @@
 # ver12.01 통계기능을 추가
 # ver12.02 통계표시 개선
 # ver13.03 종료반응성 향상
+# ver13.04 판당 시간당토큰개수 추가
 import pyautogui as pag
 import random
 import time
@@ -214,5 +215,6 @@ while True:
     print("이번 판 큐+로딩시간 : %imin%isec, 인게임시간 : %imin%isec"  %(loadtime/60, loadtime%60, playtime/60, playtime%60,))
     print("평균 큐+로딩시간 : %imin%isec, 평균 인게임시간 : %imin%isec" %(sum(loadtimelist)/len(loadtimelist)/60, (sum(loadtimelist)/len(loadtimelist))%60, sum(playtimelist)/len(playtimelist)/60, (sum(playtimelist)/len(playtimelist))%60))
     print("총 토큰획득(추정치) :", plays*4)
+    print("이번 판 시간당 토큰획득 : %.2f" %(4/(loadtime + playtime)*3600))
     print("시간당 토큰획득(추정치) : %.2f" %(plays*4/(sum(loadtimelist)+sum(playtimelist))*3600))
 
