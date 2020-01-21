@@ -39,17 +39,22 @@ def regameFinder():
         return True
 
 
-def isSix():
+def isSix(idx):
     if pag.pixelMatchesColor(1853, 679, (22, 24, 33)) and pag.pixelMatchesColor(1853, 752, (22, 24, 33)) and pag.pixelMatchesColor(1836, 747, (22, 24, 33)) and pag.pixelMatchesColor(1836, 673, (22, 24, 33)):
+        idx[0] = 1
         return True
     else:
         return False
 
 
+tokenList = (4, 6, 8, 10)
+tokenIdx = [0]
+
 plays = 0  # 매크로 실행횟수
 isStart = False
 loadtimelist = []
 playtimelist = []
+tokenGetList = []
 while True:
 
     if not isStart:
@@ -86,47 +91,91 @@ while True:
 
     while True:  # 챔피언픽
 
-        if time.time()-start2 > 600 and isSix():
+        if time.time()-start2 > 600 and isSix(tokenIdx):
             break
         pag.moveTo(random.uniform(485, 667), random.uniform(
             932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if time.time()-start2 > 600 and isSix():
+        if time.time()-start2 > 600 and isSix(tokenIdx):
             break
         pag.moveTo(random.uniform(485+200, 667+200), random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if time.time()-start2 > 600 and isSix():
+        if time.time()-start2 > 600 and isSix(tokenIdx):
             break
         pag.moveTo(random.uniform(485+400, 667+400),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if time.time()-start2 > 600 and isSix():
+        if time.time()-start2 > 600 and isSix(tokenIdx):
             break
         pag.moveTo(random.uniform(485+600, 667+600),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if time.time()-start2 > 600 and isSix():
+        if time.time()-start2 > 600 and isSix(tokenIdx):
             break
         pag.moveTo(random.uniform(485+800, 667+800),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if time.time()-start2 > 600 and isSix():
+        if time.time()-start2 > 600 and isSix(tokenIdx):
             break
         if time.time()-start2 > 900:
             pag.moveTo(random.uniform(278, 462), random.uniform(931, 992), random.uniform(0.25, 0.75))
             pag.mouseDown()
             time.sleep(random.uniform(0.05, 0.1))
             pag.mouseUp()
+        
+        if pag.pixelMatchesColor(880, 533, (8, 81, 100)):
+            if pag.pixelMatchesColor(1836, 600, (22, 24, 33)) and pag.pixelMatchesColor(1836, 527, (22, 24, 33)) and pag.pixelMatchesColor(1853, (679 - 73), (22, 24, 33)) and pag.pixelMatchesColor(1853, (679 - 73*2), (22, 24, 33)):
+                tokenIdx[0] = 2
+                pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
+                pag.mouseDown()
+                time.sleep(random.uniform(0.05, 0.1))
+                pag.mouseUp()
+                print("게임오버 4등")
+                break
+            elif pag.pixelMatchesColor(1836, 600, (22, 24, 33)) and pag.pixelMatchesColor(1853, (679 - 73), (22, 24, 33)):
+                tokenIdx[0] = 1
+                pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
+                pag.mouseDown()
+                time.sleep(random.uniform(0.05, 0.1))
+                pag.mouseUp()
+                print("게임오버 5등")
+                break
+            elif pag.pixelMatchesColor(1853, 679, (22, 24, 33)) and pag.pixelMatchesColor(1853, 752, (22, 24, 33)) and pag.pixelMatchesColor(1836, 747, (22, 24, 33)) and pag.pixelMatchesColor(1836, 673, (22, 24, 33)):
+                tokenIdx[0] = 1
+                pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
+                pag.mouseDown()
+                time.sleep(random.uniform(0.05, 0.1))
+                pag.mouseUp()
+                print("게임오버 6등")
+                break
+            elif pag.pixelMatchesColor(1853, 752, (22, 24, 33)) and pag.pixelMatchesColor(1836, 747, (22, 24, 33)):
+                tokenIdx[0] = 0
+                pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
+                pag.mouseDown()
+                time.sleep(random.uniform(0.05, 0.1))
+                pag.mouseUp()
+                print("게임오버 7등")
+                break
+            else:
+                tokenIdx[0] = 0
+                pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
+                pag.mouseDown()
+                time.sleep(random.uniform(0.05, 0.1))
+                pag.mouseUp()
+                print("게임오버 8등?")
+                break
+
+
 
 
 
@@ -212,6 +261,7 @@ while True:
 
     loadtimelist.append(loadtime)
     playtimelist.append(playtime)
+    tokenGetList.append(tokenList[tokenIdx[0]])
 
     loadtmstart = time.time()
 
@@ -234,7 +284,6 @@ while True:
     print("플레이 횟수 :", plays)
     print("이번 판 큐+로딩시간 : %imin%isec, 인게임시간 : %imin%isec"  %(loadtime/60, loadtime%60, playtime/60, playtime%60,))
     print("평균 큐+로딩시간 : %imin%isec, 평균 인게임시간 : %imin%isec" %(sum(loadtimelist)/len(loadtimelist)/60, (sum(loadtimelist)/len(loadtimelist))%60, sum(playtimelist)/len(playtimelist)/60, (sum(playtimelist)/len(playtimelist))%60))
-    print("총 토큰획득(추정치) :", plays*6)
-    print("이번 판 시간당 토큰획득 : %.2f" %(6/(loadtime + playtime)*3600))
-    print("시간당 토큰획득(추정치) : %.2f" %(plays*6/(sum(loadtimelist)+sum(playtimelist))*3600))
-
+    print("총 토큰획득(추정치) :", sum(tokenGetList))
+    print("이번 판 시간당 토큰획득 : %.2f" %(tokenList[tokenIdx[0]]/(loadtime + playtime)*3600))
+    print("시간당 토큰획득(추정치) : %.2f" %(sum(tokenGetList)/(sum(loadtimelist)+sum(playtimelist))*3600))

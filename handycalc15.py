@@ -53,7 +53,7 @@ def lessthansixteen(idx, tim):
         return False
 
 
-tokenList = (4, 6, 8)
+tokenList = (4, 6, 8, 10)
 tokenIdx = [0]
 
 plays = 0  # 매크로 실행횟수
@@ -138,6 +138,48 @@ while True:
             pag.mouseDown()
             time.sleep(random.uniform(0.05, 0.1))
             pag.mouseUp()
+
+        if pag.pixelMatchesColor(880, 533, (8, 81, 100)):
+            if pag.pixelMatchesColor(1836, 600, (22, 24, 33)) and pag.pixelMatchesColor(1836, 527, (22, 24, 33)) and pag.pixelMatchesColor(1853, (679 - 73), (22, 24, 33)) and pag.pixelMatchesColor(1853, (679 - 73*2), (22, 24, 33)):
+                tokenIdx[0] = 2
+                pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
+                pag.mouseDown()
+                time.sleep(random.uniform(0.05, 0.1))
+                pag.mouseUp()
+                print("게임오버 4등")
+                break
+            elif pag.pixelMatchesColor(1836, 600, (22, 24, 33)) and pag.pixelMatchesColor(1853, (679 - 73), (22, 24, 33)):
+                tokenIdx[0] = 1
+                pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
+                pag.mouseDown()
+                time.sleep(random.uniform(0.05, 0.1))
+                pag.mouseUp()
+                print("게임오버 5등")
+                break
+            elif pag.pixelMatchesColor(1853, 679, (22, 24, 33)) and pag.pixelMatchesColor(1853, 752, (22, 24, 33)) and pag.pixelMatchesColor(1836, 747, (22, 24, 33)) and pag.pixelMatchesColor(1836, 673, (22, 24, 33)):
+                tokenIdx[0] = 1
+                pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
+                pag.mouseDown()
+                time.sleep(random.uniform(0.05, 0.1))
+                pag.mouseUp()
+                print("게임오버 6등")
+                break
+            elif pag.pixelMatchesColor(1853, 752, (22, 24, 33)) and pag.pixelMatchesColor(1836, 747, (22, 24, 33)):
+                tokenIdx[0] = 0
+                pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
+                pag.mouseDown()
+                time.sleep(random.uniform(0.05, 0.1))
+                pag.mouseUp()
+                print("게임오버 7등")
+                break
+            else:
+                tokenIdx[0] = 0
+                pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
+                pag.mouseDown()
+                time.sleep(random.uniform(0.05, 0.1))
+                pag.mouseUp()
+                print("게임오버 8등?")
+                break
 
 
 
