@@ -41,7 +41,7 @@ def regameFinder():
 
 
 def startscreenFinder():
-    if pag.pixelMatchesColor(417, 680, (38, 33, 24)):
+    if pag.pixelMatchesColor(1147, 266, (30, 35, 40)):
         return False
     else:
         return True
@@ -294,12 +294,12 @@ while True:
 # 다시하기
     while startscreenFinder():
 
-        pag.moveTo(random.uniform(931, 988), random.uniform(591, 611), random.uniform(1, 3.3))
+        pag.moveTo(random.uniform(931, 988), random.uniform(591, 611), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
 
-        pag.moveTo(random.uniform(791, 934), random.uniform(834, 853), random.uniform(1, 3.3))
+        pag.moveTo(random.uniform(791, 934), random.uniform(834, 853), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
