@@ -284,6 +284,11 @@ while True:
 
 
     while regameFinder():  # 퀘스트깼을때 퀘스트확인버튼
+        pag.moveTo(random.uniform(931, 988), random.uniform(591, 611), random.uniform(0.25, 0.75))
+        pag.mouseDown()
+        time.sleep(random.uniform(0.05, 0.1))
+        pag.mouseUp()
+
         pag.moveTo(random.uniform(950, 1018-2),
                    random.uniform(827, 849), random.uniform(0.8, 0.12))
         pag.mouseDown()
