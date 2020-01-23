@@ -20,7 +20,7 @@ import time
 
 
 def loadingFinder():
-    if pag.pixelMatchesColor(130, 650, (18, 19, 19)):
+    if pag.pixelMatchesColor(203, 187, (20, 20, 27)):
         return False
     else:
         return True
