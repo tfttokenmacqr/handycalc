@@ -15,6 +15,8 @@ import time
 # again lt791 834 rb934 853 width 144 hight 25
 # pick lt485 932  rb667 1068  relative 200
 # token_get lt902 827 rb1018 849
+# level up lt278 931  rb462 992
+# password lt931 591  rb988 611
 
 
 def loadingFinder():
@@ -36,6 +38,14 @@ def regameFinder():
         return False
     else:
         return True
+
+
+def startscreenFinder():
+    if pag.pixelMatchesColor(421, 682, (38, 35, 24)):
+        return False
+    else:
+        return True
+
 
 
 plays = 0  # 매크로 실행횟수
@@ -195,6 +205,16 @@ while True:
 
     loadtmstart = time.time()
 
+
+    plays = plays+1
+    print("플레이 횟수 :", plays)
+    print("이번 판 큐+로딩시간 : %imin%isec, 인게임시간 : %imin%isec"  %(loadtime/60, loadtime%60, playtime/60, playtime%60,))
+    print("평균 큐+로딩시간 : %imin%isec, 평균 인게임시간 : %imin%isec" %(sum(loadtimelist)/len(loadtimelist)/60, (sum(loadtimelist)/len(loadtimelist))%60, sum(playtimelist)/len(playtimelist)/60, (sum(playtimelist)/len(playtimelist))%60))
+    print("총 토큰획득(추정치) :", plays*4)
+    print("이번 판 시간당 토큰획득 : %.2f" %(4/(loadtime + playtime)*3600))
+    print("시간당 토큰획득(추정치) : %.2f" %(plays*4/(sum(loadtimelist)+sum(playtimelist))*3600))
+
+
     while regameFinder():  # 퀘스트깼을때 퀘스트확인버튼
         pag.moveTo(random.uniform(950, 1018-2),
                    random.uniform(827, 849), random.uniform(0.8, 0.12))
@@ -204,17 +224,17 @@ while True:
 
 
 # 다시하기
-    pag.moveTo(random.uniform(791, 934), random.uniform(
-        834, 853), random.uniform(1, 3.3))
-    pag.mouseDown()
-    time.sleep(random.uniform(0.08, 0.3))
-    pag.mouseUp()
+    while startscreenFinder():
 
-    plays = plays+1
-    print("플레이 횟수 :", plays)
-    print("이번 판 큐+로딩시간 : %imin%isec, 인게임시간 : %imin%isec"  %(loadtime/60, loadtime%60, playtime/60, playtime%60,))
-    print("평균 큐+로딩시간 : %imin%isec, 평균 인게임시간 : %imin%isec" %(sum(loadtimelist)/len(loadtimelist)/60, (sum(loadtimelist)/len(loadtimelist))%60, sum(playtimelist)/len(playtimelist)/60, (sum(playtimelist)/len(playtimelist))%60))
-    print("총 토큰획득(추정치) :", plays*4)
-    print("이번 판 시간당 토큰획득 : %.2f" %(4/(loadtime + playtime)*3600))
-    print("시간당 토큰획득(추정치) : %.2f" %(plays*4/(sum(loadtimelist)+sum(playtimelist))*3600))
+        pag.moveTo(random.uniform(931, 988), random.uniform(591, 611), random.uniform(1, 3.3))
+        pag.mouseDown()
+        time.sleep(random.uniform(0.05, 0.1))
+        pag.mouseUp()
+
+        pag.moveTo(random.uniform(791, 934), random.uniform(834, 853), random.uniform(1, 3.3))
+        pag.mouseDown()
+        time.sleep(random.uniform(0.05, 0.1))
+        pag.mouseUp()
+
+    
 
