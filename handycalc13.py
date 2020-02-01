@@ -41,7 +41,7 @@ def regameFinder():
 
 
 def startscreenFinder():
-    if pag.pixelMatchesColor(1147, 266, (30, 35, 40)):
+    if pag.pixelMatchesColor(1147, 266, (30, 35, 40)) or pag.pixelMatchesColor(1147, 266, (11, 13, 15)) or pag.pixelMatchesColor(1147, 266, (1, 10, 19)):
         return False
     else:
         return True
