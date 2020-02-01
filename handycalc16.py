@@ -15,32 +15,32 @@ import time
 # password lt931 591  rb988 611
 
 
-def loadingFinder():
+def loadingCheck():
     if pag.pixelMatchesColor(203, 187, (20, 20, 27)):
-        return False
-    else:
         return True
+    else:
+        return False
 
 
-def startFinder():
+def startCheck():
     if pag.pixelMatchesColor(1919, 395, (24, 32, 33)):
-        return False
-    else:
         return True
+    else:
+        return False
 
 
-def regameFinder():
+def regameCheck():
     if pag.pixelMatchesColor(915, 840, (30, 35, 40)):
-        return False
-    else:
         return True
+    else:
+        return False
 
 
-def startscreenFinder():
+def startscreenCheck():
     if pag.pixelMatchesColor(1147, 266, (30, 35, 40)) or pag.pixelMatchesColor(1147, 266, (11, 13, 15)) or pag.pixelMatchesColor(1147, 266, (1, 10, 19)):
-        return False
-    else:
         return True
+    else:
+        return False
 
 
 def isSix(idx):
@@ -105,17 +105,19 @@ def handycalc():
         i += 1
 
     print('wait untill accepted')
-    while loadingFinder():
+    while True:
 
-        pag.moveTo(random.uniform(884+16, 1033),
-                   random.uniform(700, 726-15), random.uniform(0.25, 0.75))
+        pag.moveTo(random.uniform(884+16, 1033), random.uniform(700, 726-15), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.3, 0.7))
         pag.mouseUp()
+        if loadingCheck():
+            break
 
     print("wait untill start")
-    while startFinder():
-        x = 1
+    while True:
+        if startCheck():
+            break
 
     loadtime = time.time()-loadtmstart
 
@@ -298,7 +300,7 @@ def handycalc():
 
 
 
-    plays = plays+1
+    plays += 1
     print("플레이 횟수 :", plays)
     print("이번 판 큐+로딩시간 : %imin%isec, 인게임시간 : %imin%isec"  %(loadtime/60, loadtime%60, playtime/60, playtime%60,))
     print("평균 큐+로딩시간 : %imin%isec, 평균 인게임시간 : %imin%isec" %(sum(loadtimelist)/len(loadtimelist)/60, (sum(loadtimelist)/len(loadtimelist))%60, sum(playtimelist)/len(playtimelist)/60, (sum(playtimelist)/len(playtimelist))%60))
@@ -307,7 +309,7 @@ def handycalc():
     print("시간당 토큰획득(추정치) : %.2f" %(sum(tokenGetList)/(sum(loadtimelist)+sum(playtimelist))*3600))
 
 
-    while regameFinder():  # 퀘스트깼을때 퀘스트확인버튼
+    while True:  # 퀘스트깼을때 퀘스트확인버튼
         pag.moveTo(random.uniform(931, 988), random.uniform(591, 611), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
@@ -318,10 +320,12 @@ def handycalc():
         pag.mouseDown()
         time.sleep(random.uniform(0.08, 0.12))
         pag.mouseUp()
+        if regameCheck():
+            break
 
 
 # 다시하기
-    while startscreenFinder():
+    while True:
 
         pag.moveTo(random.uniform(931, 988), random.uniform(591, 611), random.uniform(0.25, 0.75))
         pag.mouseDown()
@@ -332,6 +336,8 @@ def handycalc():
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
+        if startscreenCheck():
+            break
 
 
 tokenList = (4, 6, 8, 10)
