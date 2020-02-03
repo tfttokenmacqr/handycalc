@@ -368,13 +368,14 @@ while True:
             handycalc()
         except pag.FailSafeException:
             exmenu = int(input("""
-일시정지. 종료하시겠습니까?
-1. 돌아가기
+일시정지. 메뉴를 고르시오.
+1. 다시시작하기
 2. 종료
             """))
             if exmenu == 1:
-                "계속합니다."
-                pass
+                "다시시작합니다."
+                mode[0] = 0
+                modeSelect(mode)
             elif exmenu == 2:
                 print("종료합니다.")
                 sys.exit()
