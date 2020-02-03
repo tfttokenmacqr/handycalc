@@ -2,6 +2,7 @@
 import pyautogui as pag
 import random
 import time
+import sys
 
 # find_button  lt790, 823 rb941 851  wd154 hi28
 # accept_button lt884 700 rb1033 726
@@ -366,8 +367,21 @@ while True:
         try:
             handycalc()
         except pag.FailSafeException:
-            print("종료감지 완전히 종료하려면 Ctrl+c를 누르시오.")
-            time.sleep(10000)
+            exmenu = int(input("""
+일시정지. 종료하시겠습니까?
+1. 돌아가기
+2. 종료
+            """))
+            if exmenu == 1:
+                "계속합니다."
+                pass
+            elif exmenu == 2:
+                print("종료합니다.")
+                sys.exit()
+            else:
+                print("이상한 값 입력. 종료합니다.")
+                sys.exit()
+
     elif mode[0] == 4:
         modeDemo()
         modeSelect(mode)
