@@ -67,34 +67,41 @@ def modeSelect(mod):
     print("2. 6등 서렌")
     print("3. 6~4등 서렌")
     print("4. 모드 설명")
+    print("5. 종료")
     try:
-        mod[0] = input()-1
+        mod[0] = int(input())
     except:
         print("인풋에러, 올바른 값을 입력하시오")
+        mod[0] = 0
 
 
 def modeDemo():
-    print("1. 10분이 되면 서렌하는 버전. 보통 총로딩시간이 2분이므로 시간당 20개 예상.\n")
-    print("""
-    2. 6등이 되면 서렌하는 버전. 10분서렌버전 보다 2개 더 많은 6개 토큰을 얻음. 16분을 넘어서 6등을 하면 10분서렌보다 효율이 떨어짐.
-    매판 마다 호율이 다르게 나옴. 예상 갯수를 얘기하기에는 데이터가 많지 않음.
+    print("""\n\n
+1. 10분이 되면 서렌하는 버전. 보통 총로딩시간이 2분이므로 시간당 20개 예상.
 
     """)
     print("""
-    3. 6등 서렌버전의 '16분이 넘어서 6등서렌을 하면 10분서렌보다 손해를 보는 부분'을 보완하기 위해 만든 버전. 
-    16분이 넘어도 6등서렌을 하지 못한 경우 4등이 될때 서렌을 한다. 이 역시 22분이 넘어서 4등서렌을 할 경우 10분서렌보다 손해를 봄.
-    일반적인 경우 10분서렌보다 효율이 좋음. 시간당 20~22개 예상. 퀘스트를 깨기에도 좋다.
-    하지만 계속 플레이시 mmr이 올라가서 자주 게임오버를 당하며 효율이 20으로 떨어짐.
-    10분 서렌을 하여 mmr을 떨어뜨리고 6~4등서렌을 반복하는 것을 추천.
+2. 6등이 되면 서렌하는 버전. 10분서렌버전 보다 2개 더 많은 6개 토큰을 얻음. 
+16분을 넘어서 6등을 하면 10분서렌보다 효율이 떨어짐.
+매판 마다 호율이 다르게 나옴. 예상 갯수를 얘기하기에는 데이터가 많지 않음.
+
+    """)
+    print("""
+3. 6등 서렌버전의 '16분이 넘어서 6등서렌을 하면 10분서렌보다 손해를 보는 부분'을 보완하기 위해 만든 버전. 
+16분이 넘어도 6등서렌을 하지 못한 경우 4등이 될때 서렌을 한다. 
+이 역시 22분이 넘어서 4등서렌을 할 경우 10분서렌보다 손해를 봄.
+일반적인 경우 10분서렌보다 효율이 좋음. 시간당 20~22개 예상. 퀘스트를 깨기에도 좋다.
+하지만 계속 플레이시 mmr이 올라가서 자주 게임오버를 당하며 효율이 20으로 떨어짐.
+10분 서렌을 하여 mmr을 떨어뜨리고 6~4등서렌하기를 반복하는 것을 추천.
 
     """)
 
 
-def handycalc():
-    if not isStart:
+def handycalc(isStart, plays):
+    if not isStart[0]:
         loadtmstart = time.time()
     
-    isStart = True
+    isStart[0] = True
 
     i = 0
     while i < 5:  # 게임찾기버튼
@@ -104,7 +111,7 @@ def handycalc():
         pag.mouseUp()
         i += 1
 
-    print('wait untill accepted')
+    print('수락 기다리는 중')
     while True:
 
         pag.moveTo(random.uniform(884+16, 1033), random.uniform(700, 726-15), random.uniform(0.25, 0.75))
@@ -114,53 +121,53 @@ def handycalc():
         if loadingCheck():
             break
 
-    print("wait untill start")
+    print("시작 기다리는 중")
     while True:
         if startCheck():
             break
 
     loadtime = time.time()-loadtmstart
 
-    print("load complete")
+    print("로딩 완료")
     start2 = time.time()
 
     while True:  # 챔피언픽
 
-        if time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2):
+        if (mode[0] == 1 and time.time()-start2 > 600) or (mode[0] == 2 and time.time()-start2 > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2)):
             break
         pag.moveTo(random.uniform(485, 667), random.uniform(
             932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2):
+        if (mode[0] == 1 and time.time()-start2 > 600) or (mode[0] == 2 and time.time()-start2 > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2)):
             break
         pag.moveTo(random.uniform(485+200, 667+200), random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2):
+        if (mode[0] == 1 and time.time()-start2 > 600) or (mode[0] == 2 and time.time()-start2 > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2)):
             break
         pag.moveTo(random.uniform(485+400, 667+400),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2):
+        if (mode[0] == 1 and time.time()-start2 > 600) or (mode[0] == 2 and time.time()-start2 > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2)):
             break
         pag.moveTo(random.uniform(485+600, 667+600),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2):
+        if (mode[0] == 1 and time.time()-start2 > 600) or (mode[0] == 2 and time.time()-start2 > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2)):
             break
         pag.moveTo(random.uniform(485+800, 667+800),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2):
+        if (mode[0] == 1 and time.time()-start2 > 600) or (mode[0] == 2 and time.time()-start2 > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2)):
             break
         if time.time()-start2 > 900:
             pag.moveTo(random.uniform(278, 462), random.uniform(931, 992), random.uniform(0.25, 0.75))
@@ -215,7 +222,7 @@ def handycalc():
 
     
 
-    print("surrender")
+    print("항복")
 
 
 # 항복
@@ -300,8 +307,8 @@ def handycalc():
 
 
 
-    plays += 1
-    print("플레이 횟수 :", plays)
+    plays[0] += 1
+    print("플레이 횟수 :", plays[0])
     print("이번 판 큐+로딩시간 : %imin%isec, 인게임시간 : %imin%isec"  %(loadtime/60, loadtime%60, playtime/60, playtime%60,))
     print("평균 큐+로딩시간 : %imin%isec, 평균 인게임시간 : %imin%isec" %(sum(loadtimelist)/len(loadtimelist)/60, (sum(loadtimelist)/len(loadtimelist))%60, sum(playtimelist)/len(playtimelist)/60, (sum(playtimelist)/len(playtimelist))%60))
     print("총 토큰획득(추정치) :", sum(tokenGetList))
@@ -344,8 +351,8 @@ tokenList = (4, 6, 8, 10)
 tokenIdx = [0]
 mode = [0]
 
-plays = 0  # 매크로 실행횟수
-isStart = False
+plays = [0]  # 매크로 실행횟수
+isStart = [False]
 loadtimelist = []
 playtimelist = []
 tokenGetList = []
@@ -353,10 +360,15 @@ tokenGetList = []
 modeSelect(mode)
 
 while True:
-    if mode[0] == 0 or mode[0] == 1 or mode[0] == 2:
-        handycalc()
-    elif mode[0] == 3:
+    if mode[0] == 1 or mode[0] == 2 or mode[0] == 3:
+        handycalc(isStart, plays)
+    elif mode[0] == 4:
         modeDemo()
+        modeSelect(mode)
+    elif mode[0] == 5:
+        print("종료")
+        break
+    elif mode[0] == 0:
         modeSelect(mode)
 
     
