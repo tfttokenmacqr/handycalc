@@ -99,7 +99,7 @@ def modeDemo():
 
 def handycalc(isStart, plays):
     if not isStart[0]:
-        loadtmstart = time.time()
+        loadtmstart[0] = time.time()
     
     isStart[0] = True
 
@@ -126,7 +126,7 @@ def handycalc(isStart, plays):
         if startCheck():
             break
 
-    loadtime = time.time()-loadtmstart
+    loadtime = time.time()-loadtmstart[0]
 
     print("로딩 완료")
     start2 = time.time()
@@ -303,7 +303,7 @@ def handycalc(isStart, plays):
     playtimelist.append(playtime)
     tokenGetList.append(tokenList[tokenIdx[0]])
 
-    loadtmstart = time.time()
+    loadtmstart[0] = time.time()
 
 
 
@@ -357,11 +357,17 @@ loadtimelist = []
 playtimelist = []
 tokenGetList = []
 
+loadtmstart = [0]
+
 modeSelect(mode)
 
 while True:
     if mode[0] == 1 or mode[0] == 2 or mode[0] == 3:
-        handycalc(isStart, plays)
+        try:
+            handycalc(isStart, plays)
+        except pag.FailSafeException:
+            print("종료감지 완전히 종료하려면 Ctrl+c를 누르시오.")
+            time.sleep(10000)
     elif mode[0] == 4:
         modeDemo()
         modeSelect(mode)
@@ -369,6 +375,10 @@ while True:
         print("종료")
         break
     elif mode[0] == 0:
+        modeSelect(mode)
+    else:
+        print("올바른 값을 입력하십시오.")
+        mode[0] = 0
         modeSelect(mode)
 
     
