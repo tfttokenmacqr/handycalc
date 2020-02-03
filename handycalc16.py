@@ -97,7 +97,7 @@ def modeDemo():
     """)
 
 
-def handycalc(isStart, plays):
+def handycalc():
     if not isStart[0]:
         loadtmstart[0] = time.time()
     
@@ -364,7 +364,7 @@ modeSelect(mode)
 while True:
     if mode[0] == 1 or mode[0] == 2 or mode[0] == 3:
         try:
-            handycalc(isStart, plays)
+            handycalc()
         except pag.FailSafeException:
             print("종료감지 완전히 종료하려면 Ctrl+c를 누르시오.")
             time.sleep(10000)
