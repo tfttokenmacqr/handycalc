@@ -127,50 +127,50 @@ def handycalc():
         if startCheck():
             break
 
-    loadtime = time.time()-loadtmstart[0]
+    loadtime[0] = time.time()-loadtmstart[0]
 
     print("로딩 완료")
-    start2 = time.time()
+    start2[0] = time.time()
 
     while True:  # 챔피언픽
 
-        if (mode[0] == 1 and time.time()-start2 > 600) or (mode[0] == 2 and time.time()-start2 > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2)):
+        if (mode[0] == 1 and time.time()-start2[0] > 600) or (mode[0] == 2 and time.time()-start2[0] > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2[0] > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2[0])):
             break
         pag.moveTo(random.uniform(485, 667), random.uniform(
             932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if (mode[0] == 1 and time.time()-start2 > 600) or (mode[0] == 2 and time.time()-start2 > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2)):
+        if (mode[0] == 1 and time.time()-start2[0] > 600) or (mode[0] == 2 and time.time()-start2[0] > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2[0] > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2[0])):
             break
         pag.moveTo(random.uniform(485+200, 667+200), random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if (mode[0] == 1 and time.time()-start2 > 600) or (mode[0] == 2 and time.time()-start2 > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2)):
+        if (mode[0] == 1 and time.time()-start2[0] > 600) or (mode[0] == 2 and time.time()-start2[0] > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2[0] > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2[0])):
             break
         pag.moveTo(random.uniform(485+400, 667+400),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if (mode[0] == 1 and time.time()-start2 > 600) or (mode[0] == 2 and time.time()-start2 > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2)):
+        if (mode[0] == 1 and time.time()-start2[0] > 600) or (mode[0] == 2 and time.time()-start2[0] > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2[0] > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2[0])):
             break
         pag.moveTo(random.uniform(485+600, 667+600),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if (mode[0] == 1 and time.time()-start2 > 600) or (mode[0] == 2 and time.time()-start2 > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2)):
+        if (mode[0] == 1 and time.time()-start2[0] > 600) or (mode[0] == 2 and time.time()-start2[0] > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2[0] > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2[0])):
             break
         pag.moveTo(random.uniform(485+800, 667+800),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if (mode[0] == 1 and time.time()-start2 > 600) or (mode[0] == 2 and time.time()-start2 > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2 > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2)):
+        if (mode[0] == 1 and time.time()-start2[0] > 600) or (mode[0] == 2 and time.time()-start2[0] > 600 and isSix(tokenIdx)) or (mode[0] == 3 and time.time()-start2[0] > 600 and isSix(tokenIdx) and lessthansixteen(tokenIdx, start2[0])):
             break
-        if time.time()-start2 > 900:
+        if time.time()-start2[0] > 900:
             pag.moveTo(random.uniform(278, 462), random.uniform(931, 992), random.uniform(0.25, 0.75))
             pag.mouseDown()
             time.sleep(random.uniform(0.05, 0.1))
@@ -298,10 +298,10 @@ def handycalc():
     # time.sleep(random.uniform(0.1,0.3))
     # pag.mouseUp()
 
-    playtime = time.time()-start2
+    playtime[0] = time.time()-start2[0]
 
-    loadtimelist.append(loadtime)
-    playtimelist.append(playtime)
+    loadtimelist.append(loadtime[0])
+    playtimelist.append(playtime[0])
     tokenGetList.append(tokenList[tokenIdx[0]])
 
     loadtmstart[0] = time.time()
@@ -310,10 +310,10 @@ def handycalc():
 
     plays[0] += 1
     print("플레이 횟수 :", plays[0])
-    print("이번 판 큐+로딩시간 : %imin%isec, 인게임시간 : %imin%isec"  %(loadtime/60, loadtime%60, playtime/60, playtime%60,))
+    print("이번 판 큐+로딩시간 : %imin%isec, 인게임시간 : %imin%isec"  %(loadtime[0]/60, loadtime[0]%60, playtime[0]/60, playtime[0]%60,))
     print("평균 큐+로딩시간 : %imin%isec, 평균 인게임시간 : %imin%isec" %(sum(loadtimelist)/len(loadtimelist)/60, (sum(loadtimelist)/len(loadtimelist))%60, sum(playtimelist)/len(playtimelist)/60, (sum(playtimelist)/len(playtimelist))%60))
     print("총 토큰획득(추정치) :", sum(tokenGetList))
-    print("이번 판 시간당 토큰획득 : %.2f" %(tokenList[tokenIdx[0]]/(loadtime + playtime)*3600))
+    print("이번 판 시간당 토큰획득 : %.2f" %(tokenList[tokenIdx[0]]/(loadtime[0] + playtime[0])*3600))
     print("시간당 토큰획득(추정치) : %.2f" %(sum(tokenGetList)/(sum(loadtimelist)+sum(playtimelist))*3600))
 
 
@@ -359,6 +359,9 @@ playtimelist = []
 tokenGetList = []
 
 loadtmstart = [0]
+start2 = [0]
+loadtime = [0]
+playtime = [0]
 
 modeSelect(mode)
 
