@@ -114,10 +114,10 @@ def modeDemo():
 
 def gameFind():
     print("게임찾기")
-    if not isStart[0]:
+    if not onceStart[0]:
         loadTimeStart[0] = time.time()
     
-    isStart[0] = True
+    onceStart[0] = True
     while True:  # 게임찾기버튼
         if acceptScreenCheck():
             break
@@ -152,7 +152,9 @@ def gameLoading():
 
 def gameStart():
     print("로딩 완료")
-    startTime[0] = time.time()
+    if not isStart[0]:
+        startTime[0] = time.time()
+        isStart[0] = True
     if loadValIn[0] == False:
         loadTime[0] = time.time()-loadTimeStart[0]
     elif loadValIn[0] == True:
@@ -330,6 +332,7 @@ def gameSurrender():
     tokenGetList.append(tokenList[tokenIdx[0]])
 
     loadTimeStart[0] = time.time()
+    isStart[0] = False
 
 
 
@@ -398,7 +401,7 @@ tokenIdx = [0]
 mode = [0]
 
 plays = [0]  # 매크로 실행횟수
-isStart = [False]
+onceStart = [False]
 loadTimelist = []
 playTimelist = []
 tokenGetList = []
@@ -408,6 +411,8 @@ startTime = [0]
 loadTime = [0]
 playTime = [0]
 loadValIn = [False]
+isStart = [False]
+
 
 modeSelect()
 
