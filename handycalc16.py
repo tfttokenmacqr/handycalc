@@ -381,9 +381,11 @@ while True:
                 modeSelect(mode)
             elif exmenu == 2:
                 print("종료합니다.")
+                time.sleep(3)
                 sys.exit()
             else:
                 print("이상한 값 입력. 종료합니다.")
+                time.sleep(3)
                 sys.exit()
 
     elif mode[0] == 4:
@@ -391,6 +393,7 @@ while True:
         modeSelect(mode)
     elif mode[0] == 5:
         print("종료")
+        time.sleep(3)
         break
     elif mode[0] == 0:
         modeSelect(mode)
