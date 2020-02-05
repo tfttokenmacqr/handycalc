@@ -392,6 +392,7 @@ def handycalc():
 
     else:
         print("알 수 없는 상황")
+        time.sleep(1)
 
     
 
@@ -423,13 +424,11 @@ while True:
         except pag.FailSafeException:
             exmenu = int(input("""
 일시정지. 메뉴를 고르시오.
-1. 다시시작하기
+1. 돌아가기
 2. 종료
             """))
             if exmenu == 1:
-                "다시시작합니다."
-                mode[0] = 0
-                modeSelect()
+                "게임으로 돌아갑니다."
             elif exmenu == 2:
                 print("종료합니다.")
                 time.sleep(3)
