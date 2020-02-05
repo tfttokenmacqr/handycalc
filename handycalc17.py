@@ -45,7 +45,7 @@ def findgameScreenCheck():
 
 
 def isSix():
-    if pag.pixelMatchesColor(1853, 679, (22, 24, 33)) and pag.pixelMatchesColor(1853, 752, (22, 24, 33)) and pag.pixelMatchesColor(1836, 747, (22, 24, 33)) and pag.pixelMatchesColor(1836, 673, (22, 24, 33)):
+    if pag.pixelMatchesColor(1836, 738, (22, 24, 33)) and pag.pixelMatchesColor(1836, 738-71, (22, 24, 33)):
         tokenIdx[0] = 1
         return True
     else:
@@ -55,7 +55,7 @@ def isSix():
 def lessthansixteen():
     if time.time() - startTime[0] < 960:
         return True
-    elif pag.pixelMatchesColor(1836, 600, (22, 24, 33)) and pag.pixelMatchesColor(1836, 527, (22, 24, 33)) and pag.pixelMatchesColor(1853, (679 - 73), (22, 24, 33)) and pag.pixelMatchesColor(1853, (679 - 73*2), (22, 24, 33)):
+    elif pag.pixelMatchesColor(1836, 738, (22, 24, 33)) and pag.pixelMatchesColor(1836, 738-71, (22, 24, 33)) and pag.pixelMatchesColor(1836, 595, (22, 24, 33)) and pag.pixelMatchesColor(1836, 522, (22, 24, 33)):
         tokenIdx[0] = 2
         return True
     else:
