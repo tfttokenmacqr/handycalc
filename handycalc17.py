@@ -151,9 +151,9 @@ def gameLoading():
 
 
 def gameStart():
-    print("로딩 완료")
     if not isStart[0]:
         startTime[0] = time.time()
+        print("로딩 완료")
         isStart[0] = True
     if loadValIn[0] == False:
         loadTime[0] = time.time()-loadTimeStart[0]
