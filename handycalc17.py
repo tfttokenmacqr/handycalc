@@ -155,10 +155,10 @@ def gameStart():
         startTime[0] = time.time()
         print("로딩 완료")
         isStart[0] = True
-    if loadValIn[0] == False:
+    if not loadValIn[0]:
         loadTime[0] = time.time()-loadTimeStart[0]
-    elif loadValIn[0] == True:
-        loadValIn[0] = False
+        loadValIn[0] = True
+
 
     while True:  # 챔피언픽
 
@@ -333,6 +333,7 @@ def gameSurrender():
 
     loadTimeStart[0] = time.time()
     isStart[0] = False
+    loadValIn[0] = False
 
 
 
