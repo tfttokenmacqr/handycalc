@@ -69,6 +69,13 @@ def passwordAltCheck():
         return False
 
 
+def acceptScreenCheck():
+    if pag.pixelMatchesColor(921, 780, (30, 35, 40)) and pag.pixelMatchesColor(991, 779, (30, 35, 40)):
+        return True
+    else:
+        return False
+
+
 def modeSelect():
     print("모드를 선택하십시오")
     print("1. 10분 서렌")
@@ -111,13 +118,13 @@ def gameFind():
         loadTimeStart[0] = time.time()
     
     isStart[0] = True
-    i = 0
-    while i < 5:  # 게임찾기버튼
+    while True:  # 게임찾기버튼
+        if acceptScreenCheck():
+            break
         pag.moveTo(random.uniform(790, 941), random.uniform(823, 851), random.uniform(0.8, 0.12))
         pag.mouseDown()
         time.sleep(random.uniform(0.08, 0.12))
         pag.mouseUp()
-        i += 1
 
 
 def gameAccept():
@@ -369,6 +376,8 @@ def passwordAltOk():
 def handycalc():
     if passwordAltCheck():
         passwordAltOk()
+    elif acceptScreenCheck():
+        gameAccept()
     elif findgameScreenCheck():
         gameFind()
     elif loadingScreenCheck():
