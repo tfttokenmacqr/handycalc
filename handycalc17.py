@@ -398,7 +398,7 @@ def handycalc():
     
 
 
-tokenList = (4, 6, 8, 10)
+tokenList = (4, 6, 8, 10, 12)
 tokenIdx = [0]
 mode = [0]
 
@@ -427,6 +427,7 @@ while True:
 일시정지. 메뉴를 고르시오.
 1. 돌아가기
 2. 종료
+3. 버그시 강제 서렌
 """))
             if exmenu == 1:
                 "게임으로 돌아갑니다."
@@ -434,6 +435,9 @@ while True:
                 print("종료합니다.")
                 time.sleep(2)
                 sys.exit()
+            elif exmenu == 3:
+                print("강제로 서렌 합니다.")
+                gameSurrender()
             else:
                 print("이상한 값 입력. 종료합니다.")
                 time.sleep(2)
