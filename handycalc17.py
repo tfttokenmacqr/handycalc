@@ -121,6 +121,8 @@ def gameFind():
     while True:  # 게임찾기버튼
         if acceptScreenCheck():
             break
+        if passwordAltCheck():
+            passwordAltOk()
         pag.moveTo(random.uniform(790, 941), random.uniform(823, 851), random.uniform(0.8, 0.12))
         pag.mouseDown()
         time.sleep(random.uniform(0.08, 0.12))
@@ -132,6 +134,8 @@ def gameAccept():
     while True:
         if loadingScreenCheck():
             break
+        if passwordAltCheck():
+            passwordAltOk()
         pag.moveTo(random.uniform(884+16, 1033), random.uniform(700, 726-15), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.3, 0.7))
@@ -362,6 +366,8 @@ def gameRegame():
     while True:
         if findgameScreenCheck():
             break
+        if passwordAltCheck():
+            passwordAltOk()
         pag.moveTo(random.uniform(791, 934), random.uniform(834, 853), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
