@@ -428,6 +428,7 @@ while True:
 1. 돌아가기
 2. 종료
 3. 버그시 강제 서렌
+4. 모드 변경
 """))
             if exmenu == 1:
                 "게임으로 돌아갑니다."
@@ -438,6 +439,12 @@ while True:
             elif exmenu == 3:
                 print("강제로 서렌 합니다.")
                 gameSurrender()
+            elif exmenu == 4:
+                try:
+                    mode[0] = int(input("모드를 입력하시오"))
+                except:
+                    print("인풋에러, 올바른 값을 입력하시오")
+                    mode[0] = 0
             else:
                 print("이상한 값 입력. 종료합니다.")
                 time.sleep(2)
