@@ -52,6 +52,15 @@ def isSix():
         return False
 
 
+def isTenMin():
+    if time.time()-startTime[0] > 600:
+        tokenIdx[0] = 0
+        return True
+    else:
+        return False
+
+
+
 def lessthansixteen():
     if time.time() - startTime[0] < 960:
         return True
@@ -166,41 +175,41 @@ def gameStart():
 
     while True:  # 챔피언픽
 
-        if (mode[0] == 1 and time.time()-startTime[0] > 600) or (mode[0] == 2 and time.time()-startTime[0] > 600 and isSix()) or (mode[0] == 3 and time.time()-startTime[0] > 600 and isSix() and lessthansixteen()):
+        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isSix() and lessthansixteen()):
             break
         pag.moveTo(random.uniform(485, 667), random.uniform(
             932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if (mode[0] == 1 and time.time()-startTime[0] > 600) or (mode[0] == 2 and time.time()-startTime[0] > 600 and isSix()) or (mode[0] == 3 and time.time()-startTime[0] > 600 and isSix() and lessthansixteen()):
+        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isSix() and lessthansixteen()):
             break
         pag.moveTo(random.uniform(485+200, 667+200), random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if (mode[0] == 1 and time.time()-startTime[0] > 600) or (mode[0] == 2 and time.time()-startTime[0] > 600 and isSix()) or (mode[0] == 3 and time.time()-startTime[0] > 600 and isSix() and lessthansixteen()):
+        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isSix() and lessthansixteen()):
             break
         pag.moveTo(random.uniform(485+400, 667+400),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if (mode[0] == 1 and time.time()-startTime[0] > 600) or (mode[0] == 2 and time.time()-startTime[0] > 600 and isSix()) or (mode[0] == 3 and time.time()-startTime[0] > 600 and isSix() and lessthansixteen()):
+        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isSix() and lessthansixteen()):
             break
         pag.moveTo(random.uniform(485+600, 667+600),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if (mode[0] == 1 and time.time()-startTime[0] > 600) or (mode[0] == 2 and time.time()-startTime[0] > 600 and isSix()) or (mode[0] == 3 and time.time()-startTime[0] > 600 and isSix() and lessthansixteen()):
+        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isSix() and lessthansixteen()):
             break
         pag.moveTo(random.uniform(485+800, 667+800),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if (mode[0] == 1 and time.time()-startTime[0] > 600) or (mode[0] == 2 and time.time()-startTime[0] > 600 and isSix()) or (mode[0] == 3 and time.time()-startTime[0] > 600 and isSix() and lessthansixteen()):
+        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isSix() and lessthansixteen()):
             break
         if time.time()-startTime[0] > 900:
             pag.moveTo(random.uniform(278, 462), random.uniform(931, 992), random.uniform(0.25, 0.75))
