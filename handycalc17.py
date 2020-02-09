@@ -278,53 +278,53 @@ def gameSurrender():
     # pag.mouseUp()
 
     pag.keyDown('enter')
-    pag.PAUSE = random.uniform(0.05, 0.1)
+    time.sleep(random.uniform(0.05, 0.1))
     pag.keyUp('enter')
     pag.keyDown('.')
-    pag.PAUSE = random.uniform(0.05, 0.1)
+    time.sleep(random.uniform(0.05, 0.1))
     pag.keyUp('.')
     pag.keyDown('enter')
-    pag.PAUSE = random.uniform(0.05, 0.1)
+    time.sleep(random.uniform(0.05, 0.1))
     pag.keyUp('enter')
 
     pag.keyDown('enter')
-    pag.PAUSE = random.uniform(0.05, 0.1)
-    pag.keyUp('enter')
-
-    pag.keyDown('/')
-    pag.PAUSE = random.uniform(0.05, 0.1)
-    pag.keyUp('/')
-
-    pag.keyDown('f')
-    pag.PAUSE = random.uniform(0.05, 0.1)
-    pag.keyUp('f')
-
-    pag.keyDown('f')
-    pag.PAUSE = random.uniform(0.05, 0.1)
-    pag.keyUp('f')
-
-    pag.keyDown('enter')
-    pag.PAUSE = random.uniform(0.05, 0.1)
-    pag.keyUp('enter')
-
-    pag.keyDown('enter')
-    pag.PAUSE = random.uniform(0.05, 0.1)
+    time.sleep(random.uniform(0.05, 0.1))
     pag.keyUp('enter')
 
     pag.keyDown('/')
-    pag.PAUSE = random.uniform(0.05, 0.1)
+    time.sleep(random.uniform(0.05, 0.1))
+    pag.keyUp('/')
+
+    pag.keyDown('f')
+    time.sleep(random.uniform(0.05, 0.1))
+    pag.keyUp('f')
+
+    pag.keyDown('f')
+    time.sleep(random.uniform(0.05, 0.1))
+    pag.keyUp('f')
+
+    pag.keyDown('enter')
+    time.sleep(random.uniform(0.05, 0.1))
+    pag.keyUp('enter')
+
+    pag.keyDown('enter')
+    time.sleep(random.uniform(0.05, 0.1))
+    pag.keyUp('enter')
+
+    pag.keyDown('/')
+    time.sleep(random.uniform(0.05, 0.1))
     pag.keyUp('/')
 
     pag.keyDown('w')
-    pag.PAUSE = random.uniform(0.05, 0.1)
+    time.sleep(random.uniform(0.05, 0.1))
     pag.keyUp('w')
 
     pag.keyDown('w')
-    pag.PAUSE = random.uniform(0.05, 0.1)
+    time.sleep(random.uniform(0.05, 0.1))
     pag.keyUp('w')
 
     pag.keyDown('enter')
-    pag.PAUSE = random.uniform(0.05, 0.1)
+    time.sleep(random.uniform(0.05, 0.1))
     pag.keyUp('enter')
 
     pag.moveTo(random.uniform(900, 943), random.uniform(
