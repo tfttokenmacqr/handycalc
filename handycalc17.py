@@ -18,6 +18,7 @@ import sys
 
 def loadingScreenCheck():
     if pag.pixelMatchesColor(203, 187, (20, 20, 27)):
+        print("로딩창 인식")
         return True
     else:
         return False
@@ -25,6 +26,7 @@ def loadingScreenCheck():
 
 def startedCheck():
     if pag.pixelMatchesColor(1919, 395, (24, 32, 33)):
+        print("시작 인식")
         return True
     else:
         return False
@@ -32,6 +34,7 @@ def startedCheck():
 
 def regameScreenCheck():
     if pag.pixelMatchesColor(915, 840, (30, 35, 40)):
+        print("한판더하기 인식")
         return True
     else:
         return False
@@ -39,6 +42,7 @@ def regameScreenCheck():
 
 def findgameScreenCheck():
     if pag.pixelMatchesColor(1147, 266, (30, 35, 40)) or pag.pixelMatchesColor(1147, 266, (11, 13, 15)) or pag.pixelMatchesColor(1147, 266, (1, 10, 19)):
+        print("게임찾기 인식")
         return True
     else:
         return False
@@ -73,6 +77,7 @@ def lessthansixteen():
 
 def passwordAltCheck():
     if pag.pixelMatchesColor(766, 449, (1, 10, 19)) and pag.pixelMatchesColor(770, 584, (1, 10, 19)) and pag.pixelMatchesColor(1147, 462, (1, 10, 19)) and pag.pixelMatchesColor(1131, 581, (1, 10, 19)):
+        print("비밀번호변경 확인창 인식")
         return True
     else:
         return False
@@ -80,6 +85,7 @@ def passwordAltCheck():
 
 def acceptScreenCheck():
     if pag.pixelMatchesColor(921, 780, (30, 35, 40)) and pag.pixelMatchesColor(991, 779, (30, 35, 40)):
+        print("수락창 인식")
         return True
     else:
         return False
@@ -139,7 +145,7 @@ def gameFind():
 
 
 def gameAccept():
-    print('수락 기다리는 중')
+    print('게임수락')
     while True:
         if loadingScreenCheck():
             break
@@ -153,7 +159,7 @@ def gameAccept():
 
 
 def gameLoading():
-    print("시작 기다리는 중")
+    print("로딩")
     while True:
         if startedCheck():
             break
@@ -372,6 +378,7 @@ def gameSurrender():
 
 def gameRegame():
 # 다시하기
+    print("한판더하기")
     while True:
         if findgameScreenCheck():
             break
@@ -385,6 +392,7 @@ def gameRegame():
 
 
 def passwordAltOk():
+    print("비밀번호변경 확인")
     pag.moveTo(random.uniform(931, 988), random.uniform(591, 611), random.uniform(0.25, 0.75))
     pag.mouseDown()
     time.sleep(random.uniform(0.05, 0.1))
