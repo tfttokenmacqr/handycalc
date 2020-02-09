@@ -368,6 +368,8 @@ def gameSurrender():
     while True:  # 퀘스트깼을때 퀘스트확인버튼
         if regameScreenCheck():
             break
+        if passwordAltCheck():
+            passwordAltOk()
         pag.moveTo(random.uniform(950, 1018-2),
                    random.uniform(827, 849), random.uniform(0.8, 0.12))
         pag.mouseDown()
