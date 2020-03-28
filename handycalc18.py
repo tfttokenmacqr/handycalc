@@ -76,7 +76,7 @@ def INFloading():
 
 
 def loadingScreenCheck():
-    if pag.pixelMatchesColor(203, 187, (20, 20, 27)):
+    if pag.pixelMatchesColor(977, 1072, (0, 11, 19)):
         print("로딩창 인식")
         return True
     else:
