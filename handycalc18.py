@@ -84,7 +84,7 @@ def loadingScreenCheck():
 
 
 def startedCheck():
-    if pag.pixelMatchesColor(1919, 395, (24, 32, 33)):
+    if pag.pixelMatchesColor(977, 1072, (0, 11, 19)):
         print("시작 인식")
         return True
     else:
@@ -487,7 +487,7 @@ def handycalc():
         time.sleep(1)
 
     
-
+#=============================var================================
 
 tokenList = (4, 6, 8, 10, 12)
 tokenIdx = [0]
