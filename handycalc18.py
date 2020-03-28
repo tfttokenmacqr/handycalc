@@ -66,8 +66,6 @@ def INFloading():
 
             time.sleep(1)
 
-            pag.moveTo(random.uniform(950, 1018-2), random.uniform(827, 849), random.uniform(0.8, 0.12))
-            loadTimeStart[0] = time.time()
             onceStart[0] = False
             INFloadings[0] += 1
             break
