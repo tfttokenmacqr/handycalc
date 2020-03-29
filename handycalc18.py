@@ -1,8 +1,9 @@
-# ver17 일시정지 후 게임 재개가 가능한 버전
 import pyautogui as pag
 import random
 import time
 import sys
+import ctypes
+import subprocess
 
 # find_button  lt790, 823 rb941 851  wd154 hi28
 # accept_button lt884 700 rb1033 726
@@ -31,15 +32,9 @@ def INFloading():
 
     time.sleep(60)
 
-    pag.moveTo(1787 + random.uniform(-1, 1), 38 + random.uniform(-1, 1), random.uniform(0.8, 0.12))
-    pag.mouseDown()
-    time.sleep(random.uniform(0.08, 0.12))
-    pag.mouseUp()
-    pag.mouseDown()
-    time.sleep(random.uniform(0.08, 0.12))
-    pag.mouseUp()
+    subprocess.call("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
 
-    time.sleep(1)
+    time.sleep(60)
 
     while True:
         if passwordAltCheck():
