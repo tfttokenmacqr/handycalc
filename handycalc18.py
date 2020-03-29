@@ -127,6 +127,14 @@ def lessthansixteen():
         return False
 
 
+def isFour():
+    if pag.pixelMatchesColor(1836, 738, (22, 24, 33)) and pag.pixelMatchesColor(1854, 743, (22, 24, 33)) and pag.pixelMatchesColor(1836, 738-71, (22, 24, 33)) and pag.pixelMatchesColor(1854, 671, (22, 24, 33)) and pag.pixelMatchesColor(1836, 595, (22, 24, 33)) and pag.pixelMatchesColor(1854, 599, (22, 24, 33)) and pag.pixelMatchesColor(1836, 522, (22, 24, 33)) and pag.pixelMatchesColor(1854, 527, (22, 24, 33)):
+        tokenIdx[0] = 2
+        return True
+    else:
+        return False    
+
+
 def passwordAltCheck():
     if pag.pixelMatchesColor(766, 449, (1, 10, 19)) and pag.pixelMatchesColor(770, 584, (1, 10, 19)) and pag.pixelMatchesColor(1147, 462, (1, 10, 19)) and pag.pixelMatchesColor(1131, 581, (1, 10, 19)):
         print("비밀번호변경 확인창 인식")
@@ -147,7 +155,7 @@ def modeSelect():
     print("모드를 선택하십시오")
     print("1. 10분 서렌")
     print("2. 6등 서렌")
-    print("3. 6~4등 서렌")
+    print("3. 4등 서렌")
     print("4. 모드 설명")
     print("5. 종료")
     try:
@@ -159,22 +167,17 @@ def modeSelect():
 
 def modeDemo():
     print("""\n\n
-1. 10분이 되면 서렌하는 버전. 보통 총로딩시간이 2분이므로 시간당 20개 예상.
+1. 10분이 되면 서렌하는 버전. 보통 총로딩시간이 2분이므로 시간당 10개 예상.
 
     """)
     print("""
-2. 6등이 되면 서렌하는 버전. 10분서렌버전 보다 2개 더 많은 6개 토큰을 얻음. 
-16분을 넘어서 6등을 하면 10분서렌보다 효율이 떨어짐.
-매판 마다 호율이 다르게 나옴. 예상 갯수를 얘기하기에는 데이터가 많지 않음.
+2. 6등이 되면 서렌하는 버전. 10분서렌버전 보다 2개 더 많은 4개 토큰을 얻음. 
+다른사람들이 언제 나가는 지에 따라서 효율이 변함.
 
     """)
     print("""
-3. 6등 서렌버전의 '16분이 넘어서 6등서렌을 하면 10분서렌보다 손해를 보는 부분'을 보완하기 위해 만든 버전. 
-16분이 넘어도 6등서렌을 하지 못한 경우 4등이 될때 서렌을 한다. 
-이 역시 22분이 넘어서 4등서렌을 할 경우 10분서렌보다 손해를 봄.
-일반적인 경우 10분서렌보다 효율이 좋음. 시간당 20~22개 예상. 퀘스트를 깨기에도 좋다.
-하지만 계속 플레이시 mmr이 올라가서 자주 게임오버를 당하며 효율이 20으로 떨어짐.
-10분 서렌을 하여 mmr을 떨어뜨리고 6~4등서렌하기를 반복하는 것을 추천.
+3. 4등이 되면 서렌하는 버전. 6개의 토큰보상.
+mmr이 올라갈 것이라는 우려가 있으며 확인된바는 없음.
 
     """)
 
@@ -239,41 +242,41 @@ def gameStart():
 
     while True:  # 챔피언픽
 
-        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isSix() and lessthansixteen()):
+        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()):
             break
         pag.moveTo(random.uniform(485, 667), random.uniform(
             932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isSix() and lessthansixteen()):
+        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()):
             break
         pag.moveTo(random.uniform(485+200, 667+200), random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isSix() and lessthansixteen()):
+        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()):
             break
         pag.moveTo(random.uniform(485+400, 667+400),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isSix() and lessthansixteen()):
+        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()):
             break
         pag.moveTo(random.uniform(485+600, 667+600),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isSix() and lessthansixteen()):
+        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()):
             break
         pag.moveTo(random.uniform(485+800, 667+800),
                    random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.05, 0.1))
         pag.mouseUp()
-        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isSix() and lessthansixteen()):
+        if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()):
             break
         if time.time()-startTime[0] > 900:
             pag.moveTo(random.uniform(278, 462), random.uniform(931, 992), random.uniform(0.25, 0.75))
@@ -282,7 +285,7 @@ def gameStart():
             pag.mouseUp()
 
         if pag.pixelMatchesColor(880, 533, (8, 81, 100)):
-            if pag.pixelMatchesColor(1836, 600, (22, 24, 33)) and pag.pixelMatchesColor(1836, 527, (22, 24, 33)) and pag.pixelMatchesColor(1853, (679 - 73), (22, 24, 33)) and pag.pixelMatchesColor(1853, (679 - 73*2), (22, 24, 33)):
+            if pag.pixelMatchesColor(1836, 600, (22, 24, 33)) and pag.pixelMatchesColor(1836, 527, (22, 24, 33)) and pag.pixelMatchesColor(1854, (679 - 73), (22, 24, 33)) and pag.pixelMatchesColor(1854, (679 - 73*2), (22, 24, 33)):
                 tokenIdx[0] = 2
                 pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
                 pag.mouseDown()
@@ -290,7 +293,7 @@ def gameStart():
                 pag.mouseUp()
                 print("게임오버 4등")
                 break
-            elif pag.pixelMatchesColor(1836, 600, (22, 24, 33)) and pag.pixelMatchesColor(1853, (679 - 73), (22, 24, 33)):
+            elif pag.pixelMatchesColor(1836, 600, (22, 24, 33)) and pag.pixelMatchesColor(1854, (679 - 73), (22, 24, 33)):
                 tokenIdx[0] = 1
                 pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
                 pag.mouseDown()
@@ -298,7 +301,7 @@ def gameStart():
                 pag.mouseUp()
                 print("게임오버 5등")
                 break
-            elif pag.pixelMatchesColor(1853, 679, (22, 24, 33)) and pag.pixelMatchesColor(1853, 752, (22, 24, 33)) and pag.pixelMatchesColor(1836, 747, (22, 24, 33)) and pag.pixelMatchesColor(1836, 673, (22, 24, 33)):
+            elif pag.pixelMatchesColor(1854, 679, (22, 24, 33)) and pag.pixelMatchesColor(1854, 752, (22, 24, 33)) and pag.pixelMatchesColor(1836, 747, (22, 24, 33)) and pag.pixelMatchesColor(1836, 673, (22, 24, 33)):
                 tokenIdx[0] = 1
                 pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
                 pag.mouseDown()
@@ -306,7 +309,7 @@ def gameStart():
                 pag.mouseUp()
                 print("게임오버 6등")
                 break
-            elif pag.pixelMatchesColor(1853, 752, (22, 24, 33)) and pag.pixelMatchesColor(1836, 747, (22, 24, 33)):
+            elif pag.pixelMatchesColor(1854, 752, (22, 24, 33)) and pag.pixelMatchesColor(1836, 747, (22, 24, 33)):
                 tokenIdx[0] = 0
                 pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
                 pag.mouseDown()
