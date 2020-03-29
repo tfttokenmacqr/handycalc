@@ -101,7 +101,7 @@ def findgameScreenCheck():
 
 
 def isSix():
-    if pag.pixelMatchesColor(1836, 738, (22, 24, 33)) and pag.pixelMatchesColor(1853, 743, (22, 24, 33)) and pag.pixelMatchesColor(1836, 738-71, (22, 24, 33)) and pag.pixelMatchesColor(1853, 671, (22, 24, 33)):
+    if pag.pixelMatchesColor(1836, 738, (22, 24, 33)) and pag.pixelMatchesColor(1854, 743, (22, 24, 33)) and pag.pixelMatchesColor(1836, 738-71, (22, 24, 33)) and pag.pixelMatchesColor(1854, 671, (22, 24, 33)):
         tokenIdx[0] = 1
         return True
     else:
@@ -120,7 +120,7 @@ def isTenMin():
 def lessthansixteen():
     if time.time() - startTime[0] < 960:
         return True
-    elif pag.pixelMatchesColor(1836, 738, (22, 24, 33)) and pag.pixelMatchesColor(1853, 743, (22, 24, 33)) and pag.pixelMatchesColor(1836, 738-71, (22, 24, 33)) and pag.pixelMatchesColor(1853, 671, (22, 24, 33)) and pag.pixelMatchesColor(1836, 595, (22, 24, 33)) and pag.pixelMatchesColor(1853, 599, (22, 24, 33)) and pag.pixelMatchesColor(1836, 522, (22, 24, 33)) and pag.pixelMatchesColor(1853, 527, (22, 24, 33)):
+    elif pag.pixelMatchesColor(1836, 738, (22, 24, 33)) and pag.pixelMatchesColor(1854, 743, (22, 24, 33)) and pag.pixelMatchesColor(1836, 738-71, (22, 24, 33)) and pag.pixelMatchesColor(1854, 671, (22, 24, 33)) and pag.pixelMatchesColor(1836, 595, (22, 24, 33)) and pag.pixelMatchesColor(1854, 599, (22, 24, 33)) and pag.pixelMatchesColor(1836, 522, (22, 24, 33)) and pag.pixelMatchesColor(1854, 527, (22, 24, 33)):
         tokenIdx[0] = 2
         return True
     else:
