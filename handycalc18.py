@@ -85,7 +85,7 @@ def startedCheck():
 
 
 def regameScreenCheck():
-    if pag.pixelMatchesColor(915, 840, (30, 35, 40)):
+    if pag.pixelMatchesColor(803, 844, (30, 35, 40)):
         print("한판더하기 인식")
         return True
     else:
@@ -443,8 +443,8 @@ def gameSurrender():
             break
         if passwordAltCheck():
             passwordAltOk()
-        pag.moveTo(random.uniform(950, 1018-2),
-                   random.uniform(827, 849), random.uniform(0.8, 0.12))
+        pag.moveTo(981 + random.uniform(-2, 2),
+                   838 + random.uniform(-2, 2), random.uniform(0.8, 0.12))
         pag.mouseDown()
         time.sleep(random.uniform(0.08, 0.12))
         pag.mouseUp()
