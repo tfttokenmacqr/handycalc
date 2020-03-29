@@ -151,6 +151,16 @@ def acceptScreenCheck():
         return False
 
 
+def finalRankingCheck():
+    if pag.pixelMatchesColor(1836, 738, (22, 24, 33)) and pag.pixelMatchesColor(1854, 743, (22, 24, 33)) and pag.pixelMatchesColor(1836, 738-71, (22, 24, 33)) and pag.pixelMatchesColor(1854, 671, (22, 24, 33)) and pag.pixelMatchesColor(1836, 595, (22, 24, 33)) and pag.pixelMatchesColor(1854, 599, (22, 24, 33)) and pag.pixelMatchesColor(1836, 522, (22, 24, 33)) and pag.pixelMatchesColor(1854, 527, (22, 24, 33)):
+        print("3~4등")
+        tokenIdx[0] = 2
+    elif pag.pixelMatchesColor(1836, 738, (22, 24, 33)) and pag.pixelMatchesColor(1854, 743, (22, 24, 33)) and pag.pixelMatchesColor(1836, 738-71, (22, 24, 33)) and pag.pixelMatchesColor(1854, 671, (22, 24, 33)):
+        print("5~6등")
+        tokenIdx[0] = 1
+
+
+
 def modeSelect():
     print("모드를 선택하십시오")
     print("1. 10분 서렌")
@@ -396,6 +406,7 @@ def gameSurrender():
 
     pag.moveTo(random.uniform(900, 943), random.uniform(
         596, 619), random.uniform(0.7, 1.5))
+    finalRankingCheck()
     pag.mouseDown()
     time.sleep(random.uniform(0.1, 0.2))
     pag.mouseUp()
