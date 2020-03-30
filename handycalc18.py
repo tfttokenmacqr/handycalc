@@ -44,6 +44,9 @@ def INFloading():
             pag.mouseDown()
             time.sleep(random.uniform(0.08, 0.12))
             pag.mouseUp()
+            pag.mouseDown()
+            time.sleep(random.uniform(0.08, 0.12))
+            pag.mouseUp()
 
             time.sleep(1)
 
