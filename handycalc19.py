@@ -104,7 +104,7 @@ def findgameScreenCheck():
 
 
 def isSix():
-    if pag.pixelMatchesColor(1836, 738, (21, 26, 33)) and pag.pixelMatchesColor(1854, 743, (21, 26, 33)) and pag.pixelMatchesColor(1836, 738-71, (21, 26, 33)) and pag.pixelMatchesColor(1854, 671, (21, 26, 33)):
+    if isAchromatic(1866, 732) and isAchromatic(1866, 657):
         tokenIdx[0] = 1
         return True
     else:
@@ -120,10 +120,22 @@ def isTenMin():
 
 
 
+def isAchromatic(x, y):
+    if(pag.pixel(x, y) == (16, 24, 27) or pag.pixel(x, y) == (22, 32, 33)):
+        return False
+    avgVal = (pag.pixel(x, y)[0] + pag.pixel(x, y)[1] + pag.pixel(x, y)[2]) / 3
+    if abs(pag.pixel(x, y)[0] - avgVal) <= 20 and abs(pag.pixel(x, y)[1] - avgVal) <= 20 and abs(pag.pixel(x, y)[2] - avgVal) <= 20:
+        return True
+    else:
+        return False
+
+
+
+
 def lessthansixteen():
     if time.time() - startTime[0] < 960:
         return True
-    elif pag.pixelMatchesColor(1836, 738, (21, 26, 33)) and pag.pixelMatchesColor(1854, 743, (21, 26, 33)) and pag.pixelMatchesColor(1836, 738-71, (21, 26, 33)) and pag.pixelMatchesColor(1854, 671, (21, 26, 33)) and pag.pixelMatchesColor(1836, 595, (21, 26, 33)) and pag.pixelMatchesColor(1854, 599, (21, 26, 33)) and pag.pixelMatchesColor(1836, 522, (21, 26, 33)) and pag.pixelMatchesColor(1854, 527, (21, 26, 33)):
+    elif isAchromatic(1866, 732) and isAchromatic(1866, 657) and isAchromatic(1866, 587) and isAchromatic(1866, 513):
         tokenIdx[0] = 2
         return True
     else:
@@ -131,7 +143,7 @@ def lessthansixteen():
 
 
 def isFour():
-    if pag.pixelMatchesColor(1836, 738, (21, 26, 33)) and pag.pixelMatchesColor(1854, 743, (21, 26, 33)) and pag.pixelMatchesColor(1836, 738-71, (21, 26, 33)) and pag.pixelMatchesColor(1854, 671, (21, 26, 33)) and pag.pixelMatchesColor(1836, 595, (21, 26, 33)) and pag.pixelMatchesColor(1854, 599, (21, 26, 33)) and pag.pixelMatchesColor(1836, 522, (21, 26, 33)) and pag.pixelMatchesColor(1854, 527, (21, 26, 33)):
+    if isAchromatic(1866, 732) and isAchromatic(1866, 657) and isAchromatic(1866, 587) and isAchromatic(1866, 513):
         tokenIdx[0] = 2
         return True
     else:
@@ -155,10 +167,10 @@ def acceptScreenCheck():
 
 
 def finalRankingCheck():
-    if pag.pixelMatchesColor(1836, 738, (21, 26, 33)) and pag.pixelMatchesColor(1854, 743, (21, 26, 33)) and pag.pixelMatchesColor(1836, 738-71, (21, 26, 33)) and pag.pixelMatchesColor(1854, 671, (21, 26, 33)) and pag.pixelMatchesColor(1836, 595, (21, 26, 33)) and pag.pixelMatchesColor(1854, 599, (21, 26, 33)) and pag.pixelMatchesColor(1836, 522, (21, 26, 33)) and pag.pixelMatchesColor(1854, 527, (21, 26, 33)):
+    if isAchromatic(1866, 732) and isAchromatic(1866, 657) and isAchromatic(1866, 587) and isAchromatic(1866, 513):
         print("3~4등")
         tokenIdx[0] = 2
-    elif pag.pixelMatchesColor(1836, 738, (21, 26, 33)) and pag.pixelMatchesColor(1854, 743, (21, 26, 33)) and pag.pixelMatchesColor(1836, 738-71, (21, 26, 33)) and pag.pixelMatchesColor(1854, 671, (21, 26, 33)):
+    elif isAchromatic(1866, 732) and isAchromatic(1866, 657):
         print("5~6등")
         tokenIdx[0] = 1
 
