@@ -121,7 +121,7 @@ def isTenMin():
 
 
 def isAchromatic(x, y):
-    if(pag.pixel(x, y) == (16, 24, 27) or pag.pixel(x, y) == (22, 32, 33)):
+    if(pag.pixel(x, y) == (16, 24, 27) or pag.pixel(x, y) == (22, 32, 33) or pag.pixel(x, y) == (0, 0, 0) or pag.pixel(x, y) == (255, 255, 255)):
         return False
     avgVal = (pag.pixel(x, y)[0] + pag.pixel(x, y)[1] + pag.pixel(x, y)[2]) / 3
     if abs(pag.pixel(x, y)[0] - avgVal) <= 20 and abs(pag.pixel(x, y)[1] - avgVal) <= 20 and abs(pag.pixel(x, y)[2] - avgVal) <= 20:
