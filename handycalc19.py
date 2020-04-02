@@ -104,7 +104,7 @@ def findgameScreenCheck():
 
 
 def isSix():
-    if pag.pixelMatchesColor(1836, 738, (22, 24, 33)) and pag.pixelMatchesColor(1854, 743, (22, 24, 33)) and pag.pixelMatchesColor(1836, 738-71, (22, 24, 33)) and pag.pixelMatchesColor(1854, 671, (22, 24, 33)):
+    if pag.pixelMatchesColor(1836, 738, (21, 26, 33)) and pag.pixelMatchesColor(1854, 743, (21, 26, 33)) and pag.pixelMatchesColor(1836, 738-71, (21, 26, 33)) and pag.pixelMatchesColor(1854, 671, (21, 26, 33)):
         tokenIdx[0] = 1
         return True
     else:
@@ -123,7 +123,7 @@ def isTenMin():
 def lessthansixteen():
     if time.time() - startTime[0] < 960:
         return True
-    elif pag.pixelMatchesColor(1836, 738, (22, 24, 33)) and pag.pixelMatchesColor(1854, 743, (22, 24, 33)) and pag.pixelMatchesColor(1836, 738-71, (22, 24, 33)) and pag.pixelMatchesColor(1854, 671, (22, 24, 33)) and pag.pixelMatchesColor(1836, 595, (22, 24, 33)) and pag.pixelMatchesColor(1854, 599, (22, 24, 33)) and pag.pixelMatchesColor(1836, 522, (22, 24, 33)) and pag.pixelMatchesColor(1854, 527, (22, 24, 33)):
+    elif pag.pixelMatchesColor(1836, 738, (21, 26, 33)) and pag.pixelMatchesColor(1854, 743, (21, 26, 33)) and pag.pixelMatchesColor(1836, 738-71, (21, 26, 33)) and pag.pixelMatchesColor(1854, 671, (21, 26, 33)) and pag.pixelMatchesColor(1836, 595, (21, 26, 33)) and pag.pixelMatchesColor(1854, 599, (21, 26, 33)) and pag.pixelMatchesColor(1836, 522, (21, 26, 33)) and pag.pixelMatchesColor(1854, 527, (21, 26, 33)):
         tokenIdx[0] = 2
         return True
     else:
@@ -131,7 +131,7 @@ def lessthansixteen():
 
 
 def isFour():
-    if pag.pixelMatchesColor(1836, 738, (22, 24, 33)) and pag.pixelMatchesColor(1854, 743, (22, 24, 33)) and pag.pixelMatchesColor(1836, 738-71, (22, 24, 33)) and pag.pixelMatchesColor(1854, 671, (22, 24, 33)) and pag.pixelMatchesColor(1836, 595, (22, 24, 33)) and pag.pixelMatchesColor(1854, 599, (22, 24, 33)) and pag.pixelMatchesColor(1836, 522, (22, 24, 33)) and pag.pixelMatchesColor(1854, 527, (22, 24, 33)):
+    if pag.pixelMatchesColor(1836, 738, (21, 26, 33)) and pag.pixelMatchesColor(1854, 743, (21, 26, 33)) and pag.pixelMatchesColor(1836, 738-71, (21, 26, 33)) and pag.pixelMatchesColor(1854, 671, (21, 26, 33)) and pag.pixelMatchesColor(1836, 595, (21, 26, 33)) and pag.pixelMatchesColor(1854, 599, (21, 26, 33)) and pag.pixelMatchesColor(1836, 522, (21, 26, 33)) and pag.pixelMatchesColor(1854, 527, (21, 26, 33)):
         tokenIdx[0] = 2
         return True
     else:
@@ -155,10 +155,10 @@ def acceptScreenCheck():
 
 
 def finalRankingCheck():
-    if pag.pixelMatchesColor(1836, 738, (22, 24, 33)) and pag.pixelMatchesColor(1854, 743, (22, 24, 33)) and pag.pixelMatchesColor(1836, 738-71, (22, 24, 33)) and pag.pixelMatchesColor(1854, 671, (22, 24, 33)) and pag.pixelMatchesColor(1836, 595, (22, 24, 33)) and pag.pixelMatchesColor(1854, 599, (22, 24, 33)) and pag.pixelMatchesColor(1836, 522, (22, 24, 33)) and pag.pixelMatchesColor(1854, 527, (22, 24, 33)):
+    if pag.pixelMatchesColor(1836, 738, (21, 26, 33)) and pag.pixelMatchesColor(1854, 743, (21, 26, 33)) and pag.pixelMatchesColor(1836, 738-71, (21, 26, 33)) and pag.pixelMatchesColor(1854, 671, (21, 26, 33)) and pag.pixelMatchesColor(1836, 595, (21, 26, 33)) and pag.pixelMatchesColor(1854, 599, (21, 26, 33)) and pag.pixelMatchesColor(1836, 522, (21, 26, 33)) and pag.pixelMatchesColor(1854, 527, (21, 26, 33)):
         print("3~4등")
         tokenIdx[0] = 2
-    elif pag.pixelMatchesColor(1836, 738, (22, 24, 33)) and pag.pixelMatchesColor(1854, 743, (22, 24, 33)) and pag.pixelMatchesColor(1836, 738-71, (22, 24, 33)) and pag.pixelMatchesColor(1854, 671, (22, 24, 33)):
+    elif pag.pixelMatchesColor(1836, 738, (21, 26, 33)) and pag.pixelMatchesColor(1854, 743, (21, 26, 33)) and pag.pixelMatchesColor(1836, 738-71, (21, 26, 33)) and pag.pixelMatchesColor(1854, 671, (21, 26, 33)):
         print("5~6등")
         tokenIdx[0] = 1
 
@@ -298,7 +298,7 @@ def gameStart():
             pag.mouseUp()
 
         if pag.pixelMatchesColor(880, 533, (8, 81, 100)):
-            if pag.pixelMatchesColor(1836, 600, (22, 24, 33)) and pag.pixelMatchesColor(1836, 527, (22, 24, 33)) and pag.pixelMatchesColor(1854, (679 - 73), (22, 24, 33)) and pag.pixelMatchesColor(1854, (679 - 73*2), (22, 24, 33)):
+            if pag.pixelMatchesColor(1836, 600, (21, 26, 33)) and pag.pixelMatchesColor(1836, 527, (21, 26, 33)) and pag.pixelMatchesColor(1854, (679 - 73), (21, 26, 33)) and pag.pixelMatchesColor(1854, (679 - 73*2), (21, 26, 33)):
                 tokenIdx[0] = 2
                 pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
                 pag.mouseDown()
@@ -306,7 +306,7 @@ def gameStart():
                 pag.mouseUp()
                 print("게임오버 4등")
                 break
-            elif pag.pixelMatchesColor(1836, 600, (22, 24, 33)) and pag.pixelMatchesColor(1854, (679 - 73), (22, 24, 33)):
+            elif pag.pixelMatchesColor(1836, 600, (21, 26, 33)) and pag.pixelMatchesColor(1854, (679 - 73), (21, 26, 33)):
                 tokenIdx[0] = 1
                 pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
                 pag.mouseDown()
@@ -314,7 +314,7 @@ def gameStart():
                 pag.mouseUp()
                 print("게임오버 5등")
                 break
-            elif pag.pixelMatchesColor(1854, 679, (22, 24, 33)) and pag.pixelMatchesColor(1854, 752, (22, 24, 33)) and pag.pixelMatchesColor(1836, 747, (22, 24, 33)) and pag.pixelMatchesColor(1836, 673, (22, 24, 33)):
+            elif pag.pixelMatchesColor(1854, 679, (21, 26, 33)) and pag.pixelMatchesColor(1854, 752, (21, 26, 33)) and pag.pixelMatchesColor(1836, 747, (21, 26, 33)) and pag.pixelMatchesColor(1836, 673, (21, 26, 33)):
                 tokenIdx[0] = 1
                 pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
                 pag.mouseDown()
@@ -322,7 +322,7 @@ def gameStart():
                 pag.mouseUp()
                 print("게임오버 6등")
                 break
-            elif pag.pixelMatchesColor(1854, 752, (22, 24, 33)) and pag.pixelMatchesColor(1836, 747, (22, 24, 33)):
+            elif pag.pixelMatchesColor(1854, 752, (21, 26, 33)) and pag.pixelMatchesColor(1836, 747, (21, 26, 33)):
                 tokenIdx[0] = 0
                 pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
                 pag.mouseDown()
