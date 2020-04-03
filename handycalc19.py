@@ -104,7 +104,7 @@ def findgameScreenCheck():
 
 
 def isSix():
-    if isAchromatic(Xserr, Yserr) and isAchromatic(Xserr, Yserr - 72):
+    if isAchromatic(Xserr, Yserr - 72) or isAchromatic(Xserr, Yserr - 72*2) or isAchromatic(Xserr, Yserr - 72*3) or isAchromatic(Xserr, Yserr - 72*4) or isAchromatic(Xserr, Yserr - 72*5):
         tokenIdx[0] = 1
         return True
     else:
@@ -124,7 +124,7 @@ def isAchromatic(x, y):
     if(pag.pixel(x, y) == (16, 24, 27) or pag.pixel(x, y) == (22, 32, 33) or pag.pixel(x, y) == (0, 0, 0) or pag.pixel(x, y) == (255, 255, 255)):
         return False
     avgVal = (pag.pixel(x, y)[0] + pag.pixel(x, y)[1] + pag.pixel(x, y)[2]) / 3
-    if abs(pag.pixel(x, y)[0] - avgVal) <= 20 and abs(pag.pixel(x, y)[1] - avgVal) <= 20 and abs(pag.pixel(x, y)[2] - avgVal) <= 20:
+    if abs(pag.pixel(x, y)[0] - avgVal) <= 2 and abs(pag.pixel(x, y)[1] - avgVal) <= 2 and abs(pag.pixel(x, y)[2] - avgVal) <= 2:
         return True
     else:
         return False
@@ -135,7 +135,7 @@ def isAchromatic(x, y):
 def lessthansixteen():
     if time.time() - startTime[0] < 960:
         return True
-    elif isAchromatic(Xserr, Yserr) and isAchromatic(Xserr, Yserr - 72) and isAchromatic(Xserr, Yserr - 72 * 2) and isAchromatic(Xserr, Yserr - 72 * 3):
+    elif isFour():
         tokenIdx[0] = 2
         return True
     else:
@@ -143,7 +143,7 @@ def lessthansixteen():
 
 
 def isFour():
-    if isAchromatic(Xserr, Yserr) and isAchromatic(Xserr, Yserr - 72) and isAchromatic(Xserr, Yserr - 72 * 2) and isAchromatic(Xserr, Yserr - 72 * 3):
+    if isAchromatic(Xserr, Yserr - 72*3) or isAchromatic(Xserr, Yserr - 72*4) or isAchromatic(Xserr, Yserr - 72*5):
         tokenIdx[0] = 2
         return True
     else:
@@ -167,10 +167,10 @@ def acceptScreenCheck():
 
 
 def finalRankingCheck():
-    if isAchromatic(Xserr, Yserr) and isAchromatic(Xserr, Yserr - 72) and isAchromatic(Xserr, Yserr - 72 * 2) and isAchromatic(Xserr, Yserr - 72 * 3):
+    if isFour():
         print("3~4등")
         tokenIdx[0] = 2
-    elif isAchromatic(Xserr, Yserr) and isAchromatic(Xserr, Yserr - 72):
+    elif isSix():
         print("5~6등")
         tokenIdx[0] = 1
 
@@ -529,8 +529,8 @@ loadValIn = [False]
 isStart = [False]
 INFloadings = [0]
 
-Xserr = 1862
-Yserr = 732
+Xserr = 1876
+Yserr = 737
 
 #============================main===========================================
 modeSelect()
