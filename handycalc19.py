@@ -104,7 +104,7 @@ def findgameScreenCheck():
 
 
 def isSix():
-    if isAchromatic(1866, 732) and isAchromatic(1866, 657):
+    if isAchromatic(1862, 735) and isAchromatic(1862, 660):
         tokenIdx[0] = 1
         return True
     else:
@@ -135,7 +135,7 @@ def isAchromatic(x, y):
 def lessthansixteen():
     if time.time() - startTime[0] < 960:
         return True
-    elif isAchromatic(1866, 732) and isAchromatic(1866, 657) and isAchromatic(1866, 587) and isAchromatic(1866, 513):
+    elif isAchromatic(1862, 735) and isAchromatic(1862, 660) and isAchromatic(1862, 590) and isAchromatic(1862, 516):
         tokenIdx[0] = 2
         return True
     else:
@@ -143,7 +143,7 @@ def lessthansixteen():
 
 
 def isFour():
-    if isAchromatic(1866, 732) and isAchromatic(1866, 657) and isAchromatic(1866, 587) and isAchromatic(1866, 513):
+    if isAchromatic(1862, 735) and isAchromatic(1862, 660) and isAchromatic(1862, 590) and isAchromatic(1862, 516):
         tokenIdx[0] = 2
         return True
     else:
@@ -167,10 +167,10 @@ def acceptScreenCheck():
 
 
 def finalRankingCheck():
-    if isAchromatic(1866, 732) and isAchromatic(1866, 657) and isAchromatic(1866, 587) and isAchromatic(1866, 513):
+    if isAchromatic(1862, 735) and isAchromatic(1862, 660) and isAchromatic(1862, 590) and isAchromatic(1862, 516):
         print("3~4등")
         tokenIdx[0] = 2
-    elif isAchromatic(1866, 732) and isAchromatic(1866, 657):
+    elif isAchromatic(1862, 735) and isAchromatic(1862, 660):
         print("5~6등")
         tokenIdx[0] = 1
 
