@@ -33,9 +33,9 @@ def test():
     else:
         print("fail")
 
-x = 1874
-y = 742
-val = 10
+x = 1876
+y = 737
+val = 3
 time.sleep(5)
 while True:
     test()
