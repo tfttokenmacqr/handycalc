@@ -175,6 +175,18 @@ def finalRankingCheck():
         tokenIdx[0] = 1
 
 
+def isWin():
+    if pag.pixelMatchesColor(995, 644, (132, 15, 16), 1):
+        return True
+    else:
+        return False
+
+
+def isOver():
+    if pag.pixelMatchesColor(890, 534, (8, 85, 106), 1):
+        return True
+    else:
+        return False
 
 def modeSelect():
     print("모드를 선택하십시오")
@@ -309,47 +321,10 @@ def gameStart():
             time.sleep(random.uniform(0.05, 0.1))
             pag.mouseUp()
 
-        if pag.pixelMatchesColor(880, 533, (8, 81, 100)):
-            if pag.pixelMatchesColor(1836, 600, (21, 26, 33)) and pag.pixelMatchesColor(1836, 527, (21, 26, 33)) and pag.pixelMatchesColor(1854, (679 - 73), (21, 26, 33)) and pag.pixelMatchesColor(1854, (679 - 73*2), (21, 26, 33)):
-                tokenIdx[0] = 2
-                pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
-                pag.mouseDown()
-                time.sleep(random.uniform(0.05, 0.1))
-                pag.mouseUp()
-                print("게임오버 4등")
-                break
-            elif pag.pixelMatchesColor(1836, 600, (21, 26, 33)) and pag.pixelMatchesColor(1854, (679 - 73), (21, 26, 33)):
-                tokenIdx[0] = 1
-                pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
-                pag.mouseDown()
-                time.sleep(random.uniform(0.05, 0.1))
-                pag.mouseUp()
-                print("게임오버 5등")
-                break
-            elif pag.pixelMatchesColor(1854, 679, (21, 26, 33)) and pag.pixelMatchesColor(1854, 752, (21, 26, 33)) and pag.pixelMatchesColor(1836, 747, (21, 26, 33)) and pag.pixelMatchesColor(1836, 673, (21, 26, 33)):
-                tokenIdx[0] = 1
-                pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
-                pag.mouseDown()
-                time.sleep(random.uniform(0.05, 0.1))
-                pag.mouseUp()
-                print("게임오버 6등")
-                break
-            elif pag.pixelMatchesColor(1854, 752, (21, 26, 33)) and pag.pixelMatchesColor(1836, 747, (21, 26, 33)):
-                tokenIdx[0] = 0
-                pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
-                pag.mouseDown()
-                time.sleep(random.uniform(0.05, 0.1))
-                pag.mouseUp()
-                print("게임오버 7등")
-                break
-            else:
-                tokenIdx[0] = 0
-                pag.moveTo(880 + random.uniform(-2, 2), 533 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
-                pag.mouseDown()
-                time.sleep(random.uniform(0.05, 0.1))
-                pag.mouseUp()
-                print("게임오버 8등?")
-                break
+        if isWin():
+            win()
+        if isOver():
+            gameOver()
 
     gameSurrender()
 
@@ -463,7 +438,89 @@ def gameSurrender():
         pag.mouseDown()
         time.sleep(random.uniform(0.08, 0.12))
         pag.mouseUp()
+
+
+
+def win():
+    pag.moveTo(995 + random.uniform(-2, 2), 644 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
+    pag.mouseDown()
+    time.sleep(random.uniform(0.05, 0.1))
+    pag.mouseUp()
+    print("승리")
+    tokenIdx[0] = 3
+    playTime[0] = time.time()-startTime[0]
+
+    loadTimelist.append(loadTime[0])
+    playTimelist.append(playTime[0])
+    tokenGetList.append(tokenList[tokenIdx[0]])
+
+    loadTimeStart[0] = time.time()
+    isStart[0] = False
+    loadValIn[0] = False
+
+
+    print(time.strftime("%I:%M %p", time.localtime(time.time())))
+    plays[0] += 1
+    print("플레이 횟수 :", plays[0])
+    print("이번 판 큐+로딩시간 : %imin%isec, \n이번 판 인게임시간 : %imin%isec"  %(loadTime[0]/60, loadTime[0]%60, playTime[0]/60, playTime[0]%60,))
+    print("평균 큐+로딩시간 : %imin%isec, \n평균 인게임시간 : %imin%isec" %(sum(loadTimelist)/len(loadTimelist)/60, (sum(loadTimelist)/len(loadTimelist))%60, sum(playTimelist)/len(playTimelist)/60, (sum(playTimelist)/len(playTimelist))%60))
+    print("총 토큰획득(추정치) :", sum(tokenGetList))
+    print("이번 판 시간당 토큰획득 : %.2f" %(tokenList[tokenIdx[0]]/(loadTime[0] + playTime[0])*3600))
+    print("시간당 토큰획득(추정치) : %.2f" %(sum(tokenGetList)/(sum(loadTimelist)+sum(playTimelist))*3600))
+    print("재시작 횟수 :",INFloadings[0])
+
+
+    while True:  # 퀘스트깼을때 퀘스트확인버튼
+        if regameScreenCheck():
+            break
+        if passwordAltCheck():
+            passwordAltOk()
+        pag.moveTo(981 + random.uniform(-2, 2),
+                   838 + random.uniform(-2, 2), random.uniform(0.8, 0.12))
+        pag.mouseDown()
+        time.sleep(random.uniform(0.08, 0.12))
+        pag.mouseUp()
         
+
+def gameOver():
+    pag.moveTo(890 + random.uniform(-2, 2), 534 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
+    pag.mouseDown()
+    time.sleep(random.uniform(0.05, 0.1))
+    pag.mouseUp()
+    print("게임오버")
+    finalRankingCheck()
+    playTime[0] = time.time()-startTime[0]
+
+    loadTimelist.append(loadTime[0])
+    playTimelist.append(playTime[0])
+    tokenGetList.append(tokenList[tokenIdx[0]])
+
+    loadTimeStart[0] = time.time()
+    isStart[0] = False
+    loadValIn[0] = False
+
+
+    print(time.strftime("%I:%M %p", time.localtime(time.time())))
+    plays[0] += 1
+    print("플레이 횟수 :", plays[0])
+    print("이번 판 큐+로딩시간 : %imin%isec, \n이번 판 인게임시간 : %imin%isec"  %(loadTime[0]/60, loadTime[0]%60, playTime[0]/60, playTime[0]%60,))
+    print("평균 큐+로딩시간 : %imin%isec, \n평균 인게임시간 : %imin%isec" %(sum(loadTimelist)/len(loadTimelist)/60, (sum(loadTimelist)/len(loadTimelist))%60, sum(playTimelist)/len(playTimelist)/60, (sum(playTimelist)/len(playTimelist))%60))
+    print("총 토큰획득(추정치) :", sum(tokenGetList))
+    print("이번 판 시간당 토큰획득 : %.2f" %(tokenList[tokenIdx[0]]/(loadTime[0] + playTime[0])*3600))
+    print("시간당 토큰획득(추정치) : %.2f" %(sum(tokenGetList)/(sum(loadTimelist)+sum(playTimelist))*3600))
+    print("재시작 횟수 :",INFloadings[0])
+
+
+    while True:  # 퀘스트깼을때 퀘스트확인버튼
+        if regameScreenCheck():
+            break
+        if passwordAltCheck():
+            passwordAltOk()
+        pag.moveTo(981 + random.uniform(-2, 2),
+                   838 + random.uniform(-2, 2), random.uniform(0.8, 0.12))
+        pag.mouseDown()
+        time.sleep(random.uniform(0.08, 0.12))
+        pag.mouseUp()
 
 
 def gameRegame():
