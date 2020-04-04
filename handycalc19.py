@@ -175,6 +175,13 @@ def finalRankingCheck():
         tokenIdx[0] = 1
 
 
+def partyExCheck():
+    if pag.pixelMatchesColor(842, 498, (1, 10, 19)) and pag.pixelMatchesColor(1090, 541, (1, 10, 19)):
+        return True
+    else:
+        return False
+
+
 def isWin():
     if pag.pixelMatchesColor(995, 644, (132, 15, 16), 1):
         return True
@@ -264,6 +271,42 @@ def gameLoading():
 
     loadTime[0] = time.time()-loadTimeStart[0]
     loadValIn[0] = True
+
+
+
+def partyEx():
+    time.sleep(30)
+    pag.moveTo(962 + random.uniform(-2, 2), 542 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
+    pag.mouseDown()
+    time.sleep(random.uniform(0.05, 0.1))
+    pag.mouseUp()
+            
+            
+    pag.moveTo(482 + random.uniform(-2, 2), 202 + random.uniform(-2, 2), random.uniform(0.8, 0.12))
+    pag.mouseDown()
+    time.sleep(random.uniform(0.08, 0.12))
+    pag.mouseUp()
+    pag.mouseDown()
+    time.sleep(random.uniform(0.08, 0.12))
+    pag.mouseUp()
+
+    time.sleep(1)
+
+    pag.moveTo(1194 + random.uniform(-2, 2), 390 + random.uniform(-2, 2), random.uniform(0.8, 0.12))
+    pag.mouseDown()
+    time.sleep(random.uniform(0.08, 0.12))
+    pag.mouseUp()
+
+    time.sleep(1)
+
+    pag.moveTo(860 + random.uniform(-2, 2), 849 + random.uniform(-2, 2), random.uniform(0.8, 0.12))
+    pag.mouseDown()
+    time.sleep(random.uniform(0.08, 0.12))
+    pag.mouseUp()
+
+    time.sleep(1)
+
+    onceStart[0] = False
 
 
 
@@ -433,6 +476,8 @@ def gameSurrender():
             break
         if passwordAltCheck():
             passwordAltOk()
+        if partyExCheck():
+            partyEx()
         pag.moveTo(981 + random.uniform(-2, 2),
                    838 + random.uniform(-2, 2), random.uniform(0.8, 0.12))
         pag.mouseDown()
@@ -475,6 +520,8 @@ def win():
             break
         if passwordAltCheck():
             passwordAltOk()
+        if partyExCheck():
+            partyEx()
         pag.moveTo(981 + random.uniform(-2, 2),
                    838 + random.uniform(-2, 2), random.uniform(0.8, 0.12))
         pag.mouseDown()
@@ -516,6 +563,8 @@ def gameOver():
             break
         if passwordAltCheck():
             passwordAltOk()
+        if partyExCheck():
+            partyEx()
         pag.moveTo(981 + random.uniform(-2, 2),
                    838 + random.uniform(-2, 2), random.uniform(0.8, 0.12))
         pag.mouseDown()
