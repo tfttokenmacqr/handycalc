@@ -275,7 +275,7 @@ def gameLoading():
 
 
 def partyEx():
-    time.sleep(30)
+    time.sleep(10)
     pag.moveTo(962 + random.uniform(-2, 2), 542 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
     pag.mouseDown()
     time.sleep(random.uniform(0.05, 0.1))
@@ -305,7 +305,7 @@ def partyEx():
     pag.mouseUp()
 
     time.sleep(1)
-
+    partyExcludes[0] += 1
     onceStart[0] = False
 
 
@@ -634,6 +634,7 @@ playTime = [0]
 loadValIn = [False]
 isStart = [False]
 INFloadings = [0]
+partyExcludes = [0]
 
 Xserr = 1876
 Yserr = 737
