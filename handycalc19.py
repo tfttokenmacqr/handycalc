@@ -469,6 +469,7 @@ def gameSurrender():
     print("이번 판 시간당 토큰획득 : %.2f" %(tokenList[tokenIdx[0]]/(loadTime[0] + playTime[0])*3600))
     print("시간당 토큰획득(추정치) : %.2f" %(sum(tokenGetList)/(sum(loadTimelist)+sum(playTimelist))*3600))
     print("재시작 횟수 :",INFloadings[0])
+    print("파티제외 횟수 :",partyExcludes[0])
 
 
     while True:  # 퀘스트깼을때 퀘스트확인버튼
@@ -513,6 +514,7 @@ def win():
     print("이번 판 시간당 토큰획득 : %.2f" %(tokenList[tokenIdx[0]]/(loadTime[0] + playTime[0])*3600))
     print("시간당 토큰획득(추정치) : %.2f" %(sum(tokenGetList)/(sum(loadTimelist)+sum(playTimelist))*3600))
     print("재시작 횟수 :",INFloadings[0])
+    print("파티제외 횟수 :",partyExcludes[0])
 
 
     while True:  # 퀘스트깼을때 퀘스트확인버튼
@@ -556,6 +558,7 @@ def gameOver():
     print("이번 판 시간당 토큰획득 : %.2f" %(tokenList[tokenIdx[0]]/(loadTime[0] + playTime[0])*3600))
     print("시간당 토큰획득(추정치) : %.2f" %(sum(tokenGetList)/(sum(loadTimelist)+sum(playTimelist))*3600))
     print("재시작 횟수 :",INFloadings[0])
+    print("파티제외 횟수 :",partyExcludes[0])
 
 
     while True:  # 퀘스트깼을때 퀘스트확인버튼
