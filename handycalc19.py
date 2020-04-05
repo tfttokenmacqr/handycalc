@@ -253,6 +253,9 @@ def gameAccept():
             break
         if passwordAltCheck():
             passwordAltOk()
+        if partyExCheck():
+            partyEx()
+            break
         pag.moveTo(random.uniform(884+16, 1033), random.uniform(700, 726-15), random.uniform(0.25, 0.75))
         pag.mouseDown()
         time.sleep(random.uniform(0.3, 0.7))
@@ -479,6 +482,7 @@ def gameSurrender():
             passwordAltOk()
         if partyExCheck():
             partyEx()
+            break
         pag.moveTo(981 + random.uniform(-2, 2),
                    838 + random.uniform(-2, 2), random.uniform(0.8, 0.12))
         pag.mouseDown()
@@ -524,6 +528,7 @@ def win():
             passwordAltOk()
         if partyExCheck():
             partyEx()
+            break
         pag.moveTo(981 + random.uniform(-2, 2),
                    838 + random.uniform(-2, 2), random.uniform(0.8, 0.12))
         pag.mouseDown()
@@ -568,6 +573,7 @@ def gameOver():
             passwordAltOk()
         if partyExCheck():
             partyEx()
+            break
         pag.moveTo(981 + random.uniform(-2, 2),
                    838 + random.uniform(-2, 2), random.uniform(0.8, 0.12))
         pag.mouseDown()
