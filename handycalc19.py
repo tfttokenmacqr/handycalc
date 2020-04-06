@@ -237,6 +237,9 @@ def gameFind():
             break
         if passwordAltCheck():
             passwordAltOk()
+        if partyExCheck():
+            partyEx()
+            break
         pag.moveTo(random.uniform(790, 941), random.uniform(823, 851), random.uniform(0.8, 0.12))
         pag.mouseDown()
         time.sleep(random.uniform(0.08, 0.12))
