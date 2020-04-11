@@ -10,9 +10,14 @@ import subprocess
 
 
 #==============================체크함수들======================================
+def isClientHome():
+    if not pyautogui.pixelMatchesColor(501, 189, (30, 35, 40)) and pyautogui.pixelMatchesColor(482, 200, (30, 35, 40)):
+        print("홈화면 인식")
+        return True
+    else:
+        return False
 
-
-def loadingScreenCheck():
+def isLoadingScreen():
     if pyautogui.pixelMatchesColor(977, 1072, (0, 11, 19)):
         print("로딩창 인식")
         return True
@@ -20,7 +25,7 @@ def loadingScreenCheck():
         return False
 
 
-def startedCheck():
+def isInGame():
     if pyautogui.pixelMatchesColor(1919, 395, (24, 32, 33)):
         print("시작 인식")
         return True
@@ -28,16 +33,16 @@ def startedCheck():
         return False
 
 
-def regameScreenCheck():
-    if pyautogui.pixelMatchesColor(803, 844, (30, 35, 40)):
+def isClientRegame():
+    if pyautogui.pixelMatchesColor(940, 834, (14, 21, 29)) and pyautogui.pixelMatchesColor(917, 844, (30, 35, 40)):
         print("한판더하기 인식")
         return True
     else:
         return False
 
 
-def findgameScreenCheck():
-    if pyautogui.pixelMatchesColor(1147, 266, (30, 35, 40)) or pyautogui.pixelMatchesColor(1147, 266, (11, 13, 15)) or pyautogui.pixelMatchesColor(1147, 266, (1, 10, 19)):
+def isClientFindGame():
+    if pyautogui.pixelMatchesColor(940, 826, (14, 21, 29)) and pyautogui.pixelMatchesColor(915, 838, (30, 35, 40)) and pyautogui.pixelMatchesColor(490, 201, (30, 35, 40)):
         print("게임찾기 인식")
         return True
     else:
@@ -62,7 +67,7 @@ def isTenMin():
 
 
 def isAchromatic(x, y):
-    if(pyautogui.pixel(x, y) == (16, 24, 27) or pyautogui.pixel(x, y) == (22, 32, 33) or pyautogui.pixel(x, y) == (0, 0, 0) or pyautogui.pixel(x, y) == (255, 255, 255)) or pyautogui.pixel(x, y) == (240, 240, 240) or pyautogui.pixel(x, y) == (205, 205, 205) or pyautogui.pixel(96, 96, 96):
+    if pyautogui.pixel(x, y) == (16, 24, 27) or pyautogui.pixel(x, y) == (22, 32, 33) or pyautogui.pixel(x, y) == (0, 0, 0) or pyautogui.pixel(x, y) == (240, 240, 240) or pyautogui.pixel(x, y) == (205, 205, 205) or pyautogui.pixel(x, y) == (96, 96, 96):
         return False
     avgVal = (pyautogui.pixel(x, y)[0] + pyautogui.pixel(x, y)[1] + pyautogui.pixel(x, y)[2]) / 3
     if abs(pyautogui.pixel(x, y)[0] - avgVal) <= 2 and abs(pyautogui.pixel(x, y)[1] - avgVal) <= 2 and abs(pyautogui.pixel(x, y)[2] - avgVal) <= 2:
@@ -152,6 +157,11 @@ def click(x, y, sleep = 0, sec = 0.5, times = 1, tol  = 2):
         pyautogui.mouseUp()
     time.sleep(sleep)
 
+def keyClick(string):
+    pyautogui.keyDown(string)
+    time.sleep(random.uniform(0.05, 0.1))
+    pyautogui.keyUp(string)
+
 def startToFind():
     click(482, 202, times = 2, sleep = 1)
 
@@ -215,7 +225,7 @@ mmr이 올라갈 것이라는 우려가 있으며 확인된바는 없음.
 
 def gameFind():
     print("게임찾기")
-    if not onceStart[0]:
+    if onceStart[0] == False:
         loadTimeStart[0] = time.time()
     
     onceStart[0] = True
@@ -239,7 +249,7 @@ def gameFind():
 def gameAccept():
     print('게임수락')
     while True:
-        if loadingScreenCheck():
+        if isLoadingScreen():
             break
         if passwordAltCheck():
             passwordAltOk()
@@ -259,7 +269,7 @@ def gameAccept():
 def gameLoading():
     print("로딩")
     while True:
-        if startedCheck():
+        if isInGame():
             break
 
     loadTime[0] = time.time()-loadTimeStart[0]
@@ -269,35 +279,14 @@ def gameLoading():
 
 def partyEx():
     time.sleep(10)
-    pyautogui.moveTo(962 + random.uniform(-2, 2), 542 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
-    pyautogui.mouseDown()
-    time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.mouseUp()
+    click(962, 542)
             
-            
-    pyautogui.moveTo(482 + random.uniform(-2, 2), 202 + random.uniform(-2, 2), random.uniform(0.8, 0.12))
-    pyautogui.mouseDown()
-    time.sleep(random.uniform(0.08, 0.12))
-    pyautogui.mouseUp()
-    pyautogui.mouseDown()
-    time.sleep(random.uniform(0.08, 0.12))
-    pyautogui.mouseUp()
+    click(482, 202, sleep=1, times=2)
 
-    time.sleep(1)
+    click(1194, 390, 1)
 
-    pyautogui.moveTo(1194 + random.uniform(-2, 2), 390 + random.uniform(-2, 2), random.uniform(0.8, 0.12))
-    pyautogui.mouseDown()
-    time.sleep(random.uniform(0.08, 0.12))
-    pyautogui.mouseUp()
+    click(860, 849, 1)
 
-    time.sleep(1)
-
-    pyautogui.moveTo(860 + random.uniform(-2, 2), 849 + random.uniform(-2, 2), random.uniform(0.8, 0.12))
-    pyautogui.mouseDown()
-    time.sleep(random.uniform(0.08, 0.12))
-    pyautogui.mouseUp()
-
-    time.sleep(1)
     partyExcludes[0] += 1
     onceStart[0] = False
 
@@ -327,7 +316,7 @@ def finishing():
 
 
     while True:  # 퀘스트깼을때 퀘스트확인버튼
-        if regameScreenCheck():
+        if isClientRegame():
             break
         if passwordAltCheck():
             passwordAltOk()
@@ -342,11 +331,11 @@ def finishing():
 
 
 def gameStart():
-    if not isStart[0]:
+    if isStart[0] == False:
         startTime[0] = time.time()
         print("로딩 완료")
         isStart[0] = True
-    if not loadValIn[0]:
+    if loadValIn[0]  == False:
         loadTime[0] = time.time()-loadTimeStart[0]
         loadValIn[0] = True
 
@@ -355,45 +344,23 @@ def gameStart():
 
         if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()):
             break
-        pyautogui.moveTo(random.uniform(485, 667), random.uniform(
-            932, 1032-50), random.uniform(0.25, 0.75))
-        pyautogui.mouseDown()
-        time.sleep(random.uniform(0.05, 0.1))
-        pyautogui.mouseUp()
+        click(576, 990, tol=30)
         if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()):
             break
-        pyautogui.moveTo(random.uniform(485+200, 667+200), random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
-        pyautogui.mouseDown()
-        time.sleep(random.uniform(0.05, 0.1))
-        pyautogui.mouseUp()
+        click(778, 988, tol=30)
         if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()):
             break
-        pyautogui.moveTo(random.uniform(485+400, 667+400),
-                   random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
-        pyautogui.mouseDown()
-        time.sleep(random.uniform(0.05, 0.1))
-        pyautogui.mouseUp()
+        click(976, 984, tol=30)
         if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()):
             break
-        pyautogui.moveTo(random.uniform(485+600, 667+600),
-                   random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
-        pyautogui.mouseDown()
-        time.sleep(random.uniform(0.05, 0.1))
-        pyautogui.mouseUp()
+        click(1181, 988, tol=30)
         if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()):
             break
-        pyautogui.moveTo(random.uniform(485+800, 667+800),
-                   random.uniform(932, 1032-50), random.uniform(0.25, 0.75))
-        pyautogui.mouseDown()
-        time.sleep(random.uniform(0.05, 0.1))
-        pyautogui.mouseUp()
+        click(1388, 990, tol=30)
         if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()):
             break
         if time.time()-startTime[0] > 900:
-            pyautogui.moveTo(random.uniform(278, 462), random.uniform(931, 992), random.uniform(0.25, 0.75))
-            pyautogui.mouseDown()
-            time.sleep(random.uniform(0.05, 0.1))
-            pyautogui.mouseUp()
+            click(370, 964, tol=10)
 
         if isWin():
             win()
@@ -494,7 +461,7 @@ def gameRegame():
 # 다시하기
     print("한판더하기")
     while True:
-        if findgameScreenCheck():
+        if isClientFindGame():
             break
         if passwordAltCheck():
             passwordAltOk()
@@ -513,19 +480,20 @@ def passwordAltOk():
     pyautogui.mouseUp()
         
 
+#=============================================================
 
 def handycalc():
     if passwordAltCheck():
         passwordAltOk()
     elif acceptScreenCheck():
         gameAccept()
-    elif findgameScreenCheck():
+    elif isClientFindGame():
         gameFind()
-    elif loadingScreenCheck():
+    elif isLoadingScreen():
         gameLoading()
-    elif startedCheck():
+    elif isInGame():
         gameStart()
-    elif regameScreenCheck():
+    elif isClientRegame():
         gameRegame()
 
     else:
@@ -583,11 +551,7 @@ while True:
                 print("강제로 서렌 합니다.")
                 gameSurrender()
             elif exmenu == 4:
-                try:
-                    mode[0] = int(input("모드를 입력하시오"))
-                except:
-                    print("인풋에러, 올바른 값을 입력하시오")
-                    mode[0] = 0
+                modeSelect()
             else:
                 print("이상한 값 입력. 종료합니다.")
                 time.sleep(2)
