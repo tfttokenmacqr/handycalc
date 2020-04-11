@@ -302,6 +302,7 @@ def finishing():
     print("시간당 토큰획득(추정치) : %.2f" %(sum(tokenGetList)/(sum(loadTimelist)+sum(playTimelist))*3600))
     print("재시작 횟수 :",INFloadings[0])
     print("파티제외 횟수 :",partyExcludes[0])
+    time.sleep(10)
 
 
 
