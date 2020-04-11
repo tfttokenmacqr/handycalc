@@ -150,7 +150,7 @@ def currentTime():
     
 
 def click(x, y, sleep = 0, sec = 0.5, times = 1, tol  = 2):
-    pyautogui.moveTo(x+random.uniform(-tol, tol), y+random.uniform(-tol, tol), random.uniform(sec - 0.02, sec + 0.02))
+    pyautogui.moveTo(x+random.uniform(-tol, tol), y+random.uniform(-tol, tol), random.uniform(sec - sec/4, sec + sec/4))
     for _ in range(times):
         pyautogui.mouseDown()
         time.sleep(random.uniform(0.08, 0.12))
@@ -237,10 +237,8 @@ def gameFind():
         if partyExCheck():
             partyEx()
             break
-        pyautogui.moveTo(random.uniform(790, 941), random.uniform(823, 851), random.uniform(0.8, 0.12))
-        pyautogui.mouseDown()
-        time.sleep(random.uniform(0.08, 0.12))
-        pyautogui.mouseUp()
+        click(866, 837)
+
         if time.time() - loadTimeStart[0] > 1800:
             INFloading()
             break
@@ -256,10 +254,7 @@ def gameAccept():
         if partyExCheck():
             partyEx()
             break
-        pyautogui.moveTo(random.uniform(884+16, 1033), random.uniform(700, 726-15), random.uniform(0.25, 0.75))
-        pyautogui.mouseDown()
-        time.sleep(random.uniform(0.3, 0.7))
-        pyautogui.mouseUp()
+        click(967, 706)
         if time.time() - loadTimeStart[0] > 1800:
             INFloading()
             break
@@ -323,11 +318,8 @@ def finishing():
         if partyExCheck():
             partyEx()
             break
-        pyautogui.moveTo(981 + random.uniform(-2, 2),
-                   838 + random.uniform(-2, 2), random.uniform(0.8, 0.12))
-        pyautogui.mouseDown()
-        time.sleep(random.uniform(0.08, 0.12))
-        pyautogui.mouseUp()
+        click(981, 838)
+        
 
 
 def gameStart():
@@ -373,111 +365,57 @@ def gameStart():
 def gameSurrender():
     print("항복")
 
+    keyClick('enter')
+    keyClick('.')
+    keyClick('enter')
 
+    keyClick('enter')
+    keyClick('/')
+    keyClick('f')
+    keyClick('f')
+    keyClick('enter')
 
-    pyautogui.keyDown('enter')
-    time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.keyUp('enter')
-    pyautogui.keyDown('.')
-    time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.keyUp('.')
-    pyautogui.keyDown('enter')
-    time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.keyUp('enter')
+    keyClick('enter')
+    keyClick('/')
+    keyClick('w')
+    keyClick('w')
+    keyClick('enter')
 
-    pyautogui.keyDown('enter')
-    time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.keyUp('enter')
-
-    pyautogui.keyDown('/')
-    time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.keyUp('/')
-
-    pyautogui.keyDown('f')
-    time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.keyUp('f')
-
-    pyautogui.keyDown('f')
-    time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.keyUp('f')
-
-    pyautogui.keyDown('enter')
-    time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.keyUp('enter')
-
-    pyautogui.keyDown('enter')
-    time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.keyUp('enter')
-
-    pyautogui.keyDown('/')
-    time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.keyUp('/')
-
-    pyautogui.keyDown('w')
-    time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.keyUp('w')
-
-    pyautogui.keyDown('w')
-    time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.keyUp('w')
-
-    pyautogui.keyDown('enter')
-    time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.keyUp('enter')
-
-    pyautogui.moveTo(random.uniform(900, 943), random.uniform(
-        596, 619), random.uniform(0.7, 1.5))
     finalRankingCheck()
-    pyautogui.mouseDown()
-    time.sleep(random.uniform(0.1, 0.2))
-    pyautogui.mouseUp()
 
-
+    click(922, 608)
 
     finishing()
 
 
 
 def win():
-    pyautogui.moveTo(995 + random.uniform(-2, 2), 644 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
-    pyautogui.mouseDown()
-    time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.mouseUp()
+    click(995, 644)
     print("승리")
     tokenIdx[0] = 3
     finishing()
         
 
 def gameOver():
-    pyautogui.moveTo(890 + random.uniform(-2, 2), 534 + random.uniform(-2, 2), random.uniform(0.25, 0.75))
-    pyautogui.mouseDown()
-    time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.mouseUp()
+    click(890, 534)
     print("게임오버")
     finalRankingCheck()
     finishing()
 
 def gameRegame():
-# 다시하기
     print("한판더하기")
     while True:
         if isClientFindGame():
             break
         if passwordAltCheck():
             passwordAltOk()
-        pyautogui.moveTo(random.uniform(791, 934), random.uniform(834, 853), random.uniform(0.25, 0.75))
-        pyautogui.mouseDown()
-        time.sleep(random.uniform(0.05, 0.1))
-        pyautogui.mouseUp()
+        click(863, 844)
 
 
 
 def passwordAltOk():
     print("비밀번호변경 확인")
-    pyautogui.moveTo(random.uniform(931, 988), random.uniform(591, 611), random.uniform(0.25, 0.75))
-    pyautogui.mouseDown()
-    time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.mouseUp()
+    click(960, 601)
         
 
 #=============================================================
