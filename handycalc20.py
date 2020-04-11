@@ -28,7 +28,8 @@ def isClientHome():
 
 def isClientFindGame():
     if pyautogui.pixelMatchesColor(1144, 276, (30, 35, 40)) and pyautogui.pixelMatchesColor(915, 838, (30, 35, 40)) and pyautogui.pixelMatchesColor(490, 201, (30, 35, 40)):
-        print("게임찾기 인식")
+        if devMode[0] == True:
+            print("게임찾기 인식")
         return True
     else:
         return False
@@ -44,7 +45,8 @@ def isClientAcceptScreen():
 
 def isLoadingScreen():
     if pyautogui.pixelMatchesColor(977, 1072, (0, 11, 19)):
-        print("로딩창 인식")
+        if devMode[0] == True:
+            print("로딩창 인식")
         return True
     else:
         return False
@@ -95,6 +97,12 @@ def isFour():
         return False
 
 
+def isTwo():
+    if isAchromatic(Xserr, Yserr - 72*5):
+        tokenIdx[0] = 3
+        return True
+    else:
+        return False
 
 
 def isWin():
@@ -183,7 +191,8 @@ def homeToFind():
 
 
 def gameFind():
-    print("게임찾기")
+    if devMode[0] == True:
+        print("게임찾기")
     if onceStart[0] == False:
         loadTimeStart[0] = time.time()
     
@@ -320,6 +329,7 @@ def gameRegame():
 
 
 def INFloading():
+    print("무한로딩 대응")
     click(1579, 174, sleep=1)
 
     click(912, 564, sleep=60)
@@ -333,6 +343,7 @@ def INFloading():
 
 
 def partyEx():
+    print("파티제외 대응")
     time.sleep(10)
     click(962, 542)
             
@@ -357,6 +368,8 @@ def handycalc():
         passwordAltOk()
     elif isClientPartyEx():
         partyEx()
+    elif isClientHome():
+        homeToFind()
     elif isClientAcceptScreen():
         gameAccept()
     elif isClientFindGame():
@@ -369,18 +382,25 @@ def handycalc():
         gameRegame()
 
     else:
-        print("알 수 없는 상황")
+        if devMode[0] == False:
+            if int(time.time())%10 == 0:
+                print("알 수 없는 상황")
+        else:
+            print("알 수 없는 상황")
         pyautogui.moveTo(230, 800, random.uniform(0.8, 1.2))
         time.sleep(1)
 
 
 def modeSelect():
     print("모드를 선택하십시오")
+    print("숫자입력 후 엔터")
     print("1. 10분 서렌")
     print("2. 6등 서렌")
     print("3. 4등 서렌")
-    print("4. 모드 설명")
-    print("5. 종료")
+    print("4. 2등 서렌")
+    print("5. 개발자모드On/Off")
+    print("6. 모드 설명")
+    print("7. 종료")
     try:
         mode[0] = int(input())
     except:
@@ -404,7 +424,23 @@ def modeDemo():
 mmr이 올라갈 것이라는 우려가 있으며 확인된바는 없음.
 
     """)
+    print("""
+4. 2등이 되면 서렌하는 버전. 8개의 토큰보상.
 
+    """)
+    print("""
+5. 로그 출력이 지저분해짐.
+
+    """)
+
+
+def devSwitch():
+    if devMode[0] == False:
+        print("On")
+        devMode[0] == True
+    else:
+        print("Off")
+        devMode[0] == False
     
 #=============================var================================
 
@@ -429,14 +465,14 @@ partyExcludes = [0]
 
 Xserr = 1876
 Yserr = 737
-
+devMode = [False]
 #============================main===========================================
 
 
 while True:
     if mode[0] == 0:
         modeSelect()
-    elif mode[0] == 1 or mode[0] == 2 or mode[0] == 3:
+    elif mode[0] == 1 or mode[0] == 2 or mode[0] == 3 or mode[0] == 4:
         try:
             handycalc()
         except pyautogui.FailSafeException:
@@ -459,15 +495,18 @@ while True:
                 gameSurrender()
             elif exmenu == 4:
                 modeSelect()
+            elif exmenu == 5:
+                devSwitch()
             else:
                 print("이상한 값 입력. 종료합니다.")
                 time.sleep(2)
                 sys.exit()
-
-    elif mode[0] == 4:
+    elif mode[0] == 5:
+        devSwitch()
+    elif mode[0] == 6:
         modeDemo()
         modeSelect()
-    elif mode[0] == 5:
+    elif mode[0] == 7:
         print("종료")
         time.sleep(2)
         break
