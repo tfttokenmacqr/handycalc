@@ -311,6 +311,8 @@ def finishing():
     print("시간당 토큰획득(추정치) : %.2f" %(sum(tokenGetList)/(sum(loadTimelist)+sum(playTimelist))*3600))
     print("재시작 횟수 :",INFloadings[0])
     print("파티제외 횟수 :",partyExcludes[0])
+    print("게임오버 횟수 :", overs[0])
+    print("게임승리 횟수 :", wins[0])
     time.sleep(10)
 
 
@@ -322,12 +324,14 @@ def win():
     click(995, 644)
     print("승리")
     tokenIdx[0] = 3
+    wins[0] += 1
     finishing()
         
 
 def gameOver():
     click(890, 534)
     print("게임오버")
+    overs[0] += 1
     finalRankingCheck()
     finishing()
 
@@ -475,7 +479,10 @@ partyExcludes = [0]
 
 Xserr = 1876
 Yserr = 737
+
 devMode = [False]
+overs = [0]
+wins = [0]
 #============================main===========================================
 
 
