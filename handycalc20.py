@@ -204,6 +204,7 @@ def gameFind():
 def gameAccept():
     print('게임수락')
     click(967, 706)
+    time.sleep(1)
 
 
 def gameLoading():
@@ -395,7 +396,7 @@ def handycalc():
 
     else:
         if devMode[0] == False:
-            if int(time.time())%10 == 0:
+            if int(time.time())%40 == 0:
                 print("알 수 없는 상황")
         else:
             print("알 수 없는 상황")
