@@ -27,9 +27,8 @@ def isClientHome():
 
 
 def isClientFindGame():
-    if pyautogui.pixelMatchesColor(1144, 276, (30, 35, 40)) and pyautogui.pixelMatchesColor(915, 838, (30, 35, 40)) and pyautogui.pixelMatchesColor(490, 201, (30, 35, 40)):
-        if devMode[0] == True:
-            print("게임찾기 인식")
+    if (not pyautogui.pixelMatchesColor(920, 852, (92, 91, 87))) and pyautogui.pixelMatchesColor(1144, 276, (30, 35, 40)) and pyautogui.pixelMatchesColor(915, 838, (30, 35, 40)) and pyautogui.pixelMatchesColor(490, 201, (30, 35, 40)):
+        print("게임찾기 인식")
         return True
     else:
         return False
@@ -194,8 +193,7 @@ def homeToFind():
 
 
 def gameFind():
-    if devMode[0] == True:
-        print("게임찾기")
+    print("게임찾기")
     if onceStart[0] == False:
         loadTimeStart[0] = time.time()
     
