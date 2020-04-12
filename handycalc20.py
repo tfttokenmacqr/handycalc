@@ -36,7 +36,7 @@ def isClientFindGame():
 
 
 def isClientAcceptScreen():
-    if pyautogui.pixelMatchesColor(921, 780, (30, 35, 40)) and pyautogui.pixelMatchesColor(991, 779, (30, 35, 40)):
+    if (not pyautogui.pixelMatchesColor(1000, 794, (92, 91, 87))) and pyautogui.pixelMatchesColor(921, 780, (30, 35, 40)) and pyautogui.pixelMatchesColor(991, 779, (30, 35, 40)):
         print("수락창 인식")
         return True
     else:
@@ -120,7 +120,10 @@ def isOver():
 
 
 def finalRankingCheck():
-    if isFour():
+    if isTwo():
+        print("1~2등")
+        tokenIdx[0] = 3
+    elif isFour():
         print("3~4등")
         tokenIdx[0] = 2
     elif isSix():
