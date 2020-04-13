@@ -338,6 +338,9 @@ def finishing():
 
 
 def win():
+    if devMode[0] == True:
+        pyautogui.hotkey('alt', 'f1')
+        pyautogui.hotkey('win', 'alt', 'prtscr')
     click(995, 644)
     print("승리")
     tokenIdx[0] = 3
@@ -346,6 +349,9 @@ def win():
         
 
 def gameOver():
+    if devMode[0] == True:
+        pyautogui.hotkey('alt', 'f1')
+        pyautogui.hotkey('win', 'alt', 'prtscr')
     click(890, 534)
     print("게임오버")
     overs[0] += 1
