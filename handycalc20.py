@@ -44,8 +44,6 @@ def isClientAcceptScreen():
 
 def isLoadingScreen():
     if pyautogui.pixelMatchesColor(977, 1072, (0, 11, 19)):
-        if devMode[0] == True:
-            print("로딩창 인식")
         return True
     else:
         return False
@@ -278,6 +276,9 @@ def gameStart():
 
 
 def gameSurrender():
+    if devMode[0] == True:
+        pyautogui.hotkey('alt', 'f1')
+        pyautogui.hotkey('win', 'alt', 'prtscr')
     print("항복")
 
     keyClick('enter')
@@ -412,10 +413,7 @@ def handycalc():
         gameRegame()
 
     else:
-        if devMode[0] == False:
-            if int(time.time())%40 == 0:
-                print("알 수 없는 상황")
-        else:
+        if int(time.time())%40 == 0:
             print("알 수 없는 상황")
         pyautogui.moveTo(230, 800, random.uniform(0.8, 1.2))
         time.sleep(1)
@@ -459,7 +457,7 @@ mmr이 올라갈 것이라는 우려가 있으며 확인된바는 없음.
 
     """)
     print("""
-5. 로그 출력이 지저분해짐.
+5. 게임종료시 스크린샷.
 
     """)
 
