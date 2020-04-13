@@ -354,6 +354,7 @@ def gameOver():
 def gameRegame():
     print("한판더하기")
     click(863, 844)
+    time.sleep(1)
 
 
 
