@@ -137,7 +137,7 @@ def isClientRegame():
 
 
 def isClientPartyEx():
-    if pyautogui.pixelMatchesColor(842, 498, (1, 10, 19)) and pyautogui.pixelMatchesColor(1090, 541, (1, 10, 19)):
+    if pyautogui.pixelMatchesColor(816, 485, (1, 10, 19)) and pyautogui.pixelMatchesColor(1100, 551, (1, 10, 19)) and pyautogui.pixelMatchesColor(1097, 489, (1, 10, 19)) and pyautogui.pixelMatchesColor(817, 550, (1, 10, 19)):
         print("파티제외 인식")
         return True
     else:
@@ -187,6 +187,7 @@ def homeToFind():
     click(1194, 390, sleep=1)
 
     click(860, 849, sleep=1)
+
 
 
 
@@ -375,14 +376,9 @@ def INFloading():
 
 def partyEx():
     print("파티제외 대응")
-    time.sleep(10)
+    time.sleep(1)
     click(962, 542)
-            
-    click(482, 202, sleep=1, times=2)
-
-    click(1194, 390, 1)
-
-    click(860, 849, 1)
+    time.sleep(1)
 
     partyExcludes[0] += 1
     onceStart[0] = False
@@ -397,10 +393,10 @@ def partyEx():
 def handycalc():
     if isClientPasswordAlt():
         passwordAltOk()
-    elif isClientPartyEx():
-        partyEx()
     elif isClientHome():
         homeToFind()
+    elif isClientPartyEx():
+        partyEx()
     elif isClientAcceptScreen():
         gameAccept()
     elif isClientFindGame():
