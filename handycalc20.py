@@ -494,7 +494,7 @@ isStart = [False]
 INFloadings = [0]
 partyExcludes = [0]
 
-Xserr = 1876
+Xserr = 1870
 Yserr = 737
 
 devMode = [False]
