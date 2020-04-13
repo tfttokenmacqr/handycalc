@@ -465,10 +465,11 @@ mmr이 올라갈 것이라는 우려가 있으며 확인된바는 없음.
 def devSwitch():
     if devMode[0] == False:
         print("On")
-        devMode[0] == True
+        devMode[0] = True
     else:
         print("Off")
-        devMode[0] == False
+        devMode[0] = False
+    mode[0] = 0
     
 #=============================var================================
 
