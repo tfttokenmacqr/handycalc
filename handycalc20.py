@@ -274,7 +274,15 @@ def gameStart():
             break
 
     
-
+def printTokenIdx():
+    if tokenIdx[0] == 3:
+        print("1~2등")
+    elif tokenIdx[0] == 2:
+        print("3~4등")
+    elif tokenIdx[0] == 1:
+        print("5~6등")
+    elif tokenIdx[0] == 0:
+        print("7~8등")
 
 
 def gameSurrender():
@@ -298,6 +306,8 @@ def gameSurrender():
     keyClick('w')
     keyClick('w')
     keyClick('enter')
+
+    printTokenIdx()
 
     click(922, 608)
 
