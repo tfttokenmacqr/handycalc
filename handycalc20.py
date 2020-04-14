@@ -137,7 +137,7 @@ def isClientRegame():
 
 
 def isClientPartyEx():
-    if pyautogui.pixelMatchesColor(816, 485, (1, 10, 19)) and pyautogui.pixelMatchesColor(1100, 551, (1, 10, 19)) and pyautogui.pixelMatchesColor(1097, 489, (1, 10, 19)) and pyautogui.pixelMatchesColor(817, 550, (1, 10, 19)):
+    if pyautogui.pixelMatchesColor(816, 485, (1, 10, 19)) and pyautogui.pixelMatchesColor(1100, 551, (1, 10, 19)) and pyautogui.pixelMatchesColor(1097, 489, (1, 10, 19)) and pyautogui.pixelMatchesColor(817, 550, (1, 10, 19)) and (not pyautogui.pixelMatchesColor(971, 675, (1, 10, 19))):
         print("파티제외 인식")
         return True
     else:
