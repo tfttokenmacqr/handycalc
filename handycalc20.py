@@ -299,8 +299,6 @@ def gameSurrender():
     keyClick('w')
     keyClick('enter')
 
-    finalRankingCheck()
-
     click(922, 608)
 
     finishing()
