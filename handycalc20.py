@@ -376,6 +376,7 @@ def INFloading():
     subprocess.call("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
 
     time.sleep(60)
+    loadTimeStart[0] = time.time()
     onceStart[0] = False
     INFloadings[0] += 1
 
@@ -420,6 +421,8 @@ def handycalc():
             print("알 수 없는 상황")
         pyautogui.moveTo(230, 800, random.uniform(0.8, 1.2))
         time.sleep(1)
+        if time.time() - loadTimeStart[0] > 1800:
+            INFloading()
 
 
 def modeSelect():
