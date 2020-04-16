@@ -429,6 +429,8 @@ def handycalc():
             print("알 수 없는 상황")
         pyautogui.moveTo(230, 800, random.uniform(0.8, 1.2))
         time.sleep(1)
+        if onceStart[0] == False:
+            loadTimeStart[0] = time.time()
         if time.time() - loadTimeStart[0] > 1800:
             INFloading()
 
