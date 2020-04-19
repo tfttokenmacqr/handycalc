@@ -15,7 +15,7 @@ def isAchromatic(x, y):
 
 def achromaticPrinter(x, y):
     avgVal = (pyautogui.pixel(x, y)[0] + pyautogui.pixel(x, y)[1] + pyautogui.pixel(x, y)[2]) / 3
-    print("%.2f %.2f %.2f" %(abs(pyautogui.pixel(x, y)[0] - avgVal), abs(pyautogui.pixel(x, y)[1] - avgVal), abs(pyautogui.pixel(x, y)[2] - avgVal)))
+    print("%.2f %.2f %.2f | %.2f %.2f %.2f" %(abs(pyautogui.pixel(x, y)[0] - avgVal), abs(pyautogui.pixel(x, y)[1] - avgVal), abs(pyautogui.pixel(x, y)[2] - avgVal), pyautogui.pixel(x, y)[0], pyautogui.pixel(x, y)[1], pyautogui.pixel(x, y)[2]))
 
 
 
@@ -57,7 +57,7 @@ def printer():
     print("1등")
     achromaticPrinter(Xserr, Yserr - 72*7)
 
-Xserr = 1876
+Xserr = 1870
 Yserr = 737
 val = 3
 input("엔터치면 스타트")
