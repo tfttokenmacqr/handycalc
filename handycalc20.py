@@ -67,7 +67,7 @@ def isTenMin():
 
 
 def isAchromatic(x, y):
-    if pyautogui.pixel(x, y) == (16, 24, 27) or pyautogui.pixel(x, y) == (22, 32, 33) or pyautogui.pixel(x, y) == (0, 0, 0) or pyautogui.pixel(x, y) == (240, 240, 240) or pyautogui.pixel(x, y) == (205, 205, 205) or pyautogui.pixel(x, y) == (96, 96, 96) or pyautogui.pixel(x, y) == (255, 255, 255):
+    if pyautogui.pixel(x, y) == (0, 0, 0) or pyautogui.pixel(x, y) == (240, 240, 240) or pyautogui.pixel(x, y) == (205, 205, 205) or pyautogui.pixel(x, y) == (96, 96, 96) or pyautogui.pixel(x, y) == (255, 255, 255) or pyautogui.pixel(x, y) == (12, 12, 12):
         return False
     avgVal = (pyautogui.pixel(x, y)[0] + pyautogui.pixel(x, y)[1] + pyautogui.pixel(x, y)[2]) / 3
     if abs(pyautogui.pixel(x, y)[0] - avgVal) <= 0.1 and abs(pyautogui.pixel(x, y)[1] - avgVal) <= 0.1 and abs(pyautogui.pixel(x, y)[2] - avgVal) <= 0.1:
@@ -185,7 +185,7 @@ def passwordAltOk():
 def homeToFind():
     click(482, 202, times = 2, sleep = 1)
 
-    click(1265, 390, sleep=1)
+    click(1027, 390, sleep=1)
 
     click(860, 849, sleep=1)
 
