@@ -110,7 +110,7 @@ def isWin():
 
 
 def isOver():
-    if pyautogui.pixelMatchesColor(890, 534, (8, 85, 106), 1):
+    if pyautogui.pixelMatchesColor(835, 577, (32, 30, 26), 1):
         return True
     else:
         return False
@@ -309,7 +309,7 @@ def gameSurrender():
 
     printTokenIdx()
 
-    click(922, 608)
+    click(836, 486)
 
     finishing()
 
@@ -361,7 +361,7 @@ def gameOver():
     if devMode[0] == True:
         pyautogui.hotkey('alt', 'f1')
         pyautogui.hotkey('win', 'alt', 'prtscr')
-    click(890, 534)
+    click(835, 550)
     print("게임오버")
     overs[0] += 1
     finalRankingCheck()
