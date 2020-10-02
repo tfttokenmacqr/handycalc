@@ -393,7 +393,7 @@ def INFloading():
 def partyEx():
     print("파티제외 대응")
     time.sleep(1)
-    click(962, 542)
+    click(962, 542+3)
     time.sleep(1)
 
     partyExcludes[0] += 1
