@@ -445,6 +445,7 @@ def modeSelect():
     print("5. 개발자모드On/Off")
     print("6. 모드 설명")
     print("7. 종료")
+    print("8. 끝날때까지")
     try:
         mode[0] = int(input())
     except:
@@ -520,7 +521,7 @@ wins = [0]
 while True:
     if mode[0] == 0:
         modeSelect()
-    elif mode[0] == 1 or mode[0] == 2 or mode[0] == 3 or mode[0] == 4:
+    elif mode[0] == 1 or mode[0] == 2 or mode[0] == 3 or mode[0] == 4 or mode[0] == 8:
         try:
             handycalc()
         except pyautogui.FailSafeException:
