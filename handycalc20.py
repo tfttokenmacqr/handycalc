@@ -156,6 +156,16 @@ def lessthansixteen(): #더이상 쓰지 않는 함수
 
 
 
+def checkButton1(): #게임끝나고 토큰보상 및 퀘스트보상 수락 버튼
+    if pyautogui.pixelMatchesColor(905, 828, (30, 35, 40)) and pyautogui.pixelMatchesColor(1015, 831, (30, 35, 40)) and pyautogui.pixelMatchesColor(1016, 848, (30, 35, 40)) and pyautogui.pixelMatchesColor(904, 847, (30, 35, 40)):
+        return True
+    else:
+        return False
+
+
+
+
+
 
 #====================================행동함수들==================================
 def currentTime():
@@ -400,7 +410,8 @@ def partyEx():
     onceStart[0] = False
 
 
-
+def button1():
+    click(959, 839)
 
     
 
@@ -421,6 +432,8 @@ def handycalc():
         gameLoading()
     elif isInGame():
         gameStart()
+    elif checkButton1():
+        button1()
     elif isClientRegame():
         gameRegame()
 
