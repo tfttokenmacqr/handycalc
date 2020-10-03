@@ -195,7 +195,7 @@ def passwordAltOk():
 def homeToFind():
     click(482, 202, times = 2, sleep = 1)
 
-    click(1027, 390, sleep=1)
+    click(1107, 487, sleep=1)
 
     click(860, 849, sleep=1)
 
