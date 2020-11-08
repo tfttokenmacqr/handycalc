@@ -193,11 +193,11 @@ def passwordAltOk():
 
 
 def homeToFind():
-    click(482, 202, times = 2, sleep = 1)
+    click(482, 202, times = 2, sleep = 2)
 
-    click(1107, 487, sleep=1)
+    click(1107, 487, sleep=2)
 
-    click(860, 849, sleep=1)
+    click(860, 849, sleep=2)
 
 
 
@@ -444,7 +444,7 @@ def handycalc():
         time.sleep(1)
         if onceStart[0] == False:
             loadTimeStart[0] = time.time()
-        if time.time() - loadTimeStart[0] > 1800:
+        if time.time() - loadTimeStart[0] > 600:
             INFloading()
 
 
