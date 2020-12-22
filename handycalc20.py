@@ -5,8 +5,87 @@ import sys
 import ctypes
 import subprocess
 
+# direct inputs
+# source to this solution and code:
+# http://stackoverflow.com/questions/14489013/simulate-python-keypresses-for-controlling-a-game
+# http://www.gamespp.com/directx/directInputKeyboardScanCodes.html
+
+SendInput = ctypes.windll.user32.SendInput
+
+# C struct redefinitions
+PUL = ctypes.POINTER(ctypes.c_ulong)
+class KeyBdInput(ctypes.Structure):
+    _fields_ = [("wVk", ctypes.c_ushort),
+                ("wScan", ctypes.c_ushort),
+                ("dwFlags", ctypes.c_ulong),
+                ("time", ctypes.c_ulong),
+                ("dwExtraInfo", PUL)]
+
+class HardwareInput(ctypes.Structure):
+    _fields_ = [("uMsg", ctypes.c_ulong),
+                ("wParamL", ctypes.c_short),
+                ("wParamH", ctypes.c_ushort)]
+
+class MouseInput(ctypes.Structure):
+    _fields_ = [("dx", ctypes.c_long),
+                ("dy", ctypes.c_long),
+                ("mouseData", ctypes.c_ulong),
+                ("dwFlags", ctypes.c_ulong),
+                ("time",ctypes.c_ulong),
+                ("dwExtraInfo", PUL)]
+
+class Input_I(ctypes.Union):
+    _fields_ = [("ki", KeyBdInput),
+                 ("mi", MouseInput),
+                 ("hi", HardwareInput)]
+
+class Input(ctypes.Structure):
+    _fields_ = [("type", ctypes.c_ulong),
+                ("ii", Input_I)]
+
+# Actuals Functions
+
+def PressKey(hexKeyCode):
+    extra = ctypes.c_ulong(0)
+    ii_ = Input_I()
+    ii_.ki = KeyBdInput( 0, hexKeyCode, 0x0008, 0, ctypes.pointer(extra) )
+    x = Input( ctypes.c_ulong(1), ii_ )
+    ctypes.windll.user32.SendInput(1, ctypes.pointer(x), ctypes.sizeof(x))
+
+def ReleaseKey(hexKeyCode):
+    extra = ctypes.c_ulong(0)
+    ii_ = Input_I()
+    ii_.ki = KeyBdInput( 0, hexKeyCode, 0x0008 | 0x0002, 0, ctypes.pointer(extra) )
+    x = Input( ctypes.c_ulong(1), ii_ )
+    ctypes.windll.user32.SendInput(1, ctypes.pointer(x), ctypes.sizeof(x))
+
+if __name__ == '__main__':
+    PressKey(0x11)
+    time.sleep(1)
+    ReleaseKey(0x11)
+    time.sleep(1)
 
 
+key_map = {
+    'w': 17,
+    'e': 18,
+    'a': 30,
+    's': 31,
+    'd': 32,
+    'm': 50,
+    'p': 25,
+    'enter': 28,
+    'esc': 1,
+    'up': 200,
+    'down': 208,
+    'left': 203,
+    'right': 205,
+    'backspace': 14,
+    '/': 53,
+    '.': 52,
+    'g': 34,
+    'f': 33,
+}
 
 
 #==============================체크함수들======================================
@@ -67,10 +146,12 @@ def isTenMin():
 
 
 def isAchromatic(x, y):
-    if pyautogui.pixel(x, y) == (0, 0, 0) or pyautogui.pixel(x, y) == (240, 240, 240) or pyautogui.pixel(x, y) == (205, 205, 205) or pyautogui.pixel(x, y) == (96, 96, 96) or pyautogui.pixel(x, y) == (255, 255, 255) or pyautogui.pixel(x, y) == (12, 12, 12):
+    red, green, blue = pyautogui.pixel(x, y)
+    rgb_tuple = (red, green, blue)
+    if rgb_tuple == (0, 0, 0) or rgb_tuple == (240, 240, 240) or rgb_tuple == (205, 205, 205) or rgb_tuple == (96, 96, 96) or rgb_tuple == (255, 255, 255) or rgb_tuple == (12, 12, 12):
         return False
-    avgVal = (pyautogui.pixel(x, y)[0] + pyautogui.pixel(x, y)[1] + pyautogui.pixel(x, y)[2]) / 3
-    if abs(pyautogui.pixel(x, y)[0] - avgVal) <= 0.1 and abs(pyautogui.pixel(x, y)[1] - avgVal) <= 0.1 and abs(pyautogui.pixel(x, y)[2] - avgVal) <= 0.1:
+    avgVal = (red + green + blue) / 3
+    if abs(red - avgVal) <= 0.1 and abs(green - avgVal) <= 0.1 and abs(blue - avgVal) <= 0.1:
         return True
     else:
         return False
@@ -170,8 +251,11 @@ def checkButton1(): #게임끝나고 토큰보상 및 퀘스트보상 수락 버
 #====================================행동함수들==================================
 def currentTime():
     print(time.strftime("%I:%M %p", time.localtime(time.time())))
-    
+
 def click(x, y, sleep = 0, sec = 0.5, times = 1, tol  = 2):
+    pyautogui.failSafeCheck()
+    if devMode[0] == True:
+        return
     pyautogui.moveTo(x+random.uniform(-tol, tol), y+random.uniform(-tol, tol), random.uniform(sec - sec/4, sec + sec/4))
     for _ in range(times):
         pyautogui.mouseDown()
@@ -179,10 +263,16 @@ def click(x, y, sleep = 0, sec = 0.5, times = 1, tol  = 2):
         pyautogui.mouseUp()
     time.sleep(sleep)
 
-def keyClick(string):
-    pyautogui.keyDown(string)
+def keyClick(key):
+    pyautogui.failSafeCheck()
+    if devMode[0] == True:
+        return
+    if key not in key_map or key_map[key] is None:
+        return
+    keyval = key_map[key]
+    PressKey(keyval)
     time.sleep(random.uniform(0.05, 0.1))
-    pyautogui.keyUp(string)
+    ReleaseKey(keyval)
 
 
 def passwordAltOk():
@@ -206,7 +296,7 @@ def gameFind():
     print("게임찾기")
     if onceStart[0] == False:
         loadTimeStart[0] = time.time()
-    
+
     onceStart[0] = True
     click(866, 837)
 
@@ -218,7 +308,12 @@ def gameAccept():
 
 
 def gameLoading():
-    pyautogui.moveTo(230, 800, random.uniform(0.8, 1.2))
+    if devMode[0] == False:
+        pyautogui.moveTo(230, 800, random.uniform(0.8, 1.2))
+    elif devMode[0] == True:
+        if int(time.time()) % 2 == 0:
+            print("time.time()-startTime[0] :", int(time.time() - startTime[0]))
+            print("time.time() - loadTimeStart[0] :", int(time.time() - loadTimeStart[0]))
 
 
 def gameStart():
@@ -275,7 +370,7 @@ def gameStart():
         if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()) or (mode[0] == 4 and isTenMin() and isTwo()):
             gameSurrender()
             break
-        
+
         if time.time()-startTime[0] > 900:
             click(370, 964, tol=10)
 
@@ -283,7 +378,14 @@ def gameStart():
             win()
             break
 
-    
+        if devMode[0] == False:
+            pass
+        elif devMode[0] == True:
+            if int(time.time()) % 2 == 0:
+                print("time.time()-startTime[0] :", int(time.time() - startTime[0]))
+                print("time.time() - loadTimeStart[0] :", int(time.time() - loadTimeStart[0]))
+
+
 def printTokenIdx():
     if tokenIdx[0] == 3:
         print("1~2등")
@@ -345,8 +447,8 @@ def finishing():
     print("총 토큰획득(추정치) :", sum(tokenGetList))
     print("이번 판 시간당 토큰획득 : %.2f" %(tokenList[tokenIdx[0]]/(loadTime[0] + playTime[0])*3600))
     print("시간당 토큰획득(추정치) : %.2f" %(sum(tokenGetList)/(sum(loadTimelist)+sum(playTimelist))*3600))
-    print("재시작 횟수 :",INFloadings[0])
-    print("파티제외 횟수 :",partyExcludes[0])
+    print("재시작 횟수 :", INFloadings[0])
+    print("파티제외 횟수 :", partyExcludes[0])
     print("게임오버 횟수 :", overs[0])
     print("게임승리 횟수 :", wins[0])
     time.sleep(10)
@@ -365,7 +467,7 @@ def win():
     tokenIdx[0] = 3
     wins[0] += 1
     finishing()
-        
+
 
 def gameOver():
     if devMode[0] == True:
@@ -413,7 +515,7 @@ def partyEx():
 def button1():
     click(959, 839)
 
-    
+
 
 #==========================메인프레임 구성===================================
 
@@ -440,7 +542,12 @@ def handycalc():
     else:
         if int(time.time())%40 == 0:
             print("알 수 없는 상황")
-        pyautogui.moveTo(230, 800, random.uniform(0.8, 1.2))
+        if devMode[0] == False:
+            pyautogui.moveTo(230, 800, random.uniform(0.8, 1.2))
+        elif devMode[0] == True:
+            if int(time.time()) % 2 == 0:
+                print("time.time()-startTime[0] :", int(time.time()-startTime[0]))
+                print("time.time() - loadTimeStart[0] :", int(time.time() - loadTimeStart[0]))
         time.sleep(1)
         if onceStart[0] == False:
             loadTimeStart[0] = time.time()
@@ -500,7 +607,7 @@ def devSwitch():
         print("Off")
         devMode[0] = False
     mode[0] = 0
-    
+
 #=============================var================================
 
 tokenList = (2, 4, 6, 8, 10)
@@ -577,7 +684,7 @@ while True:
         mode[0] = 0
         modeSelect()
 
-    
+
 
 
 
