@@ -333,7 +333,10 @@ def gameStart():
             gameOver()
             break
         if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()) or (mode[0] == 4 and isTenMin() and isTwo()):
-            time.sleep(10)
+            if mode[0] == 1:
+                pass
+            else:
+                time.sleep(10)
             gameSurrender()
             break
         click(576, 990, tol=30)
@@ -341,7 +344,10 @@ def gameStart():
             gameOver()
             break
         if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()) or (mode[0] == 4 and isTenMin() and isTwo()):
-            time.sleep(10)
+            if mode[0] == 1:
+                pass
+            else:
+                time.sleep(10)
             gameSurrender()
             break
         click(778, 988, tol=30)
@@ -349,7 +355,10 @@ def gameStart():
             gameOver()
             break
         if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()) or (mode[0] == 4 and isTenMin() and isTwo()):
-            time.sleep(10)
+            if mode[0] == 1:
+                pass
+            else:
+                time.sleep(10)
             gameSurrender()
             break
         click(976, 984, tol=30)
@@ -357,7 +366,10 @@ def gameStart():
             gameOver()
             break
         if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()) or (mode[0] == 4 and isTenMin() and isTwo()):
-            time.sleep(10)
+            if mode[0] == 1:
+                pass
+            else:
+                time.sleep(10)
             gameSurrender()
             break
         click(1181, 988, tol=30)
@@ -365,7 +377,10 @@ def gameStart():
             gameOver()
             break
         if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()) or (mode[0] == 4 and isTenMin() and isTwo()):
-            time.sleep(10)
+            if mode[0] == 1:
+                pass
+            else:
+                time.sleep(10)
             gameSurrender()
             break
         click(1388, 990, tol=30)
@@ -373,7 +388,10 @@ def gameStart():
             gameOver()
             break
         if (mode[0] == 1 and isTenMin()) or (mode[0] == 2 and isTenMin() and isSix()) or (mode[0] == 3 and isTenMin() and isFour()) or (mode[0] == 4 and isTenMin() and isTwo()):
-            time.sleep(10)
+            if mode[0] == 1:
+                pass
+            else:
+                time.sleep(10)
             gameSurrender()
             break
 
