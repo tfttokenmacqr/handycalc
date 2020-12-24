@@ -346,7 +346,7 @@ def game_start():
             if mode[0] == 1:
                 pass
             else:
-                time.sleep(10)
+                time.sleep(35)
             game_surrender()
             break
         click(576, 990, tol=30)
@@ -358,7 +358,7 @@ def game_start():
             if mode[0] == 1:
                 pass
             else:
-                time.sleep(10)
+                time.sleep(35)
             game_surrender()
             break
         click(778, 988, tol=30)
@@ -370,7 +370,7 @@ def game_start():
             if mode[0] == 1:
                 pass
             else:
-                time.sleep(10)
+                time.sleep(35)
             game_surrender()
             break
         click(976, 984, tol=30)
@@ -382,7 +382,7 @@ def game_start():
             if mode[0] == 1:
                 pass
             else:
-                time.sleep(10)
+                time.sleep(35)
             game_surrender()
             break
         click(1181, 988, tol=30)
@@ -394,7 +394,7 @@ def game_start():
             if mode[0] == 1:
                 pass
             else:
-                time.sleep(10)
+                time.sleep(35)
             game_surrender()
             break
         click(1388, 990, tol=30)
@@ -406,7 +406,7 @@ def game_start():
             if mode[0] == 1:
                 pass
             else:
-                time.sleep(10)
+                time.sleep(35)
             game_surrender()
             break
 
