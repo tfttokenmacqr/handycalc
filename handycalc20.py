@@ -442,6 +442,18 @@ def game_surrender():
         pyautogui.hotkey('win', 'alt', 'prtscr')
     print("항복")
 
+    if is_win() is True:
+        tokenIdx[0] = 3
+    elif is_over() is True:
+        pass
+    else:
+        if is_six() is True:
+            tokenIdx[0] = 1
+        if is_four() is True:
+            tokenIdx[0] = 2
+        if is_two() is True:
+            tokenIdx[0] = 3
+
     key_click('enter')
     key_click('.')
     key_click('enter')
