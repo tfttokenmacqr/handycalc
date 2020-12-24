@@ -586,7 +586,7 @@ def handycalc():
         time.sleep(1)
         if onceStart[0] is False:
             loadTimeStart[0] = time.time()
-        if time.time() - loadTimeStart[0] > 600:
+        if loadValIn[0] is False and time.time() - loadTimeStart[0] > 600:
             inf_loading()
 
 
