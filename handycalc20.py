@@ -158,7 +158,8 @@ def is_achromatic(x, y):
     red, green, blue = pyautogui.pixel(x, y)
     rgb_tuple = (red, green, blue)
     if (rgb_tuple == (0, 0, 0) or rgb_tuple == (240, 240, 240) or rgb_tuple == (205, 205, 205)
-            or rgb_tuple == (96, 96, 96) or rgb_tuple == (255, 255, 255) or rgb_tuple == (12, 12, 12)):
+            or rgb_tuple == (96, 96, 96) or rgb_tuple == (47, 47, 47) or rgb_tuple == (12, 12, 12)
+            or rgb_tuple == (204, 204, 204)):
         return False
     avg_val = (red + green + blue) / 3
     if abs(red - avg_val) <= 0.1 and abs(green - avg_val) <= 0.1 and abs(blue - avg_val) <= 0.1:
@@ -452,7 +453,7 @@ def game_surrender():
         tokenIdx[0] = 2
     elif is_six() is True:
         tokenIdx[0] = 1
-    
+
     key_click('enter')
     key_click('.')
     key_click('enter')
