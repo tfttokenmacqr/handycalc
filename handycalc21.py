@@ -607,7 +607,6 @@ def game_regame():
     global bot_players
     print("한판더하기")
     if hybrid_switch[0] > 0:
-        print("여기1")
         with open("token.txt", 'r', encoding="utf8") as token_txt:
             summoner_token, summoner_name, exceptions = token_txt.read().split('\n')
         exceptions = list(exceptions.replace(' ', '').split(','))
@@ -621,16 +620,28 @@ def game_regame():
 
         riot_url1 = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-name/"+urllib.parse.quote(summoner_name)
         res1 = requests.get(riot_url1, headers=custom_headers)
+        if res1.status_code != 200:
+            click(863, 844)
+            time.sleep(1)
+            return
         time.sleep(0.05)
         summoner_puuid = res1.json()["puuid"]
 
         riot_url2 = "https://asia.api.riotgames.com/tft/match/v1/matches/by-puuid/" + summoner_puuid + "/ids?count=1"
         res2 = requests.get(riot_url2, headers=custom_headers)
+        if res2.status_code != 200:
+            click(863, 844)
+            time.sleep(1)
+            return
         time.sleep(0.05)
         match_id = res2.json()[0]
 
         riot_url3 = "https://asia.api.riotgames.com/tft/match/v1/matches/" + match_id
         res3 = requests.get(riot_url3, headers=custom_headers)
+        if res3.status_code != 200:
+            click(863, 844)
+            time.sleep(1)
+            return
         res3 = res3.json()
         time.sleep(0.05)
 
@@ -641,6 +652,10 @@ def game_regame():
             if player["time_eliminated"] < 780:
                 riot_url4 = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-puuid/" + player["puuid"]
                 res4 = requests.get(riot_url4, headers=custom_headers)
+                if res4.status_code != 200:
+                    click(863, 844)
+                    time.sleep(1)
+                    return
                 time.sleep(0.05)
                 player_name = res4.json()["name"].replace(' ', '')
                 if (player_name in bot_players
@@ -651,7 +666,6 @@ def game_regame():
 
         with open("bot_players.json", 'w', encoding="utf8") as bot_players_json:
             json.dump(bot_players, bot_players_json, indent=4, ensure_ascii=False)
-        print("여기2")
 
     click(863, 844)
     time.sleep(1)
