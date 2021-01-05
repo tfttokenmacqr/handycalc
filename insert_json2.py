@@ -17,17 +17,23 @@ custom_headers = {
 
 riot_url1 = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-name/" + urllib.parse.quote(summoner_name)
 res1 = requests.get(riot_url1, headers=custom_headers)
+if res1.status_code != 200:
+    raise Exception("not 200")
 time.sleep(0.05)
 summoner_puuid = res1.json()["puuid"]
 
 riot_url2 = "https://asia.api.riotgames.com/tft/match/v1/matches/by-puuid/" + summoner_puuid + "/ids?count=20"
 res2 = requests.get(riot_url2, headers=custom_headers)
+if res2.status_code != 200:
+    raise Exception("not 200")
 time.sleep(0.05)
 match_ids = res2.json()
 
 for match_id in match_ids:
     riot_url3 = "https://asia.api.riotgames.com/tft/match/v1/matches/" + match_id
     res3 = requests.get(riot_url3, headers=custom_headers)
+    if res3.status_code != 200:
+        raise Exception("not 200")
     time.sleep(0.05)
     res3 = res3.json()
 
@@ -38,6 +44,8 @@ for match_id in match_ids:
         if player["time_eliminated"] < 780:
             riot_url4 = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-puuid/" + player["puuid"]
             res4 = requests.get(riot_url4, headers=custom_headers)
+            if res4.status_code != 200:
+                raise Exception("not 200")
             time.sleep(0.05)
             player_name = res4.json()["name"].replace(' ', '')
             if (player_name in bot_players
