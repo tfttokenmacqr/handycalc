@@ -659,7 +659,8 @@ def game_regame():
                 time.sleep(0.05)
                 player_name = res4.json()["name"].replace(' ', '')
                 if (player_name in bot_players
-                        and player_name not in exceptions):
+                        and player_name not in exceptions
+                        and player["time_eliminated"] not in bot_players[player_name]):
                     bot_players[player_name].append(player["time_eliminated"])
                 elif player_name not in exceptions:
                     bot_players[player_name] = [player["time_eliminated"]]
