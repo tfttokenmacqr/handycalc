@@ -627,43 +627,42 @@ def game_regame():
         time.sleep(0.05)
         summoner_puuid = res1.json()["puuid"]
 
-        riot_url2 = "https://asia.api.riotgames.com/tft/match/v1/matches/by-puuid/" + summoner_puuid + "/ids?count=1"
+        riot_url2 = "https://asia.api.riotgames.com/tft/match/v1/matches/by-puuid/" + summoner_puuid + "/ids?count=5"
         res2 = requests.get(riot_url2, headers=custom_headers)
         if res2.status_code != 200:
             click(863, 844)
             time.sleep(1)
             return
         time.sleep(0.05)
-        match_id = res2.json()[0]
+        match_ids = res2.json()
 
-        riot_url3 = "https://asia.api.riotgames.com/tft/match/v1/matches/" + match_id
-        res3 = requests.get(riot_url3, headers=custom_headers)
-        if res3.status_code != 200:
-            click(863, 844)
-            time.sleep(1)
-            return
-        res3 = res3.json()
-        time.sleep(0.05)
+        for match_id in match_ids:
+            riot_url3 = "https://asia.api.riotgames.com/tft/match/v1/matches/" + match_id
+            res3 = requests.get(riot_url3, headers=custom_headers)
+            if res3.status_code != 200:
+                click(863, 844)
+                time.sleep(1)
+            time.sleep(0.05)
+            res3 = res3.json()
 
-        with open("bot_players.json", 'r', encoding="utf8") as bot_players_json:
-            bot_players = json.load(bot_players_json)
+            with open("bot_players.json", 'r', encoding="utf8") as bot_players_json:
+                bot_players = json.load(bot_players_json)
 
-        for player in res3["info"]["participants"]:
-            if player["time_eliminated"] < 780:
-                riot_url4 = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-puuid/" + player["puuid"]
-                res4 = requests.get(riot_url4, headers=custom_headers)
-                if res4.status_code != 200:
-                    click(863, 844)
-                    time.sleep(1)
-                    return
-                time.sleep(0.05)
-                player_name = res4.json()["name"].replace(' ', '')
-                if (player_name in bot_players
-                        and player_name not in exceptions
-                        and player["time_eliminated"] not in bot_players[player_name]):
-                    bot_players[player_name].append(player["time_eliminated"])
-                elif player_name not in exceptions:
-                    bot_players[player_name] = [player["time_eliminated"]]
+            for player in res3["info"]["participants"]:
+                if player["time_eliminated"] < 780:
+                    riot_url4 = "https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-puuid/" + player["puuid"]
+                    res4 = requests.get(riot_url4, headers=custom_headers)
+                    if res4.status_code != 200:
+                        click(863, 844)
+                        time.sleep(1)
+                    time.sleep(0.05)
+                    player_name = res4.json()["name"].replace(' ', '')
+                    if (player_name in bot_players
+                            and player_name not in exceptions
+                            and player["time_eliminated"] not in bot_players[player_name]):
+                        bot_players[player_name].append(player["time_eliminated"])
+                    elif player_name not in exceptions:
+                        bot_players[player_name] = [player["time_eliminated"]]
 
         with open("bot_players.json", 'w', encoding="utf8") as bot_players_json:
             json.dump(bot_players, bot_players_json, indent=4, ensure_ascii=False)
