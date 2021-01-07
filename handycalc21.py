@@ -383,7 +383,7 @@ def game_loading():
             print("6등 set")
             log_file.write("6등 set"+'\n')
         elif count <= 1:
-            mode[0] = 2
+            mode[0] = 3
             print("8등 set")
             log_file.write("8등 set"+'\n')
         log_file.close()
