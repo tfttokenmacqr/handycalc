@@ -198,3 +198,6 @@ token*
 
 # 설정파일
 *.json
+
+# txt
+*.txt
