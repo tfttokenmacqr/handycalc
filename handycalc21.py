@@ -300,7 +300,7 @@ def password_alt_ok():
 def home_to_find():
     click(482, 202, times=2, sleep=2)
 
-    click(1107, 487, sleep=2)
+    click(1037, 487, sleep=2)
 
     click(860, 849, sleep=2)
 
