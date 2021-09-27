@@ -114,7 +114,7 @@ def is_client_home():
 
 def is_client_find_game():
     if ((not pyautogui.pixelMatchesColor(920, 852, (92, 91, 87)))
-            and pyautogui.pixelMatchesColor(1144, 276, (30, 35, 40))
+            and pyautogui.pixelMatchesColor(1175, 276, (30, 35, 40))
             and pyautogui.pixelMatchesColor(915, 838, (30, 35, 40))
             and pyautogui.pixelMatchesColor(490, 201, (30, 35, 40))):
         print("게임찾기 인식")
@@ -223,7 +223,7 @@ def final_ranking_check():
 
 
 def is_client_regame():
-    if ((not pyautogui.pixelMatchesColor(1144, 276, (30, 35, 40)))
+    if ((not pyautogui.pixelMatchesColor(1175, 276, (30, 35, 40)))
             and pyautogui.pixelMatchesColor(917, 844, (30, 35, 40))):
         print("한판더하기 인식")
         return True
