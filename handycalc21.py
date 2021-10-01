@@ -113,11 +113,10 @@ def is_client_home():
 
 
 def is_client_find_game():
-    if ((not pyautogui.pixelMatchesColor(920, 852, (92, 91, 87)))
-            and pyautogui.pixelMatchesColor(1175, 276, (30, 35, 40))
+    if (pyautogui.pixelMatchesColor(1175, 276, (30, 35, 40))
             and pyautogui.pixelMatchesColor(915, 838, (30, 35, 40))
             and pyautogui.pixelMatchesColor(490, 201, (30, 35, 40))
-            and not pyautogui.pixelMatchesColor(905, 835, (30, 35, 40))):
+            and not pyautogui.pixelMatchesColor(940, 850, (30, 35, 40))):
         print("게임찾기 인식")
         return True
     else:
