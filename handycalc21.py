@@ -116,7 +116,8 @@ def is_client_find_game():
     if ((not pyautogui.pixelMatchesColor(920, 852, (92, 91, 87)))
             and pyautogui.pixelMatchesColor(1175, 276, (30, 35, 40))
             and pyautogui.pixelMatchesColor(915, 838, (30, 35, 40))
-            and pyautogui.pixelMatchesColor(490, 201, (30, 35, 40))):
+            and pyautogui.pixelMatchesColor(490, 201, (30, 35, 40))
+            and not pyautogui.pixelMatchesColor(905, 835, (30, 35, 40))):
         print("게임찾기 인식")
         return True
     else:
@@ -141,7 +142,7 @@ def is_loading_screen():
 
 
 def is_in_game():
-    if pyautogui.pixelMatchesColor(1919, 395, (24, 32, 33)):
+    if pyautogui.pixelMatchesColor(1919, 395, (24, 32, 33)) or pyautogui.pixelMatchesColor(1919, 780, (24, 32, 33)):
         print("인게임 인식")
         return True
     else:
