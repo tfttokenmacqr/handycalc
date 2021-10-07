@@ -105,7 +105,9 @@ def is_client_password_alt():
 
 
 def is_client_home():
-    if not pyautogui.pixelMatchesColor(501, 189, (30, 35, 40)) and pyautogui.pixelMatchesColor(482, 200, (30, 35, 40)):
+    if (not pyautogui.pixelMatchesColor(501, 189, (30, 35, 40))
+    and pyautogui.pixelMatchesColor(482, 200, (30, 35, 40))
+    and not pyautogui.pixelMatchesColor(380, 840, (1, 10, 19))):
         print("홈화면 인식")
         return True
     else:
@@ -116,7 +118,8 @@ def is_client_find_game():
     if (pyautogui.pixelMatchesColor(1175, 276, (30, 35, 40))
             and pyautogui.pixelMatchesColor(915, 838, (30, 35, 40))
             and pyautogui.pixelMatchesColor(490, 201, (30, 35, 40))
-            and not pyautogui.pixelMatchesColor(940, 850, (30, 35, 40))):
+            and not pyautogui.pixelMatchesColor(940, 850, (30, 35, 40))
+            and pyautogui.pixelMatchesColor(380, 840, (1, 10, 19))):
         print("게임찾기 인식")
         return True
     else:
