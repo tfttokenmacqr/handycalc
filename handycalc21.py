@@ -546,6 +546,8 @@ def game_surrender():
     key_click('w')
     key_click('enter')
 
+    sys.stdout.flush()
+
     print_token_idx()
 
     click(836, 486)
