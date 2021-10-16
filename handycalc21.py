@@ -6,6 +6,7 @@ import ctypes
 import subprocess
 import urllib.parse
 import json
+import msvcrt
 
 # direct inputs
 # source to this solution and code:
@@ -547,6 +548,8 @@ def game_surrender():
     key_click('enter')
 
     sys.stdout.flush()
+    while msvcrt.kbhit():
+        msvcrt.getch()
 
     print_token_idx()
 
