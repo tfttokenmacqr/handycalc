@@ -411,6 +411,8 @@ def game_start():
         loadTime[0] = time.time() - loadTimeStart[0]
         loadValIn[0] = True
 
+    capture = False
+
     load_profile_got[0] = False
     print("인게임")
 
@@ -502,6 +504,10 @@ def game_start():
                 print("time.time()-startTime[0] :", int(time.time() - startTime[0]))
                 print("time.time() - loadTimeStart[0] :", int(time.time() - loadTimeStart[0]))
 
+        if time.time() - startTime[0] > 1800 and capture == False:
+            pyautogui.hotkey('alt', 'f10')
+            capture = True
+
 
 def print_token_idx():
     if tokenIdx[0] == 3:
@@ -586,6 +592,9 @@ def finishing():
     print("파티제외 횟수 :", partyExcludes[0])
     print("게임오버 횟수 :", overs[0])
     print("게임승리 횟수 :", wins[0])
+
+    if playTime[0] < 500:
+        pyautogui.hotkey("alt", "f10")
     time.sleep(10)
 
 
