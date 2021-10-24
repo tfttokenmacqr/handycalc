@@ -504,7 +504,7 @@ def game_start():
                 print("time.time()-startTime[0] :", int(time.time() - startTime[0]))
                 print("time.time() - loadTimeStart[0] :", int(time.time() - loadTimeStart[0]))
 
-        if time.time() - startTime[0] > 1800 and capture == False:
+        if time.time() - startTime[0] > 60 * 18 and capture == False:
             pyautogui.hotkey('alt', 'f10')
             capture = True
 
