@@ -107,8 +107,7 @@ def is_client_password_alt():
 
 def is_client_home():
     if (not pyautogui.pixelMatchesColor(501, 189, (30, 35, 40))
-    and pyautogui.pixelMatchesColor(482, 200, (30, 35, 40))
-    and not pyautogui.pixelMatchesColor(380, 840, (1, 10, 19))):
+    and pyautogui.pixelMatchesColor(482, 200, (30, 35, 40))):
         print("홈화면 인식")
         return True
     else:
