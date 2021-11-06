@@ -508,9 +508,9 @@ def game_start():
             pyautogui.hotkey('alt', 'f10')
             capture = True
 
-        if pyautogui.pixelMatchesColor(1145, 225, (1, 10, 19)):
-            time.sleep(5)
-            pyautogui.hotkey('alt', 'tab')
+        if time.time() - startTime[0] > 60 * 30:
+            finishing()
+            return
 
 def print_token_idx():
     if tokenIdx[0] == 3:
