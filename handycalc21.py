@@ -601,7 +601,7 @@ def finishing():
     
     while True:
         time.sleep(1)
-        if not (pyautogui.pixelMatchesColor(1919, 395, (24, 32, 33)) or pyautogui.pixelMatchesColor(1919, 780, (24, 32, 33))):
+        if pyautogui.pixelMatchesColor(1919, 300, (12, 12, 12)):
             break
 
 
