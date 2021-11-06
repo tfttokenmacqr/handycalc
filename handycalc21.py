@@ -753,7 +753,7 @@ def handycalc():
         if devMode[0] is False:
             pyautogui.moveTo(230, 800, random.uniform(0.8, 1.2))
         elif devMode[0] is True:
-            if int(time.time()) % 2 == 0:
+            if int(time.time()) % 40 == 0:
                 print("time.time()-startTime[0] :", int(time.time() - startTime[0]))
                 print("time.time() - loadTimeStart[0] :", int(time.time() - loadTimeStart[0]))
         time.sleep(1)
