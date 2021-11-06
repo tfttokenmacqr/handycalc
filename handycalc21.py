@@ -562,6 +562,7 @@ def game_surrender():
 
     print_token_idx()
 
+    click(836, 486, sleep=1.5)
     click(836, 486)
 
     finishing()
