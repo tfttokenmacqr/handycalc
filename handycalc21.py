@@ -702,8 +702,6 @@ def inf_loading():
 
     click(912, 564, sleep=60)
 
-    click(1712, 120, sleep=60)
-
     subprocess.call("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
 
     time.sleep(60)
