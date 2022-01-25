@@ -12,6 +12,8 @@ import msvcrt
 # source to this solution and code:
 # http://stackoverflow.com/questions/14489013/simulate-python-keypresses-for-controlling-a-game
 # http://www.gamespp.com/directx/directInputKeyboardScanCodes.html
+# 키 입력을 위한 부분. pyautogui의 내장함수로는 게임 내에서의 키 입력이 되지않는다.
+# direct x key code에 맞는 입력을 주어야 함
 
 SendInput = ctypes.windll.user32.SendInput
 
@@ -72,6 +74,7 @@ def release_key(hex_key_code):
     ctypes.windll.user32.SendInput(1, ctypes.pointer(x), ctypes.sizeof(x))
 
 
+# 입력값은 direct x keycode 검색하여 참조
 key_map = {
     'w': 17,
     'e': 18,
