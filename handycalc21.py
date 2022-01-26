@@ -99,6 +99,9 @@ key_map = {
 
 # ==============================체크함수들======================================
 def is_client_password_alt():
+    """
+    패스워드를 변경하시오 창이 떳는지 확인
+    """
     if (pyautogui.pixelMatchesColor(766, 449, (1, 10, 19)) and pyautogui.pixelMatchesColor(770, 584, (1, 10, 19))
             and pyautogui.pixelMatchesColor(1147, 462, (1, 10, 19))
             and pyautogui.pixelMatchesColor(1131, 581, (1, 10, 19))):
@@ -109,6 +112,9 @@ def is_client_password_alt():
 
 
 def is_client_home():
+    """
+    홈 화면인지 확인
+    """
     if (not pyautogui.pixelMatchesColor(501, 189, (30, 35, 40))
     and pyautogui.pixelMatchesColor(482, 200, (30, 35, 40))):
         print("홈화면 인식")
@@ -118,6 +124,9 @@ def is_client_home():
 
 
 def is_client_find_game():
+    """
+    게임찾기 대기실인지 확인
+    """
     if (pyautogui.pixelMatchesColor(1175, 276, (30, 35, 40))
             and pyautogui.pixelMatchesColor(915, 838, (30, 35, 40))
             and pyautogui.pixelMatchesColor(490, 201, (30, 35, 40))
@@ -130,6 +139,9 @@ def is_client_find_game():
 
 
 def is_client_accept_screen():
+    """
+    게임 큐가 잡히고 수락 확인창이 떳는지 확인
+    """
     if ((not pyautogui.pixelMatchesColor(1000, 794, (92, 91, 87)))
             and pyautogui.pixelMatchesColor(921, 780, (30, 35, 40))
             and pyautogui.pixelMatchesColor(991, 779, (30, 35, 40))):
