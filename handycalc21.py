@@ -152,6 +152,9 @@ def is_client_accept_screen():
 
 
 def is_loading_screen():
+    """
+    게임로딩창인지 확인
+    """
     if pyautogui.pixelMatchesColor(977, 1072, (0, 11, 19)):
         return True
     else:
@@ -159,6 +162,9 @@ def is_loading_screen():
 
 
 def is_in_game():
+    """
+    게임이 시작됐는지 확인
+    """
     if pyautogui.pixelMatchesColor(1919, 395, (24, 32, 33)) or pyautogui.pixelMatchesColor(1919, 780, (24, 32, 33)):
         print("인게임 인식")
         return True
@@ -167,6 +173,9 @@ def is_in_game():
 
 
 def is_ten_min():
+    """
+    게임이 시작되고 10분이 지났는지 확인
+    """
     if time.time() - startTime[0] > 600:
         tokenIdx[0] = 0
         return True
@@ -175,8 +184,13 @@ def is_ten_min():
 
 
 def is_achromatic(x, y):
+    """
+    x, y 지점의 픽셀값이 흑백인지 확인
+    """
     red, green, blue = pyautogui.pixel(x, y)
     rgb_tuple = (red, green, blue)
+    
+    # 밑에는 몇몇 예외로 하는 값들
     if (rgb_tuple == (0, 0, 0) or rgb_tuple == (240, 240, 240) or rgb_tuple == (205, 205, 205)
             or rgb_tuple == (96, 96, 96) or rgb_tuple == (47, 47, 47) or rgb_tuple == (12, 12, 12)
             or rgb_tuple == (204, 204, 204)):
