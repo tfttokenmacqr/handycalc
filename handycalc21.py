@@ -203,6 +203,9 @@ def is_achromatic(x, y):
 
 
 def is_six():
+    """
+    현재 남은 사람이 6명 이하 인지(등수가 6등 이상 인지) 확인
+    """
     if (is_achromatic(Xserr, Yserr - 72) or is_achromatic(Xserr, Yserr - 72 * 2) or is_achromatic(Xserr, Yserr - 72 * 3)
             or is_achromatic(Xserr, Yserr - 72 * 4) or is_achromatic(Xserr, Yserr - 72 * 5)):
         tokenIdx[0] = 1
@@ -212,6 +215,9 @@ def is_six():
 
 
 def is_four():
+    """
+    현재 남은 사람이 4명 이하 인지(등수가 4등 이상 인지) 확인
+    """
     if (is_achromatic(Xserr, Yserr - 72 * 3) or is_achromatic(Xserr, Yserr - 72 * 4)
             or is_achromatic(Xserr, Yserr - 72 * 5)):
         tokenIdx[0] = 2
@@ -221,6 +227,9 @@ def is_four():
 
 
 def is_two():
+    """
+    현재 남은 사람이 2명 이하 인지(등수가 2등 이상 인지) 확인
+    """
     if is_achromatic(Xserr, Yserr - 72 * 5):
         tokenIdx[0] = 3
         return True
@@ -229,6 +238,9 @@ def is_two():
 
 
 def is_win():
+    """
+    승리했는지 확인
+    """
     if pyautogui.pixelMatchesColor(995, 644, (132, 15, 16), 1):
         return True
     else:
@@ -236,6 +248,9 @@ def is_win():
 
 
 def is_over():
+    """
+    패배로 게임이 끝났는지 확인
+    """
     if pyautogui.pixelMatchesColor(835, 577, (32, 30, 26), 1):
         return True
     else:
@@ -243,6 +258,9 @@ def is_over():
 
 
 def final_ranking_check():
+    """
+    마지막 등수 체크
+    """
     if is_two():
         print("1~2등")
         tokenIdx[0] = 3
@@ -255,6 +273,9 @@ def final_ranking_check():
 
 
 def is_client_regame():
+    """
+    게임 종료 후 통계창(한판 더 하기 버튼이 있는)인지 확인
+    """
     if ((not pyautogui.pixelMatchesColor(1175, 276, (30, 35, 40)))
             and pyautogui.pixelMatchesColor(917, 844, (30, 35, 40))):
         print("한판더하기 인식")
