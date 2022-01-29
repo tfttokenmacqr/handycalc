@@ -285,6 +285,9 @@ def is_client_regame():
 
 
 def is_client_party_ex():
+    """
+    파티에서 제외되었습니다. 라는 경고창이 떴는지 확인
+    """
     if (pyautogui.pixelMatchesColor(816, 485, (1, 10, 19)) and pyautogui.pixelMatchesColor(1100, 551, (1, 10, 19))
             and pyautogui.pixelMatchesColor(1097, 489, (1, 10, 19))
             and pyautogui.pixelMatchesColor(817, 550, (1, 10, 19))
@@ -295,7 +298,10 @@ def is_client_party_ex():
         return False
 
 
-def lessthansixteen():  # 더이상 쓰지 않는 함수
+def lessthansixteen():
+    """
+    더이상 쓰지 않는 함수
+    """
     if time.time() - startTime[0] < 960:
         return True
     elif is_four():
@@ -305,7 +311,10 @@ def lessthansixteen():  # 더이상 쓰지 않는 함수
         return False
 
 
-def check_button1():  # 게임끝나고 토큰보상 및 퀘스트보상 수락 버튼
+def check_button1():
+    """
+    게임끝나고 토큰보상 및 퀘스트보상 수락 버튼
+    """
     if (pyautogui.pixelMatchesColor(905, 828, (30, 35, 40)) and pyautogui.pixelMatchesColor(1015, 831, (30, 35, 40))
             and pyautogui.pixelMatchesColor(1016, 848, (30, 35, 40))
             and pyautogui.pixelMatchesColor(904, 847, (30, 35, 40))):
@@ -316,10 +325,20 @@ def check_button1():  # 게임끝나고 토큰보상 및 퀘스트보상 수락 
 
 # ====================================행동함수들==================================
 def current_time():
+    """
+    현재시각 날짜 출력
+    """
     print(time.strftime("%I:%M %p", time.localtime(time.time())))
 
 
 def click(x, y, sleep=0, sec=0.5, times=1, tol=2):
+    """
+    x, y좌표를 클릭.
+    sleep은 클릭 후 쉬는 시간
+    sec는 마우스커서를 좌표위치까지 이동하는데 걸리는 시간
+    times는 클릭 횟수
+    tol는 클릭좌표 오차범위
+    """
     pyautogui.failSafeCheck()
     if devMode[0] is True:
         return
