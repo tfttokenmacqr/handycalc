@@ -351,7 +351,13 @@ def click(x, y, sleep=0, sec=0.5, times=1, tol=2):
     time.sleep(sleep)
 
 
-def key_click(key):
+def key_click(key: str):
+    """
+    키보드 클릭
+    어떤 키를 클릭할 지
+    key_click('입력하고자 하는키') 형식으로 사용
+    입력가능 키 종류는 key_map 딕셔너리 참조
+    """
     pyautogui.failSafeCheck()
     if devMode[0] is True:
         return
