@@ -370,12 +370,18 @@ def key_click(key: str):
 
 
 def password_alt_ok():
+    """
+    비밀번호 변경 하라는 창 확인버튼 클릭
+    """
     print("비밀번호변경 확인")
     click(960, 601)
     time.sleep(1)
 
 
 def home_to_find():
+    """
+    홈화면에서부터 큐 대기화면까지 이동하는 과정
+    """
     click(482, 202, times=2, sleep=2)
 
     click(1037, 487, sleep=2)
