@@ -390,6 +390,9 @@ def home_to_find():
 
 
 def game_find():
+    """
+    게임찾기 버튼 클릭
+    """
     print("게임찾기")
     if onceStart[0] is False:
         loadTimeStart[0] = time.time()
