@@ -313,7 +313,7 @@ def lessthansixteen():
 
 def check_button1():
     """
-    게임끝나고 토큰보상 및 퀘스트보상 수락 버튼
+    게임끝나고 토큰보상 및 퀘스트보상 수락 창이 떴는지 확인
     """
     if (pyautogui.pixelMatchesColor(905, 828, (30, 35, 40)) and pyautogui.pixelMatchesColor(1015, 831, (30, 35, 40))
             and pyautogui.pixelMatchesColor(1016, 848, (30, 35, 40))
