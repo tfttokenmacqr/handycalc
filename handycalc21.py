@@ -588,7 +588,7 @@ def game_start():
                 print("time.time()-startTime[0] :", int(time.time() - startTime[0]))
                 print("time.time() - loadTimeStart[0] :", int(time.time() - loadTimeStart[0]))
 
-        if time.time() - startTime[0] > 60 * 18 and capture == False:
+        if devMode[0] is True and time.time() - startTime[0] > 60 * 18 and capture == False:
             pyautogui.hotkey('alt', 'f10')
             capture = True
 
@@ -681,7 +681,7 @@ def finishing():
     print("게임오버 횟수 :", overs[0])
     print("게임승리 횟수 :", wins[0])
 
-    if playTime[0] < 500:
+    if devMode[0] is True and playTime[0] < 500:
         pyautogui.hotkey("alt", "f10")
 
 
