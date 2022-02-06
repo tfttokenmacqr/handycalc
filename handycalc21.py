@@ -683,11 +683,6 @@ def finishing():
 
     if playTime[0] < 500:
         pyautogui.hotkey("alt", "f10")
-    
-    while True:
-        time.sleep(1)
-        if pyautogui.pixelMatchesColor(1919, 300, (12, 12, 12)):
-            break
 
 
 def win():
