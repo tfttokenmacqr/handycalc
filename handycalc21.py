@@ -684,6 +684,11 @@ def finishing():
     if devMode[0] is True and playTime[0] < 500:
         pyautogui.hotkey("alt", "f10")
 
+    while True:
+        time.sleep(1)
+        if not is_in_game():
+            return
+
 
 def win():
     if devMode[0] is True:
