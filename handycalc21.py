@@ -588,13 +588,10 @@ def game_start():
                 print("time.time()-startTime[0] :", int(time.time() - startTime[0]))
                 print("time.time() - loadTimeStart[0] :", int(time.time() - loadTimeStart[0]))
 
-        if devMode[0] is True and time.time() - startTime[0] > 60 * 18 and capture == False:
+        if devMode[0] is True and time.time() - startTime[0] > 60 * 18 and capture is False:
             pyautogui.hotkey('alt', 'f10')
             capture = True
 
-        if time.time() - startTime[0] > 60 * 30:
-            finishing()
-            return
 
 def print_token_idx():
     if tokenIdx[0] == 3:
