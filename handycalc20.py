@@ -202,7 +202,7 @@ def is_win():
 
 
 def is_over():
-    if pyautogui.pixelMatchesColor(835, 577, (32, 30, 26), 1):
+    if pyautogui.pixelMatchesColor(835, 577, (32, 30, 26), 1) or pyautogui.pixelMatchesColor(1155, 552, (46, 40, 33)):
         return True
     else:
         return False

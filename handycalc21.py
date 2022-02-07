@@ -251,7 +251,7 @@ def is_over():
     """
     패배로 게임이 끝났는지 확인
     """
-    if pyautogui.pixelMatchesColor(835, 577, (32, 30, 26), 1):
+    if pyautogui.pixelMatchesColor(835, 577, (32, 30, 26), 1) or pyautogui.pixelMatchesColor(1155, 552, (46, 40, 33)):
         return True
     else:
         return False
