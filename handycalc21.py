@@ -402,12 +402,18 @@ def game_find():
 
 
 def game_accept():
+    """
+    큐잡히고 게임 수락 버튼 클릭
+    """
     print('게임수락')
     click(967, 706)
     time.sleep(1)
 
 
 def game_loading():
+    """
+    게임 로딩중 할 활동
+    """
     global bot_players
     count = 0
     if hybrid_switch[0] > 0 and load_profile_got[0] is False:
@@ -486,6 +492,9 @@ def game_loading():
 
 
 def game_start():
+    """
+    게임 시작하고 하는 행동
+    """
     if isStart[0] is False:
         startTime[0] = time.time()
         print("게임시작")
@@ -594,6 +603,9 @@ def game_start():
 
 
 def print_token_idx():
+    """
+    현재 등수 출력
+    """
     if tokenIdx[0] == 3:
         print("1~2등")
     elif tokenIdx[0] == 2:
@@ -605,6 +617,9 @@ def print_token_idx():
 
 
 def game_surrender():
+    """
+    항복 실행
+    """
     if devMode[0] is True:
         pyautogui.hotkey('alt', 'f1')
         pyautogui.hotkey('win', 'alt', 'prtscr')
@@ -650,6 +665,9 @@ def game_surrender():
 
 
 def finishing():
+    """
+    게임 종료 후 마무리 결과 출력
+    """
     playTime[0] = time.time() - startTime[0]
 
     loadTimelist.append(loadTime[0])
@@ -688,6 +706,9 @@ def finishing():
 
 
 def win():
+    """
+    승리했을때 확인버튼 클릭
+    """
     if devMode[0] is True:
         pyautogui.hotkey('alt', 'f1')
         pyautogui.hotkey('win', 'alt', 'prtscr')
@@ -699,6 +720,9 @@ def win():
 
 
 def game_over():
+    """
+    패배했을때 확인버튼 클릭
+    """
     if devMode[0] is True:
         pyautogui.hotkey('alt', 'f1')
         pyautogui.hotkey('win', 'alt', 'prtscr')
@@ -710,6 +734,9 @@ def game_over():
 
 
 def game_regame():
+    """
+    게임종료 후 통계창에서 한판더하기 클릭
+    """
     global bot_players
     print("한판더하기")
     if hybrid_switch[0] > 0:
@@ -778,6 +805,11 @@ def game_regame():
 
 
 def inf_loading():
+    """
+    가끔 큐잡을때 큐는 안잡히면서 시간만 계속가는 경우가 생기는데
+    그 경우 이것을 실행하여 롤 클라이언트를 종료하고 재시작
+    롤이 c드라이브 기본폴더에 설치되어 있어야 한다.
+    """
     print("무한로딩 대응")
     click(1579, 174, sleep=1)
 
@@ -792,6 +824,9 @@ def inf_loading():
 
 
 def party_ex():
+    """
+    파티에서 제외되었습니다 경고문 확인버튼 클릭
+    """
     print("파티제외 대응")
     time.sleep(1)
     click(962, 542 + 3)
@@ -802,12 +837,19 @@ def party_ex():
 
 
 def button1():
+    """
+    게임 종료 후 보상 받는 버튼 클릭
+    """
     click(959, 839)
 
 
 # ==========================메인프레임 구성===================================
 
 def handycalc():
+    """
+    메인 시작 함수
+    계속 돌면서 상황을 파악하고 그에 맞는 행동을 한다
+    """
     if is_client_password_alt():
         password_alt_ok()
     elif is_client_home():
@@ -844,6 +886,9 @@ def handycalc():
 
 
 def mode_select():
+    """
+    모드선택 화면
+    """
     print("모드를 선택하십시오")
     print("숫자입력 후 엔터")
     print("1. 10분 서렌")
@@ -867,6 +912,9 @@ def mode_select():
 
 
 def mode_demo():
+    """
+    각 모드 설명
+    """
     print("""\n\n
 1. 10분이 되면 서렌하는 버전. 보통 총로딩시간이 2분이므로 시간당 10개 예상.
 
@@ -892,6 +940,9 @@ mmr이 올라갈 것이라는 우려가 있으며 확인된바는 없음.
 
 
 def dev_switch():
+    """
+    개발자 모드로 변경
+    """
     if devMode[0] is False:
         print("On")
         devMode[0] = True
