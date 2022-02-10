@@ -603,7 +603,7 @@ class HandyCalc:
 
         self.loadTimelist.append(self.loadTime)
         self.playTimelist.append(self.playTime)
-        self.tokenGetList.append(self.tokenList[self.tokenIdx] * self.playTime)
+        self.tokenGetList.append(self.tokenList[self.tokenIdx] * (self.playTime / 60))
 
         self.loadTimeStart = time.time()
         self.isStart = False
@@ -619,9 +619,11 @@ class HandyCalc:
                (sum(self.loadTimelist) / len(self.loadTimelist)) % 60,
                sum(self.playTimelist) / len(self.playTimelist) / 60,
                (sum(self.playTimelist) / len(self.playTimelist)) % 60))
-        print("총 토큰획득(추정치) :", sum(self.tokenGetList))
-        print("이번 판 시간당 토큰획득 : %.2f" % (self.tokenList[self.tokenIdx] / (self.loadTime + self.playTime) * 3600))
-        print("시간당 토큰획득(추정치) : %.2f" % (sum(self.tokenGetList) / (sum(self.loadTimelist) + sum(self.playTimelist)) * 3600))
+        print("총 토큰획득(추정치) : %i" % (sum(self.tokenGetList)))
+        print("이번 판 시간당 토큰획득 : %.2f" %
+              (self.tokenList[self.tokenIdx] * (self.playTime / 60) / (self.loadTime + self.playTime) * 3600))
+        print("시간당 토큰획득(추정치) : %.2f" %
+              (sum(self.tokenGetList) / (sum(self.loadTimelist) + sum(self.playTimelist)) * 3600))
         print("재시작 횟수 :", self.INFloadings)
         print("파티제외 횟수 :", self.partyExcludes)
         print("게임오버 횟수 :", self.overs)
