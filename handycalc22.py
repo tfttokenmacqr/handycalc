@@ -726,8 +726,8 @@ class HandyCalc:
             self.game_loading()
         elif self.is_in_game():
             self.game_start()
-        elif self.check_button1():
-            self.button1()
+        elif self.is_reword_get_button():
+            self.reword_get_button()
         elif self.is_client_regame():
             self.game_regame()
 
