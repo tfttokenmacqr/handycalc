@@ -771,26 +771,26 @@ class HandyCalc:
         각 모드 설명
         """
         print("""\n\n
-    1. 10분이 되면 서렌하는 버전. 보통 총로딩시간이 2분이므로 시간당 10개 예상.
-    
+1. 10분이 되면 서렌하는 버전. 보통 총로딩시간이 2분이므로 시간당 10개 예상.
+
         """)
         print("""
-    2. 6등이 되면 서렌하는 버전. 10분서렌버전 보다 2개 더 많은 4개 토큰을 얻음. 
-    다른사람들이 언제 나가는 지에 따라서 효율이 변함.
-    
+2. 6등이 되면 서렌하는 버전. 10분서렌버전 보다 2개 더 많은 4개 토큰을 얻음. 
+다른사람들이 언제 나가는 지에 따라서 효율이 변함.
+
         """)
         print("""
-    3. 4등이 되면 서렌하는 버전. 6개의 토큰보상.
-    mmr이 올라갈 것이라는 우려가 있으며 확인된바는 없음.
-    
+3. 4등이 되면 서렌하는 버전. 6개의 토큰보상.
+mmr이 올라갈 것이라는 우려가 있으며 확인된바는 없음.
+
         """)
         print("""
-    4. 2등이 되면 서렌하는 버전. 8개의 토큰보상.
-    
+4. 2등이 되면 서렌하는 버전. 8개의 토큰보상.
+
         """)
         print("""
-    5. 게임종료시 스크린샷.
-    
+5. 게임종료시 스크린샷.
+
         """)
 
     def dev_switch(self):
@@ -804,54 +804,59 @@ class HandyCalc:
             print("Off")
             self.devMode = False
         self.mode = 0
-
-
-# ============================main===========================================
-if __name__ == "__main__":
-    handy_calc = HandyCalc()
-
-    while True:
-        if handy_calc.mode == 0:
-            handy_calc.mode_select()
-        elif handy_calc.mode == 1 or handy_calc.mode == 2 or handy_calc.mode == 3 or handy_calc.mode == 4 or handy_calc.mode == 8:
-            try:
-                handy_calc.handycalc()
-            except pyautogui.FailSafeException:
-                exmenu = int(input("""
+        
+    def main(self):
+        """
+        메인함수
+        """
+        while True:
+            if self.mode == 0:
+                self.mode_select()
+            elif self.mode == 1 or self.mode == 2 or self.mode == 3 or self.mode == 4 or self.mode == 8:
+                try:
+                    self.handycalc()
+                except pyautogui.FailSafeException:
+                    exmenu = int(input("""
 일시정지. 메뉴를 고르시오.
 1. 돌아가기
 2. 종료
 3. 버그시 강제 서렌
 4. 모드 변경
 5. 개발자모드On/Off
-"""))
-                if exmenu == 1:
-                    "게임으로 돌아갑니다."
-                elif exmenu == 2:
-                    print("종료합니다.")
-                    time.sleep(2)
-                    sys.exit()
-                elif exmenu == 3:
-                    print("강제로 서렌 합니다.")
-                    handy_calc.game_surrender()
-                elif exmenu == 4:
-                    handy_calc.mode_select()
-                elif exmenu == 5:
-                    handy_calc.dev_switch()
-                else:
-                    print("이상한 값 입력. 종료합니다.")
-                    time.sleep(2)
-                    sys.exit()
-        elif handy_calc.mode == 5:
-            handy_calc.dev_switch()
-        elif handy_calc.mode == 6:
-            handy_calc.mode_demo()
-            handy_calc.mode_select()
-        elif handy_calc.mode == 7:
-            print("종료")
-            time.sleep(2)
-            break
-        else:
-            print("올바른 값을 입력하십시오.")
-            handy_calc.mode = 0
-            handy_calc.mode_select()
+                    """))
+                    if exmenu == 1:
+                        "게임으로 돌아갑니다."
+                    elif exmenu == 2:
+                        print("종료합니다.")
+                        time.sleep(2)
+                        sys.exit()
+                    elif exmenu == 3:
+                        print("강제로 서렌 합니다.")
+                        self.game_surrender()
+                    elif exmenu == 4:
+                        self.mode_select()
+                    elif exmenu == 5:
+                        self.dev_switch()
+                    else:
+                        print("이상한 값 입력. 종료합니다.")
+                        time.sleep(2)
+                        sys.exit()
+            elif self.mode == 5:
+                self.dev_switch()
+            elif self.mode == 6:
+                self.mode_demo()
+                self.mode_select()
+            elif self.mode == 7:
+                print("종료")
+                time.sleep(2)
+                break
+            else:
+                print("올바른 값을 입력하십시오.")
+                self.mode = 0
+                self.mode_select()
+
+
+# ============================main===========================================
+if __name__ == "__main__":
+    handy_calc = HandyCalc()
+    handy_calc.main()
