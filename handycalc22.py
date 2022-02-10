@@ -326,7 +326,7 @@ class HandyCalc:
         else:
             return False
 
-    def check_button1(self):
+    def is_reword_get_button(self):
         """
         게임끝나고 토큰보상 및 퀘스트보상 수락 창이 떴는지 확인
         """
@@ -699,7 +699,7 @@ class HandyCalc:
         self.partyExcludes += 1
         self.onceStart = False
 
-    def button1(self):
+    def reword_get_button(self):
         """
         게임 종료 후 보상 받는 버튼 클릭
         """
