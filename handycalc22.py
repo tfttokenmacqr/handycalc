@@ -98,6 +98,8 @@ key_map = {
 class HandyCalc:
     def __init__(self):
         self.mode = 0
+        self.tokenList = [0.1, 0.15]
+        self.tokenIdx = 0
 
         self.plays = 0  # 매크로 실행횟수
         self.onceStart = False
@@ -195,6 +197,7 @@ class HandyCalc:
         게임이 시작되고 10분이 지났는지 확인
         """
         if time.time() - self.startTime > 600:
+            self.tokenIdx = 0
             return True
         else:
             return False
@@ -226,6 +229,7 @@ class HandyCalc:
                 self.is_achromatic(self.Xserr, self.Yserr - 72 * 3) or
                 self.is_achromatic(self.Xserr, self.Yserr - 72 * 4) or
                 self.is_achromatic(self.Xserr, self.Yserr - 72 * 5)):
+            self.tokenIdx = 0
             return True
         else:
             return False
@@ -237,6 +241,7 @@ class HandyCalc:
         if (self.is_achromatic(self.Xserr, self.Yserr - 72 * 3) or
                 self.is_achromatic(self.Xserr, self.Yserr - 72 * 4) or
                 self.is_achromatic(self.Xserr, self.Yserr - 72 * 5)):
+            self.tokenIdx = 1
             return True
         else:
             return False
@@ -246,6 +251,7 @@ class HandyCalc:
         현재 남은 사람이 2명 이하 인지(등수가 2등 이상 인지) 확인
         """
         if self.is_achromatic(self.Xserr, self.Yserr - 72 * 5):
+            self.tokenIdx = 1
             return True
         else:
             return False
@@ -272,14 +278,16 @@ class HandyCalc:
     def final_ranking_check(self):
         """
         마지막 등수 체크
-        더이상 쓰지 않음
         """
         if self.is_two():
             print("1~2등")
+            self.tokenIdx = 1
         elif self.is_four():
             print("3~4등")
+            self.tokenIdx = 1
         elif self.is_six():
             print("5~6등")
+            self.tokenIdx = 0
 
     def is_client_regame(self):
         """
@@ -313,6 +321,7 @@ class HandyCalc:
         if time.time() - self.startTime < 960:
             return True
         elif self.is_four():
+            self.tokenIdx = 1
             return True
         else:
             return False
@@ -528,6 +537,14 @@ class HandyCalc:
                 pyautogui.hotkey('alt', 'f10')
                 capture = True
 
+    def print_token_idx(self):
+        """
+        현재 등수 출력
+        """
+        if self.tokenIdx == 1:
+            print("1~4등")
+        elif self.tokenIdx == 0:
+            print("5~8등")
 
     def game_surrender(self):
         """
@@ -537,6 +554,17 @@ class HandyCalc:
             pyautogui.hotkey('alt', 'f1')
             pyautogui.hotkey('win', 'alt', 'prtscr')
         print("항복")
+
+        if self.is_win() is True:
+            self.tokenIdx = 1
+        elif self.is_over() is True:
+            pass
+        elif self.is_two() is True:
+            self.tokenIdx = 1
+        elif self.is_four() is True:
+            self.tokenIdx = 1
+        elif self.is_six() is True:
+            self.tokenIdx = 0
 
         self.key_click('enter')
         self.key_click('.')
@@ -567,12 +595,15 @@ class HandyCalc:
     def finishing(self):
         """
         게임 종료 후 마무리 결과 출력
+        토큰 계산식은 
+        https://support-leagueoflegends.riotgames.com/hc/ko/articles/4409463089811-%EB%A6%AC%EA%B7%B8-%EC%98%A4%EB%B8%8C-%EB%A0%88%EC%A0%84%EB%93%9C-2021-%EC%97%B0%EB%AF%B8%EB%B3%B5
+        이곳을 참조
         """
         self.playTime = time.time() - self.startTime
 
         self.loadTimelist.append(self.loadTime)
         self.playTimelist.append(self.playTime)
-        self.tokenGetList.append(self.tokenList[tokenIdx[0]])
+        self.tokenGetList.append(self.tokenList[self.tokenIdx] * self.playTime)
 
         self.loadTimeStart = time.time()
         self.isStart = False
@@ -581,15 +612,15 @@ class HandyCalc:
         self.current_time()
         self.plays += 1
         print("플레이 횟수 :", self.plays)
-        print("이번 판 큐+로딩시간 : %imin%isec, \n이번 판 인게임시간 : %imin%isec" % (self.loadTime / 60,
-                                                                       self.loadTime % 60,
+        print("이번 판 큐+로딩시간 : %imin%isec, \n이번 판 인게임시간 : %imin%isec" % (self.loadTime / 60, self.loadTime % 60,
                                                                        self.playTime / 60, self.playTime % 60))
-        print("평균 큐+로딩시간 : %imin%isec, \n평균 인게임시간 : %imin%isec" % (sum(self.loadTimelist) / len(self.loadTimelist) / 60,
-                                                                   (sum(self.loadTimelist) / len(self.loadTimelist)) % 60,
-                                                                   sum(self.playTimelist) / len(self.playTimelist) / 60,
-                                                                   (sum(self.playTimelist) / len(self.playTimelist)) % 60))
+        print("평균 큐+로딩시간 : %imin%isec, \n평균 인게임시간 : %imin%isec" %
+              (sum(self.loadTimelist) / len(self.loadTimelist) / 60,
+               (sum(self.loadTimelist) / len(self.loadTimelist)) % 60,
+               sum(self.playTimelist) / len(self.playTimelist) / 60,
+               (sum(self.playTimelist) / len(self.playTimelist)) % 60))
         print("총 토큰획득(추정치) :", sum(self.tokenGetList))
-        print("이번 판 시간당 토큰획득 : %.2f" % (self.tokenList[tokenIdx[0]] / (self.loadTime + self.playTime) * 3600))
+        print("이번 판 시간당 토큰획득 : %.2f" % (self.tokenList[self.tokenIdx] / (self.loadTime + self.playTime) * 3600))
         print("시간당 토큰획득(추정치) : %.2f" % (sum(self.tokenGetList) / (sum(self.loadTimelist) + sum(self.playTimelist)) * 3600))
         print("재시작 횟수 :", self.INFloadings)
         print("파티제외 횟수 :", self.partyExcludes)
@@ -613,6 +644,7 @@ class HandyCalc:
             pyautogui.hotkey('win', 'alt', 'prtscr')
         self.click(995, 644)
         print("승리")
+        self.tokenIdx = 1
         self.wins += 1
         self.finishing()
 
