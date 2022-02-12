@@ -111,7 +111,7 @@ class Mode(IntEnum):
 
 class HandyCalc:
     def __init__(self):
-        self.mode = 0
+        self.mode = Mode.Base
         self.tokenList = [0.1, 0.15]
         self.tokenIdx = 0
 
@@ -780,7 +780,7 @@ class HandyCalc:
             self.mode = int(input())
         except ValueError:
             print("인풋에러, 올바른 값을 입력하시오")
-            self.mode = 0
+            self.mode = Mode.Base
 
     def mode_demo(self):
         """
@@ -817,7 +817,7 @@ class HandyCalc:
         else:
             print("Off")
             self.devMode = False
-        self.mode = 0
+        self.mode = Mode.Base
         
     def main(self):
         """
@@ -867,7 +867,7 @@ class HandyCalc:
                 break
             else:
                 print("올바른 값을 입력하십시오.")
-                self.mode = 0
+                self.mode = Mode.Base
                 self.mode_select()
 
 
