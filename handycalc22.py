@@ -5,6 +5,7 @@ import sys
 import ctypes
 import subprocess
 import msvcrt
+from enum import IntEnum
 
 # direct inputs
 # source to this solution and code:
@@ -93,6 +94,19 @@ key_map = {
     'g': 34,
     'f': 33,
 }
+
+
+# 열거용 클래스
+class Mode(IntEnum):
+    Base = 0
+    TenMin = 1
+    SixthPlace = 2
+    FourthPlace = 3
+    SecondPlace = 4
+    ToTheEnd = 8
+    DevSwitch = 5
+    ModeDescription = 6
+    Exit = 7
 
 
 class HandyCalc:
@@ -812,9 +826,10 @@ mmr이 올라갈 것이라는 우려가 있으며 확인된바는 없음.
         메인함수
         """
         while True:
-            if self.mode == 0:
+            if self.mode == Mode.Base:
                 self.mode_select()
-            elif self.mode == 1 or self.mode == 2 or self.mode == 3 or self.mode == 4 or self.mode == 8:
+            elif (self.mode == Mode.TenMin or self.mode == Mode.SixthPlace or self.mode == Mode.FourthPlace or
+                  self.mode == Mode.SecondPlace or self.mode == Mode.ToTheEnd):
                 try:
                     self.handycalc()
                 except pyautogui.FailSafeException:
@@ -843,12 +858,12 @@ mmr이 올라갈 것이라는 우려가 있으며 확인된바는 없음.
                         print("이상한 값 입력. 종료합니다.")
                         time.sleep(2)
                         sys.exit()
-            elif self.mode == 5:
+            elif self.mode == Mode.DevSwitch:
                 self.dev_switch()
-            elif self.mode == 6:
+            elif self.mode == Mode.ModeDescription:
                 self.mode_demo()
                 self.mode_select()
-            elif self.mode == 7:
+            elif self.mode == Mode.Exit:
                 print("종료")
                 time.sleep(2)
                 break
