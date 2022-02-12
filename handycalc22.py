@@ -117,8 +117,8 @@ class HandyCalc:
 
         self.plays = 0  # 매크로 실행횟수
         self.onceStart = False
-        self.loadTimelist = []
-        self.playTimelist = []
+        self.loadTimeList = []
+        self.playTimeList = []
         self.tokenGetList = []
 
         self.loadTimeStart = 0.0
@@ -615,8 +615,8 @@ class HandyCalc:
         """
         self.playTime = time.time() - self.startTime
 
-        self.loadTimelist.append(self.loadTime)
-        self.playTimelist.append(self.playTime)
+        self.loadTimeList.append(self.loadTime)
+        self.playTimeList.append(self.playTime)
         self.tokenGetList.append(self.tokenList[self.tokenIdx] * (self.playTime / 60))
 
         self.loadTimeStart = time.time()
@@ -629,15 +629,15 @@ class HandyCalc:
         print("이번 판 큐+로딩시간 : %imin%isec, \n이번 판 인게임시간 : %imin%isec" % (self.loadTime / 60, self.loadTime % 60,
                                                                        self.playTime / 60, self.playTime % 60))
         print("평균 큐+로딩시간 : %imin%isec, \n평균 인게임시간 : %imin%isec" %
-              (sum(self.loadTimelist) / len(self.loadTimelist) / 60,
-               (sum(self.loadTimelist) / len(self.loadTimelist)) % 60,
-               sum(self.playTimelist) / len(self.playTimelist) / 60,
-               (sum(self.playTimelist) / len(self.playTimelist)) % 60))
+              (sum(self.loadTimeList) / len(self.loadTimeList) / 60,
+               (sum(self.loadTimeList) / len(self.loadTimeList)) % 60,
+               sum(self.playTimeList) / len(self.playTimeList) / 60,
+               (sum(self.playTimeList) / len(self.playTimeList)) % 60))
         print("총 토큰획득(추정치) : %i" % (sum(self.tokenGetList)))
         print("이번 판 시간당 토큰획득 : %.2f" %
               (self.tokenList[self.tokenIdx] * (self.playTime / 60) / (self.loadTime + self.playTime) * 3600))
         print("시간당 토큰획득(추정치) : %.2f" %
-              (sum(self.tokenGetList) / (sum(self.loadTimelist) + sum(self.playTimelist)) * 3600))
+              (sum(self.tokenGetList) / (sum(self.loadTimeList) + sum(self.playTimeList)) * 3600))
         print("재시작 횟수 :", self.INFloadings)
         print("파티제외 횟수 :", self.partyExcludes)
         print("게임오버 횟수 :", self.overs)
@@ -833,7 +833,7 @@ mmr이 올라갈 것이라는 우려가 있으며 확인된바는 없음.
                 try:
                     self.handycalc()
                 except pyautogui.FailSafeException:
-                    exmenu = int(input("""
+                    exMenu = int(input("""
 일시정지. 메뉴를 고르시오.
 1. 돌아가기
 2. 종료
@@ -841,18 +841,18 @@ mmr이 올라갈 것이라는 우려가 있으며 확인된바는 없음.
 4. 모드 변경
 5. 개발자모드On/Off
                     """))
-                    if exmenu == 1:
+                    if exMenu == 1:
                         "게임으로 돌아갑니다."
-                    elif exmenu == 2:
+                    elif exMenu == 2:
                         print("종료합니다.")
                         time.sleep(2)
                         sys.exit()
-                    elif exmenu == 3:
+                    elif exMenu == 3:
                         print("강제로 서렌 합니다.")
                         self.game_surrender()
-                    elif exmenu == 4:
+                    elif exMenu == 4:
                         self.mode_select()
-                    elif exmenu == 5:
+                    elif exMenu == 5:
                         self.dev_switch()
                     else:
                         print("이상한 값 입력. 종료합니다.")
