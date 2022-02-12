@@ -464,9 +464,11 @@ class HandyCalc:
             if self.is_over():
                 self.game_over()
                 break
-            if ((self.mode == 1 and self.is_ten_min()) or (self.mode == 2 and self.is_ten_min() and self.is_six())
-                    or (self.mode == 3 and self.is_ten_min() and self.is_four()) or (self.mode == 4 and self.is_ten_min() and self.is_two())):
-                if self.mode == 1:
+            if ((self.mode == Mode.TenMin and self.is_ten_min()) or 
+                    (self.mode == Mode.SixthPlace and self.is_ten_min() and self.is_six()) or 
+                    (self.mode == Mode.FourthPlace and self.is_ten_min() and self.is_four()) or 
+                    (self.mode == Mode.SecondPlace and self.is_ten_min() and self.is_two())):
+                if self.mode == Mode.TenMin:
                     pass
                 else:
                     time.sleep(35)
@@ -476,9 +478,11 @@ class HandyCalc:
             if self.is_over():
                 self.game_over()
                 break
-            if ((self.mode == 1 and self.is_ten_min()) or (self.mode == 2 and self.is_ten_min() and self.is_six())
-                    or (self.mode == 3 and self.is_ten_min() and self.is_four()) or (self.mode == 4 and self.is_ten_min() and self.is_two())):
-                if self.mode == 1:
+            if ((self.mode == Mode.TenMin and self.is_ten_min()) or
+                    (self.mode == Mode.SixthPlace and self.is_ten_min() and self.is_six()) or
+                    (self.mode == Mode.FourthPlace and self.is_ten_min() and self.is_four()) or
+                    (self.mode == Mode.SecondPlace and self.is_ten_min() and self.is_two())):
+                if self.mode == Mode.TenMin:
                     pass
                 else:
                     time.sleep(35)
@@ -488,9 +492,11 @@ class HandyCalc:
             if self.is_over():
                 self.game_over()
                 break
-            if ((self.mode == 1 and self.is_ten_min()) or (self.mode == 2 and self.is_ten_min() and self.is_six())
-                    or (self.mode == 3 and self.is_ten_min() and self.is_four()) or (self.mode == 4 and self.is_ten_min() and self.is_two())):
-                if self.mode == 1:
+            if ((self.mode == Mode.TenMin and self.is_ten_min()) or
+                    (self.mode == Mode.SixthPlace and self.is_ten_min() and self.is_six()) or
+                    (self.mode == Mode.FourthPlace and self.is_ten_min() and self.is_four()) or
+                    (self.mode == Mode.SecondPlace and self.is_ten_min() and self.is_two())):
+                if self.mode == Mode.TenMin:
                     pass
                 else:
                     time.sleep(35)
@@ -500,9 +506,11 @@ class HandyCalc:
             if self.is_over():
                 self.game_over()
                 break
-            if ((self.mode == 1 and self.is_ten_min()) or (self.mode == 2 and self.is_ten_min() and self.is_six())
-                    or (self.mode == 3 and self.is_ten_min() and self.is_four()) or (self.mode == 4 and self.is_ten_min() and self.is_two())):
-                if self.mode == 1:
+            if ((self.mode == Mode.TenMin and self.is_ten_min()) or
+                    (self.mode == Mode.SixthPlace and self.is_ten_min() and self.is_six()) or
+                    (self.mode == Mode.FourthPlace and self.is_ten_min() and self.is_four()) or
+                    (self.mode == Mode.SecondPlace and self.is_ten_min() and self.is_two())):
+                if self.mode == Mode.TenMin:
                     pass
                 else:
                     time.sleep(35)
@@ -512,9 +520,11 @@ class HandyCalc:
             if self.is_over():
                 self.game_over()
                 break
-            if ((self.mode == 1 and self.is_ten_min()) or (self.mode == 2 and self.is_ten_min() and self.is_six())
-                    or (self.mode == 3 and self.is_ten_min() and self.is_four()) or (self.mode == 4 and self.is_ten_min() and self.is_two())):
-                if self.mode == 1:
+            if ((self.mode == Mode.TenMin and self.is_ten_min()) or
+                    (self.mode == Mode.SixthPlace and self.is_ten_min() and self.is_six()) or
+                    (self.mode == Mode.FourthPlace and self.is_ten_min() and self.is_four()) or
+                    (self.mode == Mode.SecondPlace and self.is_ten_min() and self.is_two())):
+                if self.mode == Mode.TenMin:
                     pass
                 else:
                     time.sleep(35)
@@ -524,9 +534,11 @@ class HandyCalc:
             if self.is_over():
                 self.game_over()
                 break
-            if ((self.mode == 1 and self.is_ten_min()) or (self.mode == 2 and self.is_ten_min() and self.is_six())
-                    or (self.mode == 3 and self.is_ten_min() and self.is_four()) or (self.mode == 4 and self.is_ten_min() and self.is_two())):
-                if self.mode == 1:
+            if ((self.mode == Mode.TenMin and self.is_ten_min()) or
+                    (self.mode == Mode.SixthPlace and self.is_ten_min() and self.is_six()) or
+                    (self.mode == Mode.FourthPlace and self.is_ten_min() and self.is_four()) or
+                    (self.mode == Mode.SecondPlace and self.is_ten_min() and self.is_two())):
+                if self.mode == Mode.TenMin:
                     pass
                 else:
                     time.sleep(35)
