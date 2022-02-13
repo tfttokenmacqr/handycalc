@@ -350,7 +350,16 @@ class HandyCalc:
             return True
         else:
             return False
-
+        
+    def is_surrender_condition(self):
+        """
+        항복 조건인지 확인
+        """
+        if self.is_ten_min():
+            return True
+        else:
+            return False
+            
     # ====================================행동함수들==================================
     def current_time(self):
         """
