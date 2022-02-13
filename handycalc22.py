@@ -103,10 +103,10 @@ class Mode(IntEnum):
     SixthPlace = 2
     FourthPlace = 3
     SecondPlace = 4
-    ToTheEnd = 8
-    DevSwitch = 5
-    ModeDescription = 6
-    Exit = 7
+    ToTheEnd = 5
+    DevSwitch = 6
+    ModeDescription = 7
+    Exit = 8
 
 
 class HandyCalc:
@@ -784,10 +784,10 @@ class HandyCalc:
         print("2. 6등 서렌")
         print("3. 4등 서렌")
         print("4. 2등 서렌")
-        print("5. 개발자모드On/Off")
-        print("6. 모드 설명")
-        print("7. 종료")
-        print("8. 끝날때까지")
+        print("5. 끝날때까지")
+        print("6. 개발자모드On/Off")
+        print("7. 모드 설명")
+        print("8. 종료")
         try:
             self.mode = int(input())
         except ValueError:
@@ -815,7 +815,7 @@ class HandyCalc:
 
         """)
         print("""
-8. 승리하거나 체력이 0 이하가 될 때까지.
+5. 승리하거나 체력이 0 이하가 될 때까지.
 
         """)
 
