@@ -788,7 +788,7 @@ class HandyCalc:
         모드선택 화면
         """
         print("모드를 선택하십시오")
-        print("숫자입력 후 엔터")
+        print("숫자입력 후 엔터누르면 5초 후 동작")
         print("1. 10분 서렌")
         print("2. 6등 서렌")
         print("3. 4등 서렌")
@@ -799,6 +799,7 @@ class HandyCalc:
         print("8. 종료")
         try:
             self.mode = int(input())
+            time.sleep(5)
         except ValueError:
             print("인풋에러, 올바른 값을 입력하시오")
             self.mode = Mode.Base
@@ -859,7 +860,10 @@ class HandyCalc:
 3. 버그시 강제 서렌
 4. 모드 변경
 5. 개발자모드On/Off
+
+숫자 입력 후 엔터누르면 5초뒤 동작
 """))
+                    time.sleep(5)
                     if exMenu == 1:
                         "게임으로 돌아갑니다."
                     elif exMenu == 2:
