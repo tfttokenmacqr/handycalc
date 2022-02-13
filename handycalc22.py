@@ -795,7 +795,7 @@ class HandyCalc:
         print("4. 2등 서렌")
         print("5. 끝날때까지")
         print("6. 개발자모드On/Off")
-        print("7. 모드 설명")
+        print("7. 사용설명")
         print("8. 종료")
         try:
             self.mode = int(input())
@@ -804,10 +804,19 @@ class HandyCalc:
             print("인풋에러, 올바른 값을 입력하시오")
             self.mode = Mode.Base
 
-    def mode_demo(self):
+    def user_guide(self):
         """
-        각 모드 설명
+        사용법 설명
         """
+        print("""\n\n
+# 우선 본 매크로의 일시정지 방법은 마우스 커서를 화면의 네 모서리 중 한 곳으로 옮기는 것 입니다.
+
+본 프로그램의 실행 창이 오른쪽 화면을 가리도록 하지 마십시오(롤 클라이언트 기준 오른쪽).
+특히 플레이어들의 순위를 표시하는 부분을 가리면 안됩니다.
+
+각 모드 설명:      
+
+""")
         print("""\n\n
 1. 10분이 되면 서렌하는 버전.
 
@@ -884,7 +893,7 @@ class HandyCalc:
             elif self.mode == Mode.DevSwitch:
                 self.dev_switch()
             elif self.mode == Mode.ModeDescription:
-                self.mode_demo()
+                self.user_guide()
                 self.mode_select()
             elif self.mode == Mode.Exit:
                 print("종료")
