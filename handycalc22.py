@@ -849,20 +849,25 @@ class HandyCalc:
             print("Off")
             self.devMode = False
         self.mode = Mode.Base
-        
-    def main(self):
-        """
-        메인함수
-        """
-        while True:
-            if self.mode == Mode.Base:
-                self.mode_select()
-            elif (self.mode == Mode.TenMin or self.mode == Mode.SixthPlace or self.mode == Mode.FourthPlace or
-                  self.mode == Mode.SecondPlace or self.mode == Mode.ToTheEnd):
-                try:
-                    self.handycalc()
-                except pyautogui.FailSafeException:
-                    exMenu = int(input("""
+
+# END OF HandyCalc
+
+
+def main():
+    """
+    메인함수
+    """
+    handycalc = HandyCalc()
+
+    while True:
+        if handycalc.mode == Mode.Base:
+            handycalc.mode_select()
+        elif (handycalc.mode == Mode.TenMin or handycalc.mode == Mode.SixthPlace or handycalc.mode == Mode.FourthPlace or
+              handycalc.mode == Mode.SecondPlace or handycalc.mode == Mode.ToTheEnd):
+            try:
+                handycalc.handycalc()
+            except pyautogui.FailSafeException:
+                exMenu = int(input("""
 일시정지. 메뉴를 고르시오.
 1. 돌아가기
 2. 종료
@@ -872,40 +877,39 @@ class HandyCalc:
 
 숫자 입력 후 엔터누르면 5초뒤 동작
 """))
-                    time.sleep(5)
-                    if exMenu == 1:
-                        "게임으로 돌아갑니다."
-                    elif exMenu == 2:
-                        print("종료합니다.")
-                        time.sleep(2)
-                        sys.exit()
-                    elif exMenu == 3:
-                        print("강제로 서렌 합니다.")
-                        self.game_surrender()
-                    elif exMenu == 4:
-                        self.mode_select()
-                    elif exMenu == 5:
-                        self.dev_switch()
-                    else:
-                        print("이상한 값 입력. 종료합니다.")
-                        time.sleep(2)
-                        sys.exit()
-            elif self.mode == Mode.DevSwitch:
-                self.dev_switch()
-            elif self.mode == Mode.ModeDescription:
-                self.user_guide()
-                self.mode_select()
-            elif self.mode == Mode.Exit:
-                print("종료")
-                time.sleep(2)
-                break
-            else:
-                print("올바른 값을 입력하십시오.")
-                self.mode = Mode.Base
-                self.mode_select()
+                time.sleep(5)
+                if exMenu == 1:
+                    "게임으로 돌아갑니다."
+                elif exMenu == 2:
+                    print("종료합니다.")
+                    time.sleep(2)
+                    sys.exit()
+                elif exMenu == 3:
+                    print("강제로 서렌 합니다.")
+                    handycalc.game_surrender()
+                elif exMenu == 4:
+                    handycalc.mode_select()
+                elif exMenu == 5:
+                    handycalc.dev_switch()
+                else:
+                    print("이상한 값 입력. 종료합니다.")
+                    time.sleep(2)
+                    sys.exit()
+        elif handycalc.mode == Mode.DevSwitch:
+            handycalc.dev_switch()
+        elif handycalc.mode == Mode.ModeDescription:
+            handycalc.user_guide()
+            handycalc.mode_select()
+        elif handycalc.mode == Mode.Exit:
+            print("종료")
+            time.sleep(2)
+            break
+        else:
+            print("올바른 값을 입력하십시오.")
+            handycalc.mode = Mode.Base
+            handycalc.mode_select()
 
 
 # ============================main===========================================
 if __name__ == "__main__":
-    handy_calc = HandyCalc()
-    handy_calc.main()
+    main()
