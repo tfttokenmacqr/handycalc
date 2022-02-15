@@ -853,6 +853,22 @@ class HandyCalc:
 # END OF HandyCalc
 
 
+class HandyCalcSixthPlace(HandyCalc):
+    pass
+
+
+class HandyCalcFourthPlace(HandyCalc):
+    pass
+
+
+class HandyCalcSecondPlace(HandyCalc):
+    pass
+
+
+class HandyCalcToTheEnd(HandyCalc):
+    pass
+
+
 def main():
     """
     메인함수
