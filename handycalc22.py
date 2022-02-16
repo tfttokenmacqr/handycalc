@@ -470,96 +470,25 @@ class HandyCalc:
 
         while True:  # 챔피언픽
 
-            if self.is_over():
-                self.game_over()
-                break
-            if ((self.mode == Mode.TenMin and self.is_ten_min()) or 
-                    (self.mode == Mode.SixthPlace and self.is_ten_min() and self.is_six()) or 
-                    (self.mode == Mode.FourthPlace and self.is_ten_min() and self.is_four()) or 
-                    (self.mode == Mode.SecondPlace and self.is_ten_min() and self.is_two())):
-                if self.mode == Mode.TenMin:
-                    pass
-                else:
-                    time.sleep(35)
-                self.game_surrender()
-                break
-            self.click(576, 990, tol=30)
-            if self.is_over():
-                self.game_over()
-                break
-            if ((self.mode == Mode.TenMin and self.is_ten_min()) or
-                    (self.mode == Mode.SixthPlace and self.is_ten_min() and self.is_six()) or
-                    (self.mode == Mode.FourthPlace and self.is_ten_min() and self.is_four()) or
-                    (self.mode == Mode.SecondPlace and self.is_ten_min() and self.is_two())):
-                if self.mode == Mode.TenMin:
-                    pass
-                else:
-                    time.sleep(35)
-                self.game_surrender()
-                break
-            self.click(778, 988, tol=30)
-            if self.is_over():
-                self.game_over()
-                break
-            if ((self.mode == Mode.TenMin and self.is_ten_min()) or
-                    (self.mode == Mode.SixthPlace and self.is_ten_min() and self.is_six()) or
-                    (self.mode == Mode.FourthPlace and self.is_ten_min() and self.is_four()) or
-                    (self.mode == Mode.SecondPlace and self.is_ten_min() and self.is_two())):
-                if self.mode == Mode.TenMin:
-                    pass
-                else:
-                    time.sleep(35)
-                self.game_surrender()
-                break
-            self.click(976, 984, tol=30)
-            if self.is_over():
-                self.game_over()
-                break
-            if ((self.mode == Mode.TenMin and self.is_ten_min()) or
-                    (self.mode == Mode.SixthPlace and self.is_ten_min() and self.is_six()) or
-                    (self.mode == Mode.FourthPlace and self.is_ten_min() and self.is_four()) or
-                    (self.mode == Mode.SecondPlace and self.is_ten_min() and self.is_two())):
-                if self.mode == Mode.TenMin:
-                    pass
-                else:
-                    time.sleep(35)
-                self.game_surrender()
-                break
-            self.click(1181, 988, tol=30)
-            if self.is_over():
-                self.game_over()
-                break
-            if ((self.mode == Mode.TenMin and self.is_ten_min()) or
-                    (self.mode == Mode.SixthPlace and self.is_ten_min() and self.is_six()) or
-                    (self.mode == Mode.FourthPlace and self.is_ten_min() and self.is_four()) or
-                    (self.mode == Mode.SecondPlace and self.is_ten_min() and self.is_two())):
-                if self.mode == Mode.TenMin:
-                    pass
-                else:
-                    time.sleep(35)
-                self.game_surrender()
-                break
-            self.click(1388, 990, tol=30)
-            if self.is_over():
-                self.game_over()
-                break
-            if ((self.mode == Mode.TenMin and self.is_ten_min()) or
-                    (self.mode == Mode.SixthPlace and self.is_ten_min() and self.is_six()) or
-                    (self.mode == Mode.FourthPlace and self.is_ten_min() and self.is_four()) or
-                    (self.mode == Mode.SecondPlace and self.is_ten_min() and self.is_two())):
-                if self.mode == Mode.TenMin:
-                    pass
-                else:
-                    time.sleep(35)
-                self.game_surrender()
-                break
+            for i in range(4):
+                if self.is_win():
+                    self.win()
+                    return
+                if self.is_over():
+                    self.game_over()
+                    return
+                if self.is_surrender_condition():
+                    if self.mode == Mode.TenMin:
+                        pass
+                    else:
+                        time.sleep(35)
+                    self.game_surrender()
+                    return
+
+                self.click(576 + i * 200, 990, tol=30)
 
             if time.time() - self.startTime > 900:
                 self.click(370, 964, tol=10)
-
-            if self.is_win():
-                self.win()
-                break
 
             if self.devMode is False:
                 pass
@@ -854,19 +783,44 @@ class HandyCalc:
 
 
 class HandyCalcSixthPlace(HandyCalc):
-    pass
+    def is_surrender_condition(self):
+        """
+        항복 조건인지 확인
+        """
+        if self.is_ten_min() and self.is_six():
+            return True
+        else:
+            return False
 
 
 class HandyCalcFourthPlace(HandyCalc):
-    pass
+    def is_surrender_condition(self):
+        """
+        항복 조건인지 확인
+        """
+        if self.is_ten_min() and self.is_four():
+            return True
+        else:
+            return False
 
 
 class HandyCalcSecondPlace(HandyCalc):
-    pass
+    def is_surrender_condition(self):
+        """
+        항복 조건인지 확인
+        """
+        if self.is_ten_min() and self.is_two():
+            return True
+        else:
+            return False
 
 
 class HandyCalcToTheEnd(HandyCalc):
-    pass
+    def is_surrender_condition(self):
+        """
+        항복 조건인지 확인
+        """
+        return False
 
 
 def main():
@@ -878,8 +832,17 @@ def main():
     while True:
         if handycalc.mode == Mode.Base:
             handycalc.mode_select()
-        elif (handycalc.mode == Mode.TenMin or handycalc.mode == Mode.SixthPlace or handycalc.mode == Mode.FourthPlace or
-              handycalc.mode == Mode.SecondPlace or handycalc.mode == Mode.ToTheEnd):
+        elif (handycalc.mode == Mode.TenMin or handycalc.mode == Mode.SixthPlace or
+              handycalc.mode == Mode.FourthPlace or handycalc.mode == Mode.SecondPlace or
+              handycalc.mode == Mode.ToTheEnd):
+            if handycalc.mode == Mode.SixthPlace:
+                handycalc = HandyCalcSixthPlace()
+            elif handycalc.mode == Mode.FourthPlace:
+                handycalc = HandyCalcFourthPlace()
+            elif handycalc.mode == Mode.SecondPlace:
+                handycalc = HandyCalcSecondPlace()
+            elif handycalc.mode == Mode.ToTheEnd:
+                handycalc = HandyCalcToTheEnd()
             try:
                 handycalc.handycalc()
             except pyautogui.FailSafeException:
