@@ -343,13 +343,19 @@ class HandyCalc:
         """
         게임끝나고 토큰보상 및 퀘스트보상 수락 창이 떴는지 확인
         """
-        if (pyautogui.pixelMatchesColor(905, 828, (30, 35, 40)) and pyautogui.pixelMatchesColor(1015, 831, (30, 35, 40))
-                and pyautogui.pixelMatchesColor(1016, 848, (30, 35, 40))
-                and pyautogui.pixelMatchesColor(904, 847, (30, 35, 40))):
+        if ((pyautogui.pixelMatchesColor(905, 828, (30, 35, 40)) and
+             pyautogui.pixelMatchesColor(1015, 831, (30, 35, 40)) and
+             pyautogui.pixelMatchesColor(1016, 848, (30, 35, 40)) and
+             pyautogui.pixelMatchesColor(904, 847, (30, 35, 40)))
+                or
+                (pyautogui.pixelMatchesColor(905, 828, (28, 33, 38)) and
+                 pyautogui.pixelMatchesColor(1015, 831, (28, 33, 38)) and
+                 pyautogui.pixelMatchesColor(1016, 848, (28, 33, 38)) and
+                 pyautogui.pixelMatchesColor(904, 847, (28, 33, 38)))):
             return True
         else:
             return False
-        
+
     def is_surrender_condition(self):
         """
         항복 조건인지 확인
@@ -358,7 +364,7 @@ class HandyCalc:
             return True
         else:
             return False
-            
+
     # ====================================행동함수들==================================
     def current_time(self):
         """
@@ -366,7 +372,7 @@ class HandyCalc:
         """
         print(time.strftime("%I:%M %p", time.localtime(time.time())))
 
-    def click(self, x, y, sleep:float=0, sec=0.5, times=1, tol=2):
+    def click(self, x, y, sleep: float = 0, sec=0.5, times=1, tol=2):
         """
         x, y좌표를 클릭.
         sleep은 클릭 후 쉬는 시간
