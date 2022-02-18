@@ -111,28 +111,28 @@ class Mode(IntEnum):
 
 class HandyCalc:
     mode = Mode.Base
-    tokenList = [0.1, 0.15]
-    tokenIdx = 0
+    token_list = [0.1, 0.15]
+    token_idx = 0
 
     plays = 0  # 매크로 실행횟수
-    onceStart = False
-    loadTimeList = []
-    playTimeList = []
-    tokenGetList = []
+    once_start = False
+    load_time_list = []
+    play_time_list = []
+    token_get_list = []
 
-    loadTimeStart = 0.0
-    startTime = 0.0
-    loadTime = 0.0
-    playTime = 0.0
-    loadValIn = False
-    isStart = False
-    INFloadings = 0
-    partyExcludes = 0
+    load_time_start = 0.0
+    start_time = 0.0
+    load_time = 0.0
+    play_time = 0.0
+    load_val_in = False
+    is_start = False
+    inf_loadings = 0
+    party_excludes = 0
 
-    Xserr = 1870
-    Yserr = 737
+    x_surr = 1870
+    y_surr = 737
 
-    devMode = False
+    dev_mode = False
     overs = 0
     wins = 0
 
@@ -209,8 +209,8 @@ class HandyCalc:
         """
         게임이 시작되고 10분이 지났는지 확인
         """
-        if time.time() - HandyCalc.startTime > 600:
-            HandyCalc.tokenIdx = 0
+        if time.time() - HandyCalc.start_time > 600:
+            HandyCalc.token_idx = 0
             return True
         else:
             return False
@@ -237,12 +237,12 @@ class HandyCalc:
         """
         현재 남은 사람이 6명 이하 인지(등수가 6등 이상 인지) 확인
         """
-        if (self.is_achromatic(HandyCalc.Xserr, HandyCalc.Yserr - 72) or
-                self.is_achromatic(HandyCalc.Xserr, HandyCalc.Yserr - 72 * 2) or
-                self.is_achromatic(HandyCalc.Xserr, HandyCalc.Yserr - 72 * 3) or
-                self.is_achromatic(HandyCalc.Xserr, HandyCalc.Yserr - 72 * 4) or
-                self.is_achromatic(HandyCalc.Xserr, HandyCalc.Yserr - 72 * 5)):
-            HandyCalc.tokenIdx = 0
+        if (self.is_achromatic(HandyCalc.x_surr, HandyCalc.y_surr - 72) or
+                self.is_achromatic(HandyCalc.x_surr, HandyCalc.y_surr - 72 * 2) or
+                self.is_achromatic(HandyCalc.x_surr, HandyCalc.y_surr - 72 * 3) or
+                self.is_achromatic(HandyCalc.x_surr, HandyCalc.y_surr - 72 * 4) or
+                self.is_achromatic(HandyCalc.x_surr, HandyCalc.y_surr - 72 * 5)):
+            HandyCalc.token_idx = 0
             return True
         else:
             return False
@@ -251,10 +251,10 @@ class HandyCalc:
         """
         현재 남은 사람이 4명 이하 인지(등수가 4등 이상 인지) 확인
         """
-        if (self.is_achromatic(HandyCalc.Xserr, HandyCalc.Yserr - 72 * 3) or
-                self.is_achromatic(HandyCalc.Xserr, HandyCalc.Yserr - 72 * 4) or
-                self.is_achromatic(HandyCalc.Xserr, HandyCalc.Yserr - 72 * 5)):
-            HandyCalc.tokenIdx = 1
+        if (self.is_achromatic(HandyCalc.x_surr, HandyCalc.y_surr - 72 * 3) or
+                self.is_achromatic(HandyCalc.x_surr, HandyCalc.y_surr - 72 * 4) or
+                self.is_achromatic(HandyCalc.x_surr, HandyCalc.y_surr - 72 * 5)):
+            HandyCalc.token_idx = 1
             return True
         else:
             return False
@@ -263,8 +263,8 @@ class HandyCalc:
         """
         현재 남은 사람이 2명 이하 인지(등수가 2등 이상 인지) 확인
         """
-        if self.is_achromatic(HandyCalc.Xserr, HandyCalc.Yserr - 72 * 5):
-            HandyCalc.tokenIdx = 1
+        if self.is_achromatic(HandyCalc.x_surr, HandyCalc.y_surr - 72 * 5):
+            HandyCalc.token_idx = 1
             return True
         else:
             return False
@@ -294,13 +294,13 @@ class HandyCalc:
         """
         if self.is_two():
             print("1~2등")
-            HandyCalc.tokenIdx = 1
+            HandyCalc.token_idx = 1
         elif self.is_four():
             print("3~4등")
-            HandyCalc.tokenIdx = 1
+            HandyCalc.token_idx = 1
         elif self.is_six():
             print("5~6등")
-            HandyCalc.tokenIdx = 0
+            HandyCalc.token_idx = 0
 
     def is_client_regame(self):
         """
@@ -331,10 +331,10 @@ class HandyCalc:
         인게임시간이 16분 이전인지 확인
         더이상 쓰지 않는 함수
         """
-        if time.time() - HandyCalc.startTime < 960:
+        if time.time() - HandyCalc.start_time < 960:
             return True
         elif self.is_four():
-            HandyCalc.tokenIdx = 1
+            HandyCalc.token_idx = 1
             return True
         else:
             return False
@@ -381,7 +381,7 @@ class HandyCalc:
         tol는 클릭좌표 오차범위
         """
         pyautogui.failSafeCheck()
-        if HandyCalc.devMode is True:
+        if HandyCalc.dev_mode is True:
             return
         pyautogui.moveTo(x + random.uniform(-tol, tol), y + random.uniform(-tol, tol),
                          random.uniform(sec - sec / 4, sec + sec / 4))
@@ -399,7 +399,7 @@ class HandyCalc:
         입력가능 키 종류는 key_map 딕셔너리 참조
         """
         pyautogui.failSafeCheck()
-        if HandyCalc.devMode is True:
+        if HandyCalc.dev_mode is True:
             return
         if key not in key_map or key_map[key] is None:
             return
@@ -431,10 +431,10 @@ class HandyCalc:
         게임찾기 버튼 클릭
         """
         print("게임찾기")
-        if HandyCalc.onceStart is False:
-            HandyCalc.loadTimeStart = time.time()
+        if HandyCalc.once_start is False:
+            HandyCalc.load_time_start = time.time()
 
-        HandyCalc.onceStart = True
+        HandyCalc.once_start = True
         self.click(866, 837)
 
     def game_accept(self):
@@ -449,24 +449,24 @@ class HandyCalc:
         """
         게임 로딩중 할 활동
         """
-        if HandyCalc.devMode is False:
+        if HandyCalc.dev_mode is False:
             pyautogui.moveTo(230, 800, random.uniform(0.8, 1.2))
-        elif HandyCalc.devMode is True:
+        elif HandyCalc.dev_mode is True:
             if int(time.time()) % 2 == 0:
-                print("time.time()-startTime[0] :", int(time.time() - HandyCalc.startTime))
-                print("time.time() - loadTimeStart[0] :", int(time.time() - HandyCalc.loadTimeStart))
+                print("time.time()-startTime[0] :", int(time.time() - HandyCalc.start_time))
+                print("time.time() - loadTimeStart[0] :", int(time.time() - HandyCalc.load_time_start))
 
     def game_start(self):
         """
         게임 시작하고 하는 행동
         """
-        if HandyCalc.isStart is False:
-            HandyCalc.startTime = time.time()
+        if HandyCalc.is_start is False:
+            HandyCalc.start_time = time.time()
             print("게임시작")
-            HandyCalc.isStart = True
-        if HandyCalc.loadValIn is False:
-            HandyCalc.loadTime = time.time() - HandyCalc.loadTimeStart
-            HandyCalc.loadValIn = True
+            HandyCalc.is_start = True
+        if HandyCalc.load_val_in is False:
+            HandyCalc.load_time = time.time() - HandyCalc.load_time_start
+            HandyCalc.load_val_in = True
 
         capture = False
 
@@ -492,17 +492,17 @@ class HandyCalc:
 
                 self.click(576 + i * 200, 990, tol=30)
 
-            if time.time() - HandyCalc.startTime > 900:
+            if time.time() - HandyCalc.start_time > 900:
                 self.click(370, 964, tol=10)
 
-            if HandyCalc.devMode is False:
+            if HandyCalc.dev_mode is False:
                 pass
-            elif HandyCalc.devMode is True:
+            elif HandyCalc.dev_mode is True:
                 if int(time.time()) % 2 == 0:
-                    print("time.time()-startTime[0] :", int(time.time() - HandyCalc.startTime))
-                    print("time.time() - loadTimeStart[0] :", int(time.time() - HandyCalc.loadTimeStart))
+                    print("time.time()-startTime[0] :", int(time.time() - HandyCalc.start_time))
+                    print("time.time() - loadTimeStart[0] :", int(time.time() - HandyCalc.load_time_start))
 
-            if HandyCalc.devMode is True and time.time() - HandyCalc.startTime > 60 * 18 and capture is False:
+            if HandyCalc.dev_mode is True and time.time() - HandyCalc.start_time > 60 * 18 and capture is False:
                 pyautogui.hotkey('alt', 'f10')
                 capture = True
 
@@ -510,30 +510,30 @@ class HandyCalc:
         """
         현재 등수 출력
         """
-        if HandyCalc.tokenIdx == 1:
+        if HandyCalc.token_idx == 1:
             print("1~4등")
-        elif HandyCalc.tokenIdx == 0:
+        elif HandyCalc.token_idx == 0:
             print("5~8등")
 
     def game_surrender(self):
         """
         항복 실행
         """
-        if HandyCalc.devMode is True:
+        if HandyCalc.dev_mode is True:
             pyautogui.hotkey('alt', 'f1')
             pyautogui.hotkey('win', 'alt', 'prtscr')
         print("항복")
 
         if self.is_win() is True:
-            HandyCalc.tokenIdx = 1
+            HandyCalc.token_idx = 1
         elif self.is_over() is True:
             pass
         elif self.is_two() is True:
-            HandyCalc.tokenIdx = 1
+            HandyCalc.token_idx = 1
         elif self.is_four() is True:
-            HandyCalc.tokenIdx = 1
+            HandyCalc.token_idx = 1
         elif self.is_six() is True:
-            HandyCalc.tokenIdx = 0
+            HandyCalc.token_idx = 0
 
         self.key_click('enter')
         self.key_click('.')
@@ -568,38 +568,38 @@ class HandyCalc:
         https://support-leagueoflegends.riotgames.com/hc/ko/articles/4409463089811-%EB%A6%AC%EA%B7%B8-%EC%98%A4%EB%B8%8C-%EB%A0%88%EC%A0%84%EB%93%9C-2021-%EC%97%B0%EB%AF%B8%EB%B3%B5
         이곳을 참조
         """
-        HandyCalc.playTime = time.time() - HandyCalc.startTime
+        HandyCalc.play_time = time.time() - HandyCalc.start_time
 
-        HandyCalc.loadTimeList.append(HandyCalc.loadTime)
-        HandyCalc.playTimeList.append(HandyCalc.playTime)
-        HandyCalc.tokenGetList.append(HandyCalc.tokenList[HandyCalc.tokenIdx] * (HandyCalc.playTime / 60))
+        HandyCalc.load_time_list.append(HandyCalc.load_time)
+        HandyCalc.play_time_list.append(HandyCalc.play_time)
+        HandyCalc.token_get_list.append(HandyCalc.token_list[HandyCalc.token_idx] * (HandyCalc.play_time / 60))
 
-        HandyCalc.loadTimeStart = time.time()
-        HandyCalc.isStart = False
-        HandyCalc.loadValIn = False
+        HandyCalc.load_time_start = time.time()
+        HandyCalc.is_start = False
+        HandyCalc.load_val_in = False
 
         self.current_time()
         HandyCalc.plays += 1
         print("플레이 횟수 :", HandyCalc.plays)
         print("이번 판 큐+로딩시간 : %imin%isec, \n이번 판 인게임시간 : %imin%isec" %
-              (HandyCalc.loadTime / 60, HandyCalc.loadTime % 60, HandyCalc.playTime / 60, HandyCalc.playTime % 60))
+              (HandyCalc.load_time / 60, HandyCalc.load_time % 60, HandyCalc.play_time / 60, HandyCalc.play_time % 60))
         print("평균 큐+로딩시간 : %imin%isec, \n평균 인게임시간 : %imin%isec" %
-              (sum(HandyCalc.loadTimeList) / len(HandyCalc.loadTimeList) / 60,
-               (sum(HandyCalc.loadTimeList) / len(HandyCalc.loadTimeList)) % 60,
-               sum(HandyCalc.playTimeList) / len(HandyCalc.playTimeList) / 60,
-               (sum(HandyCalc.playTimeList) / len(HandyCalc.playTimeList)) % 60))
-        print("총 토큰획득(추정치) : %i" % (sum(HandyCalc.tokenGetList)))
+              (sum(HandyCalc.load_time_list) / len(HandyCalc.load_time_list) / 60,
+               (sum(HandyCalc.load_time_list) / len(HandyCalc.load_time_list)) % 60,
+               sum(HandyCalc.play_time_list) / len(HandyCalc.play_time_list) / 60,
+               (sum(HandyCalc.play_time_list) / len(HandyCalc.play_time_list)) % 60))
+        print("총 토큰획득(추정치) : %i" % (sum(HandyCalc.token_get_list)))
         print("이번 판 시간당 토큰획득 : %.2f" %
-              (HandyCalc.tokenList[HandyCalc.tokenIdx] * (HandyCalc.playTime / 60) /
-               (HandyCalc.loadTime + HandyCalc.playTime) * 3600))
+              (HandyCalc.token_list[HandyCalc.token_idx] * (HandyCalc.play_time / 60) /
+               (HandyCalc.load_time + HandyCalc.play_time) * 3600))
         print("시간당 토큰획득(추정치) : %.2f" %
-              (sum(HandyCalc.tokenGetList) / (sum(HandyCalc.loadTimeList) + sum(HandyCalc.playTimeList)) * 3600))
-        print("재시작 횟수 :", HandyCalc.INFloadings)
-        print("파티제외 횟수 :", HandyCalc.partyExcludes)
+              (sum(HandyCalc.token_get_list) / (sum(HandyCalc.load_time_list) + sum(HandyCalc.play_time_list)) * 3600))
+        print("재시작 횟수 :", HandyCalc.inf_loadings)
+        print("파티제외 횟수 :", HandyCalc.party_excludes)
         print("게임오버 횟수 :", HandyCalc.overs)
         print("게임승리 횟수 :", HandyCalc.wins)
 
-        if HandyCalc.devMode is True and HandyCalc.playTime < 500:
+        if HandyCalc.dev_mode is True and HandyCalc.play_time < 500:
             pyautogui.hotkey("alt", "f10")
 
         while True:
@@ -611,12 +611,12 @@ class HandyCalc:
         """
         승리했을때 확인버튼 클릭
         """
-        if HandyCalc.devMode is True:
+        if HandyCalc.dev_mode is True:
             pyautogui.hotkey('alt', 'f1')
             pyautogui.hotkey('win', 'alt', 'prtscr')
         self.click(995, 644)
         print("승리")
-        HandyCalc.tokenIdx = 1
+        HandyCalc.token_idx = 1
         HandyCalc.wins += 1
         self.finishing()
 
@@ -624,7 +624,7 @@ class HandyCalc:
         """
         패배했을때 확인버튼 클릭
         """
-        if HandyCalc.devMode is True:
+        if HandyCalc.dev_mode is True:
             pyautogui.hotkey('alt', 'f1')
             pyautogui.hotkey('win', 'alt', 'prtscr')
         self.click(835, 550)
@@ -655,9 +655,9 @@ class HandyCalc:
         subprocess.call("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
 
         time.sleep(60)
-        HandyCalc.loadTimeStart = time.time()
-        HandyCalc.onceStart = False
-        HandyCalc.INFloadings += 1
+        HandyCalc.load_time_start = time.time()
+        HandyCalc.once_start = False
+        HandyCalc.inf_loadings += 1
 
     def party_ex(self):
         """
@@ -668,8 +668,8 @@ class HandyCalc:
         self.click(962, 542 + 3)
         time.sleep(1)
 
-        HandyCalc.partyExcludes += 1
-        HandyCalc.onceStart = False
+        HandyCalc.party_excludes += 1
+        HandyCalc.once_start = False
 
     def reword_get_button(self):
         """
@@ -706,16 +706,16 @@ class HandyCalc:
         else:
             if int(time.time()) % 40 == 0:
                 print("알 수 없는 상황")
-            if HandyCalc.devMode is False:
+            if HandyCalc.dev_mode is False:
                 pyautogui.moveTo(230, 800, random.uniform(0.8, 1.2))
-            elif HandyCalc.devMode is True:
+            elif HandyCalc.dev_mode is True:
                 if int(time.time()) % 40 == 0:
-                    print("time.time()-HandyCalc.startTime :", int(time.time() - HandyCalc.startTime))
-                    print("time.time() - HandyCalc.loadTimeStart :", int(time.time() - HandyCalc.loadTimeStart))
+                    print("time.time()-HandyCalc.startTime :", int(time.time() - HandyCalc.start_time))
+                    print("time.time() - HandyCalc.loadTimeStart :", int(time.time() - HandyCalc.load_time_start))
             time.sleep(1)
-            if HandyCalc.onceStart is False:
-                HandyCalc.loadTimeStart = time.time()
-            if HandyCalc.loadValIn is False and time.time() - HandyCalc.loadTimeStart > 600:
+            if HandyCalc.once_start is False:
+                HandyCalc.load_time_start = time.time()
+            if HandyCalc.load_val_in is False and time.time() - HandyCalc.load_time_start > 600:
                 self.inf_loading()
 
     def mode_select(self):
@@ -777,13 +777,14 @@ class HandyCalc:
         """
         개발자 모드로 변경
         """
-        if HandyCalc.devMode is False:
+        if HandyCalc.dev_mode is False:
             print("On")
-            HandyCalc.devMode = True
+            HandyCalc.dev_mode = True
         else:
             print("Off")
-            HandyCalc.devMode = False
+            HandyCalc.dev_mode = False
         HandyCalc.mode = Mode.Base
+
 
 # END OF HandyCalc
 
@@ -852,7 +853,7 @@ def main():
             try:
                 handycalc.handycalc()
             except pyautogui.FailSafeException:
-                exMenu = int(input("""
+                ex_menu = int(input("""
 일시정지. 메뉴를 고르시오.
 1. 돌아가기
 2. 종료
@@ -863,18 +864,18 @@ def main():
 숫자 입력 후 엔터누르면 5초뒤 동작
 """))
                 time.sleep(5)
-                if exMenu == 1:
+                if ex_menu == 1:
                     "게임으로 돌아갑니다."
-                elif exMenu == 2:
+                elif ex_menu == 2:
                     print("종료합니다.")
                     time.sleep(2)
                     sys.exit()
-                elif exMenu == 3:
+                elif ex_menu == 3:
                     print("강제로 서렌 합니다.")
                     handycalc.game_surrender()
-                elif exMenu == 4:
+                elif ex_menu == 4:
                     handycalc.mode_select()
-                elif exMenu == 5:
+                elif ex_menu == 5:
                     handycalc.dev_switch()
                 else:
                     print("이상한 값 입력. 종료합니다.")
