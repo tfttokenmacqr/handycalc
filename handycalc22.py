@@ -830,6 +830,17 @@ class HandyCalcToTheEnd(HandyCalc):
         return False
 
 
+def change_mode(handycalc: HandyCalc):
+    if handycalc.mode == Mode.SixthPlace:
+        handycalc = HandyCalcSixthPlace()
+    elif handycalc.mode == Mode.FourthPlace:
+        handycalc = HandyCalcFourthPlace()
+    elif handycalc.mode == Mode.SecondPlace:
+        handycalc = HandyCalcSecondPlace()
+    elif handycalc.mode == Mode.ToTheEnd:
+        handycalc = HandyCalcToTheEnd()
+
+
 def main():
     """
     메인함수
@@ -842,14 +853,7 @@ def main():
         elif (handycalc.mode == Mode.TenMin or handycalc.mode == Mode.SixthPlace or
               handycalc.mode == Mode.FourthPlace or handycalc.mode == Mode.SecondPlace or
               handycalc.mode == Mode.ToTheEnd):
-            if handycalc.mode == Mode.SixthPlace:
-                handycalc = HandyCalcSixthPlace()
-            elif handycalc.mode == Mode.FourthPlace:
-                handycalc = HandyCalcFourthPlace()
-            elif handycalc.mode == Mode.SecondPlace:
-                handycalc = HandyCalcSecondPlace()
-            elif handycalc.mode == Mode.ToTheEnd:
-                handycalc = HandyCalcToTheEnd()
+            change_mode(handycalc)
             try:
                 handycalc.handycalc()
             except pyautogui.FailSafeException:
