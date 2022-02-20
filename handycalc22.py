@@ -879,6 +879,7 @@ def main():
                     handycalc.game_surrender()
                 elif ex_menu == 4:
                     handycalc.mode_select()
+                    handycalc = change_mode(handycalc)
                 elif ex_menu == 5:
                     handycalc.dev_switch()
                 else:
