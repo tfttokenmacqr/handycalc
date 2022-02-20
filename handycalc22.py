@@ -832,13 +832,13 @@ class HandyCalcToTheEnd(HandyCalc):
 
 def change_mode(handycalc: HandyCalc):
     if handycalc.mode == Mode.SixthPlace:
-        handycalc = HandyCalcSixthPlace()
+        return HandyCalcSixthPlace()
     elif handycalc.mode == Mode.FourthPlace:
-        handycalc = HandyCalcFourthPlace()
+        return HandyCalcFourthPlace()
     elif handycalc.mode == Mode.SecondPlace:
-        handycalc = HandyCalcSecondPlace()
+        return HandyCalcSecondPlace()
     elif handycalc.mode == Mode.ToTheEnd:
-        handycalc = HandyCalcToTheEnd()
+        return HandyCalcToTheEnd()
 
 
 def main():
@@ -853,7 +853,7 @@ def main():
         elif (handycalc.mode == Mode.TenMin or handycalc.mode == Mode.SixthPlace or
               handycalc.mode == Mode.FourthPlace or handycalc.mode == Mode.SecondPlace or
               handycalc.mode == Mode.ToTheEnd):
-            change_mode(handycalc)
+            handycalc = change_mode(handycalc)
             try:
                 handycalc.handycalc()
             except pyautogui.FailSafeException:
