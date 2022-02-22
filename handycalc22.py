@@ -790,6 +790,9 @@ class HandyCalc:
 
 
 class HandyCalcSixthPlace(HandyCalc):
+    """
+    6등이면 서렌하는 모드용 클래스
+    """
     def is_surrender_condition(self):
         """
         항복 조건인지 확인
@@ -801,6 +804,9 @@ class HandyCalcSixthPlace(HandyCalc):
 
 
 class HandyCalcFourthPlace(HandyCalc):
+    """
+    4등이면 서렌하는 모드용 클래스
+    """
     def is_surrender_condition(self):
         """
         항복 조건인지 확인
@@ -812,6 +818,9 @@ class HandyCalcFourthPlace(HandyCalc):
 
 
 class HandyCalcSecondPlace(HandyCalc):
+    """
+    2등이면 서렌하는 모드용 클래스
+    """
     def is_surrender_condition(self):
         """
         항복 조건인지 확인
@@ -823,6 +832,9 @@ class HandyCalcSecondPlace(HandyCalc):
 
 
 class HandyCalcToTheEnd(HandyCalc):
+    """
+    끝날때까지 하는 모드용 클래스
+    """
     def is_surrender_condition(self):
         """
         항복 조건인지 확인
