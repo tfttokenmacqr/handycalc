@@ -842,6 +842,13 @@ class HandyCalcToTheEnd(HandyCalc):
         return False
 
 
+class HandyCalcLite(HandyCalc):
+    """
+    저해상도용 클래스
+    """
+    pass
+
+
 def change_mode(handycalc: HandyCalc):
     if handycalc.mode == Mode.SixthPlace:
         return HandyCalcSixthPlace()
