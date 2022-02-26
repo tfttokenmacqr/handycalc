@@ -46,6 +46,44 @@ class Mode(IntEnum):
     Exit = 8
 
 
+def click(x, y, sleep: float = 0, sec=0.5, times=1, tol=2):
+    """
+    x, y좌표를 클릭.
+    sleep은 클릭 후 쉬는 시간
+    sec는 마우스커서를 좌표위치까지 이동하는데 걸리는 시간
+    times는 클릭 횟수
+    tol는 클릭좌표 오차범위
+    """
+    pyautogui.failSafeCheck()
+    if HandyCalc.dev_mode is True:
+        return
+    pyautogui.moveTo(x + random.uniform(-tol, tol), y + random.uniform(-tol, tol),
+                     random.uniform(sec - sec / 4, sec + sec / 4))
+    for _ in range(times):
+        pyautogui.mouseDown()
+        time.sleep(random.uniform(0.08, 0.12))
+        pyautogui.mouseUp()
+    time.sleep(sleep)
+
+
+def key_click(key: str):
+    """
+    키보드 클릭
+    어떤 키를 클릭할 지
+    key_click('입력하고자 하는키') 형식으로 사용
+    입력가능 키 종류는 key_map 딕셔너리 참조
+    """
+    pyautogui.failSafeCheck()
+    if HandyCalc.dev_mode is True:
+        return
+    if key not in key_map or key_map[key] is None:
+        return
+    key_val = key_map[key]
+    PressKey(key_val)
+    time.sleep(random.uniform(0.05, 0.1))
+    ReleaseKey(key_val)
+
+
 class HandyCalc:
     mode = Mode.Base
     token_list = [0.1, 0.15]
@@ -309,59 +347,23 @@ class HandyCalc:
         """
         print(time.strftime("%I:%M %p", time.localtime(time.time())))
 
-    def click(self, x, y, sleep: float = 0, sec=0.5, times=1, tol=2):
-        """
-        x, y좌표를 클릭.
-        sleep은 클릭 후 쉬는 시간
-        sec는 마우스커서를 좌표위치까지 이동하는데 걸리는 시간
-        times는 클릭 횟수
-        tol는 클릭좌표 오차범위
-        """
-        pyautogui.failSafeCheck()
-        if HandyCalc.dev_mode is True:
-            return
-        pyautogui.moveTo(x + random.uniform(-tol, tol), y + random.uniform(-tol, tol),
-                         random.uniform(sec - sec / 4, sec + sec / 4))
-        for _ in range(times):
-            pyautogui.mouseDown()
-            time.sleep(random.uniform(0.08, 0.12))
-            pyautogui.mouseUp()
-        time.sleep(sleep)
-
-    def key_click(self, key: str):
-        """
-        키보드 클릭
-        어떤 키를 클릭할 지
-        key_click('입력하고자 하는키') 형식으로 사용
-        입력가능 키 종류는 key_map 딕셔너리 참조
-        """
-        pyautogui.failSafeCheck()
-        if HandyCalc.dev_mode is True:
-            return
-        if key not in key_map or key_map[key] is None:
-            return
-        key_val = key_map[key]
-        press_key(key_val)
-        time.sleep(random.uniform(0.05, 0.1))
-        release_key(key_val)
-
     def password_alt_ok(self):
         """
         비밀번호 변경 하라는 창 확인버튼 클릭
         """
         print("비밀번호변경 확인")
-        self.click(960, 601)
+        click(960, 601)
         time.sleep(1)
 
     def home_to_find(self):
         """
         홈화면에서부터 큐 대기화면까지 이동하는 과정
         """
-        self.click(482, 202, times=2, sleep=2)
+        click(482, 202, times=2, sleep=2)
 
-        self.click(1037, 487, sleep=2)
+        click(1037, 487, sleep=2)
 
-        self.click(860, 849, sleep=2)
+        click(860, 849, sleep=2)
 
     def game_find(self):
         """
@@ -372,14 +374,14 @@ class HandyCalc:
             HandyCalc.load_time_start = time.time()
 
         HandyCalc.once_start = True
-        self.click(866, 837)
+        click(866, 837)
 
     def game_accept(self):
         """
         큐잡히고 게임 수락 버튼 클릭
         """
         print('게임수락')
-        self.click(967, 706)
+        click(967, 706)
         time.sleep(1)
 
     def game_loading(self):
@@ -427,10 +429,10 @@ class HandyCalc:
                     self.game_surrender()
                     return
 
-                self.click(576 + i * 200, 990, tol=30)
+                click(576 + i * 200, 990, tol=30)
 
             if time.time() - HandyCalc.start_time > 900:
-                self.click(370, 964, tol=10)
+                click(370, 964, tol=10)
 
             if HandyCalc.dev_mode is False:
                 pass
@@ -472,29 +474,29 @@ class HandyCalc:
         elif self.is_six() is True:
             HandyCalc.token_idx = 0
 
-        self.key_click('enter')
-        self.key_click('.')
-        self.key_click('enter')
+        key_click('enter')
+        key_click('.')
+        key_click('enter')
 
-        self.key_click('enter')
-        self.key_click('/')
-        self.key_click('f')
-        self.key_click('f')
-        self.key_click('enter')
+        key_click('enter')
+        key_click('/')
+        key_click('f')
+        key_click('f')
+        key_click('enter')
 
-        self.key_click('enter')
-        self.key_click('/')
-        self.key_click('w')
-        self.key_click('w')
-        self.key_click('enter')
+        key_click('enter')
+        key_click('/')
+        key_click('w')
+        key_click('w')
+        key_click('enter')
 
         # 특정 시스템에서 프로그램이 멈추는 문제에 대하여 해결책
         sys.stdout.flush()
         while msvcrt.kbhit():
             msvcrt.getch()
 
-        self.click(836, 486, sleep=1.5)
-        self.click(836, 486)
+        click(836, 486, sleep=1.5)
+        click(836, 486)
 
         self.finishing()
 
@@ -551,7 +553,7 @@ class HandyCalc:
         if HandyCalc.dev_mode is True:
             pyautogui.hotkey('alt', 'f1')
             pyautogui.hotkey('win', 'alt', 'prtscr')
-        self.click(995, 644)
+        click(995, 644)
         print("승리")
         HandyCalc.token_idx = 1
         HandyCalc.wins += 1
@@ -564,7 +566,7 @@ class HandyCalc:
         if HandyCalc.dev_mode is True:
             pyautogui.hotkey('alt', 'f1')
             pyautogui.hotkey('win', 'alt', 'prtscr')
-        self.click(835, 550)
+        click(835, 550)
         print("게임오버")
         HandyCalc.overs += 1
         self.final_ranking_check()
@@ -574,7 +576,7 @@ class HandyCalc:
         """
         게임종료 후 통계창에서 한판더하기 클릭
         """
-        self.click(863, 844)
+        click(863, 844)
         time.sleep(1)
 
     def inf_loading(self):
@@ -585,9 +587,9 @@ class HandyCalc:
         혹은 자신의 설치폴더 위치로 대체해야한다.
         """
         print("무한로딩 대응")
-        self.click(1579, 174, sleep=1)
+        click(1579, 174, sleep=1)
 
-        self.click(912, 564, sleep=60)
+        click(912, 564, sleep=60)
 
         subprocess.call("C:\\Riot Games\\League of Legends\\LeagueClient.exe")
 
@@ -602,7 +604,7 @@ class HandyCalc:
         """
         print("파티제외 대응")
         time.sleep(1)
-        self.click(962, 542 + 3)
+        click(962, 542 + 3)
         time.sleep(1)
 
         HandyCalc.party_excludes += 1
@@ -612,7 +614,7 @@ class HandyCalc:
         """
         게임 종료 후 보상 받는 버튼 클릭
         """
-        self.click(959, 839)
+        click(959, 839)
 
     # ==========================메인프레임 구성===================================
 
